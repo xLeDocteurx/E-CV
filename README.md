@@ -2,11 +2,11 @@
 CV numérique
 
 ## Prerequisites :
-```
-Node.js 10.x+ / NPM 6.x+
-strapi 3 alpha.16
-mongoDB
-```
+
+- Node.js 10.x+ / NPM 6.x+
+- Strapi 3 alpha.16
+- MongoDB
+
 
 ## How to start frontend :
 ```
