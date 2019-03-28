@@ -2,16 +2,22 @@
 CV numérique
 
 ## Prerequisites :
-- Node.js 10.x+ / NPM 6.x+
-- strapi 3 alpha.16
-- mongoDB
+```
+Node.js 10.x+ / NPM 6.x+
+strapi 3 alpha.16
+mongoDB
+```
 
 ## How to start frontend :
-- "npm run start"
+```
+npm run start
+```
 
 ## How to start backend :
-- "sudo service mongod start"
-- "strapi start"
+```
+sudo service mongod start
+strapi start
+```
 
 ## Installing Strapi :
 ```
