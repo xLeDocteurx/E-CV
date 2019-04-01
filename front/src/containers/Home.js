@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
-import Paper from '@material-ui/core/Paper';
-
+import MainHeader from '../components/MainHeader/MainHeader'
 
 class Home extends Component {
 
@@ -9,7 +8,8 @@ class Home extends Component {
 
         return (
             <div>
-                Home
+                <MainHeader />
+                <div>Home</div>
             </div>
         )
     }

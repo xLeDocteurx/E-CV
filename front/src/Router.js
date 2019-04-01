@@ -6,6 +6,7 @@ import React from "react";
 import Fade from '@material-ui/core/Fade';
 
 import Home from './containers/Home';
+import Portfolio from './containers/Portfolio';
 import Forbidden from './containers/Forbidden';
 
 import { createBrowserHistory } from 'history';
@@ -21,32 +22,35 @@ class Router extends Component {
 
         return (
             <BrowserRouter history={history}>
-            <Fade>
-                <Switch>
-                    {/* <Route exact path="/" component={Home} /> */}
-                    {/* <Route exact path="/" render={({match}) => ( */}
-                    <Route exact path="/" render={({match}) => (
-                        <Home/>
-                    )} />
-                        
-                    <Route path="/test" render={({match}) => (
-                        <div>
-                            <div>No Match for route : {JSON.stringify(match)}</div>
-                            <div>History.pathname : {history.location.pathname}</div>
-                            <div>History : {JSON.stringify(history)}</div>
-                        </div>
-                    )} />
+                <Fade>
+                    <Switch>
+                        {/* <Route exact path="/" component={Home} /> */}
+                        {/* <Route exact path="/" render={({match}) => ( */}
+                        <Route exact path="/" render={({match}) => (
+                            <Home />
+                        )} />
+                        <Route exact path="/portfolio" render={({match}) => (
+                            <Portfolio />
+                        )} />
+                            
+                        <Route path="/test" render={({match}) => (
+                            <div>
+                                <div>No Match for route : {JSON.stringify(match)}</div>
+                                <div>History.pathname : {history.location.pathname}</div>
+                                <div>History : {JSON.stringify(history)}</div>
+                            </div>
+                        )} />
 
-                    <Route render={({match}) => (
-                        <div>
-                            <div>No Match for route : {history.location.pathname}</div>
-                        </div>
-                    )} />
-                    <Route path="/forbidden" render={({match}) => (
-                        <Forbidden />
-                    )} />
-                </Switch>
-            </Fade>
+                        <Route render={({match}) => (
+                            <div>
+                                <div>No Match for route : {history.location.pathname}</div>
+                            </div>
+                        )} />
+                        <Route path="/forbidden" render={({match}) => (
+                            <Forbidden />
+                        )} />
+                    </Switch>
+                </Fade>
             </BrowserRouter>
         )
     }
