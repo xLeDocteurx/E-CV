@@ -1,0 +1,22 @@
+{
+  "connection": "default",
+  "collectionName": "hobby",
+  "info": {
+    "name": "hobby",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}

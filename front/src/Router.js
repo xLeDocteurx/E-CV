@@ -5,24 +5,22 @@ import {BrowserRouter, Route, Switch, Link, Redirect} from "react-router-dom";
 import React from "react";
 import Fade from '@material-ui/core/Fade';
 
+import MainHeader from './components/MainHeader/MainHeader'
+
 import Home from './containers/Home';
 import Portfolio from './containers/Portfolio';
-import Forbidden from './containers/Forbidden';
+import _404 from './containers/_404';
 
-import { createBrowserHistory } from 'history';
+import {createBrowserHistory} from 'history';
 const history = createBrowserHistory();
 
 class Router extends Component {
-
-    goTo(path){
-        history.push(path)
-    }
 
     render() {
 
         return (
             <BrowserRouter history={history}>
-                <Fade>
+                {/* <Fade> */}
                     <Switch>
                         {/* <Route exact path="/" component={Home} /> */}
                         {/* <Route exact path="/" render={({match}) => ( */}
@@ -32,25 +30,19 @@ class Router extends Component {
                         <Route exact path="/portfolio" render={({match}) => (
                             <Portfolio />
                         )} />
-                            
-                        <Route path="/test" render={({match}) => (
-                            <div>
-                                <div>No Match for route : {JSON.stringify(match)}</div>
-                                <div>History.pathname : {history.location.pathname}</div>
-                                <div>History : {JSON.stringify(history)}</div>
-                            </div>
-                        )} />
 
                         <Route render={({match}) => (
-                            <div>
-                                <div>No Match for route : {history.location.pathname}</div>
-                            </div>
-                        )} />
-                        <Route path="/forbidden" render={({match}) => (
-                            <Forbidden />
+                            // <Redirect to="/404"/>
+                            <_404 match={match} history/>
+
+                            // loggedIn ? (
+                            //     <Redirect to="/dashboard"/>
+                            // ) : (
+                            //     <PublicHomePage/>
+                            // )
                         )} />
                     </Switch>
-                </Fade>
+                {/* </Fade> */}
             </BrowserRouter>
         )
     }

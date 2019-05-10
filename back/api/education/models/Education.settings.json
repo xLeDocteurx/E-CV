@@ -1,0 +1,22 @@
+{
+  "connection": "default",
+  "collectionName": "education",
+  "info": {
+    "name": "education",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}

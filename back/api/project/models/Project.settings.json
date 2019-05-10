@@ -1,0 +1,35 @@
+{
+  "connection": "default",
+  "collectionName": "project",
+  "info": {
+    "name": "project",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "skills": {
+      "collection": "skill",
+      "via": "projects",
+      "dominant": true
+    },
+    "technologies": {
+      "collection": "technology",
+      "via": "projects",
+      "dominant": true
+    }
+  }
+}

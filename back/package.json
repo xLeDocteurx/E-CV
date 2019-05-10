@@ -1,5 +1,5 @@
 {
-  "name": "cms",
+  "name": "back",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application.",
@@ -20,11 +20,10 @@
   },
   "dependencies": {
     "lodash": "^4.17.5",
-    "strapi": "3.0.0-alpha.25.2",
-    "strapi-hook-bookshelf": "3.0.0-alpha.25.2",
-    "strapi-hook-knex": "3.0.0-alpha.25.2",
-    "knex": "latest",
-    "sqlite3": "latest"
+    "strapi": "3.0.0-alpha.26.1",
+    "strapi-hook-mongoose": "3.0.0-alpha.26.1",
+    "strapi-utils": "3.0.0-alpha.26.1",
+    "validate": "^4.5.1"
   },
   "author": {
     "name": "ledocteur",
@@ -40,7 +39,7 @@
   ],
   "strapi": {
     "packageManager": "npm",
-    "uuid": "aa7a9463-2770-4de2-b40d-81de8884df89"
+    "uuid": "34250f07-0d6a-483f-b1c0-a8cae61e7c10"
   },
   "engines": {
     "node": ">= 10.0.0",

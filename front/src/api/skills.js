@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from 'axios'
 
-// import {sessionService} from 'redux-react-session';
-import runtimeEnv from '@mars/heroku-js-runtime-env';
+// import {sessionService} from 'redux-react-session'
+import runtimeEnv from '@mars/heroku-js-runtime-env'
 
 const API_BASE_URL = runtimeEnv().REACT_APP_API_BASE_URL
 
@@ -13,28 +13,28 @@ const client = axios.create({
     }
 })
 
-client.interceptors.request.use(async function (config) {
-    // try{
-	//     const jwt = await sessionService.loadUser();
-	//     if(jwt)
-	//         config.headers.Authorization = 'Bearer ' + jwt.jwt;
-  	// }catch(e){
-  	// 	return config;
-  	// }
-    return config;
-}, function (error) {
-		return Promise.reject(error);
-})
+// client.interceptors.request.use(async function (config) {
+//     // try{
+// 	//     const jwt = await sessionService.loadUser()
+// 	//     if(jwt)
+// 	//         config.headers.Authorization = 'Bearer ' + jwt.jwt
+//   	// }catch(e){
+//   	// 	return config
+//   	// }
+//     return config
+// }, function (error) {
+// 		return Promise.reject(error)
+// })
 
-export const AppApi = {
+export const skillsApi = {
     getAll,
     getOne,
 }
 
 function getAll() {
-    return client.get(`/skills`);
+    return client.get(`/skills`)
 }
 
 function getOne(id) {
-    return client.get(`/skills/${id}`);
+    return client.get(`/skills/${id}`)
 }

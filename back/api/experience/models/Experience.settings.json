@@ -1,0 +1,25 @@
+{
+  "connection": "default",
+  "collectionName": "experience",
+  "info": {
+    "name": "experience",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "year": {
+      "type": "integer"
+    }
+  }
+}

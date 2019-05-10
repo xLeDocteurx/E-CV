@@ -1,0 +1,26 @@
+{
+  "connection": "default",
+  "collectionName": "skill",
+  "info": {
+    "name": "skill",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "projects": {
+      "collection": "project",
+      "via": "skills"
+    }
+  }
+}
