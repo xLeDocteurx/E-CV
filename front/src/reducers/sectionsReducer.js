@@ -1,4 +1,4 @@
-import {sectionsActions} from '../actions'
+// import {sectionsActions} from '../actions'
 
 export const initialState = {
     isLoading: null,
@@ -54,6 +54,7 @@ export function sections(state = initialState, action) {
             }
         case 'SECTIONS_INVALIDATE_ENTITIES':
             return initialState
+        case 'SECTIONS_INVALIDATE_FETCH':
         default:
             return state
     }

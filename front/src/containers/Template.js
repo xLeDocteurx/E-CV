@@ -2,20 +2,34 @@ import runtimeEnv from '@mars/heroku-js-runtime-env'
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withStyles} from '@material-ui/core'
-import LinearProgress from '@material-ui/core/LinearProgress';
-import Grid from '@material-ui/core/Grid';
+
+import Slide from '@material-ui/core/Slide'
+import Fade from '@material-ui/core/Fade'
+import Grid from '@material-ui/core/Grid'
+import LinearProgress from '@material-ui/core/LinearProgress'
+// import Paper from '@material-ui/core/Paper'
+// import Typography from '@material-ui/core/Typography'
+import Avatar from '@material-ui/core/Avatar';
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+// import Divider from '@material-ui/core/Divider'
 // import {withRouter} from 'react-router-dom'
 
 import MainHeader from '../components/MainHeader/MainHeader'
-import MainHeaderProminent from '../components/MainHeader/MainHeaderProminent'
+// import MainHeaderProminent from '../components/MainHeader/MainHeaderProminent'
 
-import {sectionsActions, projectsActions} from '../actions';
+import {sectionsActions, projectsActions} from '../actions'
 
 // import {projectsApi} from '../api'
 
 const styles = theme => ({
     root: {
-        flexGrow: 1,
+        width: '100%',
+        maxWidth: 360,
+        backgroundColor: theme.palette.background.paper,
+        // flexGrow: 1,
         // height: '100%',
     },
     grow: {
@@ -51,7 +65,9 @@ class Template extends Component {
         super(props)
 
         this.state = {
-            "pageTitle":"Template",
+            pageTitle:"Template",
+            fade: false,
+            fadeDirection: "right",
         }
     }
 
@@ -60,21 +76,22 @@ class Template extends Component {
 
         this.getSections()
 
-        // this.props.dispatch(projectsActions.getAll())
-    }
-
-    getSections() {
-        this.props.dispatch(sectionsActions.getOne('TemplateIntro'))
+        this.props.dispatch(projectsActions.getAll())
+        
+        this.setState({fade: !this.state.fade})
     }
 
     renderLoading() {
         if(
-            this.props.sections.isLoading 
-            // ||
-            // this.props.projects.isLoading
+            this.props.sections.isLoading ||
+            this.props.projects.isLoading
         ) {
             return <LinearProgress />
         }
+    }
+
+    getSections() {
+        this.props.dispatch(sectionsActions.getOne('avatar'))
     }
 
     renderBandeau() {
@@ -82,12 +99,20 @@ class Template extends Component {
 
         if(this.props.sections.isLoading) {
             return 'loading'
-        } else if(this.props.sections.sections.TemplateIntro) {
-            const { classes } = this.props
+        } else if(this.props.sections.sections.avatar) {
+            // const { classes } = this.props
             return (
-                <Grid container direction="column" justify="center" alignItems="center" className={classes.bandeau}>
-                    <div>{this.props.sections.sections.TemplateIntro.textContent}</div>
-                </Grid>
+                <div>{this.props.sections.sections.avatar.textContent}</div>
+                // <Grid container direction="column" justify="center" alignItems="center" className={classes.bandeau}>
+                //     <Paper /*className={classes.root}*/ /*elevation={1}*/>
+                //         <Typography variant="h5" component="h3">
+                //             Template
+                //         </Typography>
+                //         <Typography component="p">
+                //             {this.props.sections.sections.avatar.textContent}
+                //         </Typography>
+                //     </Paper>
+                // </Grid>
             )
         } else {
             return 'WTF'
@@ -95,18 +120,51 @@ class Template extends Component {
     }
 
     renderProjects() {
-        return null
+        if(this.props.projects.error) { return JSON.stringify(this.props.projects.error) }
+
+        if(this.props.projects.isLoading) {
+            return 'loading'
+        } else if(this.props.projects.projects && this.props.sections.sections.avatar) {
+            const { classes } = this.props
+            return (
+                <List /*component="nav"*/>
+                    {this.props.projects.projects.map((project, project_index) => {
+                        return (
+                            // <div>
+                            //     {project.title}
+                            //     <br/>
+                            //     {project.name}
+                            //     <p>{project.description}</p>
+                            // </div>
+                            <ListItem button key={project_index}>
+                                <ListItemIcon>
+                                <Avatar alt={this.props.sections.sections.avatar.name} src={this.props.sections.sections.avatar.textContent} className={classes.bigAvatar} title={this.props.sections.sections.avatar.name} />
+                                {/* <InboxIcon /> */}
+                                </ListItemIcon>
+                                <ListItemText primary={project.title} />
+                            </ListItem>
+                        )
+                    })}
+                </List>
+            )
+        } else {
+            return 'WTF'
+        }
     }
 
     render() {
 
         return (
             <Grid container direction="column" justify="center" alignItems="center" className="mainContainer">
-                <MainHeader pageTitle={this.state.pageTitle}/>
                 {this.renderLoading()}
-
-                {this.renderBandeau()}
-                {this.renderProjects()}
+                <MainHeader pageTitle={this.state.pageTitle}/>
+    
+                <Fade direction={this.state.fadeDirection} in={this.state.fade} mountOnEnter unmountOnExit>
+                    <div>
+                        {this.renderBandeau()}
+                        {this.renderProjects()}
+                    </div>
+                </Fade>
             </Grid>
         )
     }

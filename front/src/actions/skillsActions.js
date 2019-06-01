@@ -1,5 +1,5 @@
 import * as api from '../api'
-import {skillsReducer} from '../reducers'
+// import {skillsReducer} from '../reducers'
 
 export const skillsActions = {
     getAll,

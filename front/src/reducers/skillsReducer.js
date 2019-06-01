@@ -1,4 +1,4 @@
-import {skillsActions} from '../actions'
+// import {skillsActions} from '../actions'
 
 export const skillsInitialState = {
     isLoading: null,
@@ -38,6 +38,7 @@ export function skills(state = skillsInitialState, action) {
             }
         case 'SKILLS_INVALIDATE_ENTITIES':
             return skillsInitialState
+        case 'SKILLS_INVALIDATE_FETCH':
         default:
             return state
     }
@@ -67,6 +68,7 @@ export function selectedSkill(state = selectedSkillInitialState, action) {
             }
         case 'SKILLS_INVALIDATE_ENTITIES':
             return skillsInitialState
+        case 'SKILLS_INVALIDATE_FETCH':
         default:
             return state
     }

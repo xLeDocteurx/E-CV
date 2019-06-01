@@ -2,22 +2,36 @@ import runtimeEnv from '@mars/heroku-js-runtime-env'
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withStyles} from '@material-ui/core'
-import LinearProgress from '@material-ui/core/LinearProgress';
-import Avatar from '@material-ui/core/Avatar';
+
+import Slide from '@material-ui/core/Slide';
+import Fade from '@material-ui/core/Fade';
+// import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import LinearProgress from '@material-ui/core/LinearProgress'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Avatar from '@material-ui/core/Avatar'
 // import {withRouter} from 'react-router-dom'
 
-import MainHeader from '../components/MainHeader/MainHeader'
-import MainHeaderProminent from '../components/MainHeader/MainHeaderProminent'
+import MainHeader from '../components/MainHeaders/MainHeader'
+// import MainHeaderProminent from '../components/MainHeaders/MainHeaderProminent'
 
-import {sectionsActions, skillsActions} from '../actions';
+import {sessionActions, sectionsActions, skillsActions} from '../actions'
 
 // import {skillsApi} from '../api'
 
 const styles = theme => ({
-
+    root: {
+        width: '100%',
+        // maxWidth: 360,
+        backgroundColor: theme.palette.background.paper,
+        // flexGrow: 1,
+        // height: '100%',
+    },
     grow: {
         flexGrow: 1,
+    },
+    w100: {
+        width: '100%',
     },
     menuButton: {
         marginRight: 20,
@@ -49,21 +63,23 @@ class Home extends Component {
         super(props)
 
         this.state = {
-            "pageTitle":"Home",
+            pageTitle:"Home",
+            fade: true,
         }
     }
     
 	componentDidMount() {
+        this.props.dispatch(sessionActions.setPageTitle(this.state.pageTitle))
         document.title = `${runtimeEnv().REACT_APP_APP_NAME} - ${this.state.pageTitle}`
 
         this.getSections()
         
         this.props.dispatch(skillsActions.getAll())
-    }
 
-    getSections() {
-        this.props.dispatch(sectionsActions.getOne('avatar'))
-        this.props.dispatch(sectionsActions.getOne('citation'))
+    }
+    
+    componentWillUnmount() {
+        this.setState({fade: false})
     }
 
     renderLoading() {
@@ -72,46 +88,44 @@ class Home extends Component {
             this.props.skills.isLoading ||
             this.props.selectedSkill.isLoading
         ) {
-            return <LinearProgress />
+            return <LinearProgress className={this.props.classes.w100} />
         }
+    }
+
+    getSections() {
+        // this.props.dispatch(sectionsActions.getOne('citation'))
     }
 
     renderBandeau() {
         if(this.props.sections.error) { return JSON.stringify(this.props.sections.error) }
 
-        if(this.props.sections.isLoading) {
-            return 'loading'
-        } else if(this.props.sections.sections.avatar && this.props.sections.sections.citation) {
-            const { classes } = this.props
-            return (
-                <Grid container direction="column" justify="center" alignItems="center" className={classes.bandeau}>
-                    <Avatar alt={this.props.sections.sections.avatar.name} src={this.props.sections.sections.avatar.textContent} className={classes.bigAvatar} title={this.props.sections.sections.avatar.name} />
-                    <div>{this.props.sections.sections.citation.textContent}</div>
-                </Grid>
-                // <div>
-                //     <div>
-                //         <img src={this.props.sections.sections.avatar.textContent} title={this.props.sections.sections.avatar.name} />
-                //     </div>
-                //     <div>
-                //         {this.props.sections.sections.citation.textContent}
-                //     </div>
-                // </div>
-            )
-        } else {
-            return 'WTF'
-        }
+        return (
+            <Grid container direction="column" justify="center" alignItems="center" className={this.props.classes.bandeau}>
+                <Avatar alt="Photo" src="./img/avatar.jpg" className={this.props.classes.bigAvatar} title="Ma photo" />
+                <div>
+                    "Il ne faut jamais baisser les bras. sauf si c'est dans la chorégraphie!"<br/>
+                    - Moi
+                </div>
+            </Grid>
+        )
+
+
     }
 
     renderSkills() {
         if(this.props.skills.error) { return JSON.stringify(this.props.skills.error) }
 
-        if(this.props.skills.isLoading) {
-            return 'loading'
-        } else if(this.props.skills.skills) {
+        /*if(this.props.skills.isLoading) {
+            return (
+                <Grid container direction="column" justify="center" alignItems="center" className={this.props.classes.bandeau}>
+                    <CircularProgress />
+                </Grid>
+            )
+        } else */if(this.props.skills.skills) {
             return (
                 // JSON.stringify(this.props.skills.skills)
-                this.props.skills.skills.map((skill, ski) => (
-                    <div>
+                this.props.skills.skills.map((skill, skill_index) => (
+                    <div key={skill_index}>
                         {skill.name}
                         <p>
                             {skill.description}
@@ -127,12 +141,18 @@ class Home extends Component {
     render() {
 
         return (
-            <Grid container direction="column" justify="center" alignItems="center" className="mainContainer">
-                <MainHeader pageTitle={this.state.pageTitle}/>
+            <Grid container direction="column" /*justify="center"*/ /*alignItems="center"*/>
                 {this.renderLoading()}
 
-                {this.renderBandeau()}
-                {this.renderSkills()}
+                {/* <Fade in={this.state.fade} mountOnEnter unmountOnExit> */}
+                        <h1>Bandeau :</h1>
+                        {this.renderBandeau()}
+                        <h1>Compétences :</h1>
+                        {this.renderSkills()}
+                        <h1>Technologies :</h1>
+                        <h1>Expérience :</h1>
+
+                {/* </Fade> */}
             </Grid>
         )
     }

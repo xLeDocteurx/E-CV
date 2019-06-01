@@ -1,6 +1,6 @@
 html, body {
   /* height: '100%'; */
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 body {
@@ -14,12 +14,50 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+div {
+  white-space: pre-wrap;
+}
+
+.switch-wrapper {
+  position: relative;
+}
+
+.switch-wrapper > div {
+  position: absolute;
+} 
 
 .mainContainer {
 
+}
+
+.modal-enter {
+
+}
+
+.modal-enter-active {
+		top: 0 !important;
+		right: 0 !important;
+		bottom: 0 !important;
+		left: 0 !important;
+		width: 100vw !important;
+		height: 100vh !important;
+
+		/* border: 2px red solid !important; */
+}
+
+.modal-enter-done {
+		border: 2px green solid !important;
+}
+
+.modal-exit {
+	
+}
+
+.modal-exit-active {
+		border: 2px orange solid !important;
 }
 
 @media screen and (max-width: 576px) {

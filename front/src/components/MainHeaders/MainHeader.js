@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import {withStyles} from '@material-ui/core/styles'
 import {withRouter} from 'react-router-dom'
 
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 
 // import M from "materialize-css"
-import {AccessAlarm, ThreeDRotation} from '@material-ui/icons'
+// import {AccessAlarm, ThreeDRotation} from '@material-ui/icons'
 
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -29,7 +30,7 @@ const styles = {
     },
 }
 
-class MainHeaderProminent extends Component {
+class MainHeader extends Component {
 
     constructor(props){
         super(props)
@@ -56,20 +57,28 @@ class MainHeaderProminent extends Component {
                     <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" title="Menu">
                         <MenuIcon />
                     </IconButton>
+                    {/* <AccessAlarm /> */}
+                    <Typography variant="h6" color="inherit" className={classes.grow}>
+                        {this.props.session.pageTitle ? this.props.session.pageTitle : ""}
+                    </Typography>
+                    {/* <Button color="inherit">Login</Button> */}
 
                     <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/')} title="Home">Home</Button>
                     <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/portfolio')} title="Portfolio">Portfolio</Button>
-                    <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/contact')} title="Contact">Contact</Button>
+                    {/* <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/contact')} title="Contact">Contact</Button> */}
                 </Toolbar>
-                <Toolbar>
-                    <Typography variant="h6" color="inherit" className={classes.grow}>
-                        {this.props.pageTitle ? this.props.pageTitle : "xxx"}
-                    </Typography>
-                </Toolbar>
+
             </AppBar>
         )
     }
 }
 
-export const MainHeaderProminentWithStyle = withStyles(styles)(MainHeaderProminent)
-export default withRouter(MainHeaderProminentWithStyle)
+function mapStateToProps(state) {
+    return {
+        session: state.session,
+    }
+}
+
+const connectedMainHeader = connect(mapStateToProps)(MainHeader)
+const MainHeaderWithStyle = withStyles(styles)(connectedMainHeader)
+export default withRouter(MainHeaderWithStyle)

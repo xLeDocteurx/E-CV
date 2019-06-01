@@ -2,8 +2,8 @@ import runtimeEnv from '@mars/heroku-js-runtime-env'
 import React, {Component} from 'react'
 import {withStyles} from '@material-ui/core'
 
-import MainHeader from '../components/MainHeader/MainHeader'
-import MainHeaderProminent from '../components/MainHeader/MainHeaderProminent'
+import MainHeader from '../components/MainHeaders/MainHeader'
+// import MainHeaderProminent from '../components/MainHeaders/MainHeaderProminent'
 
 const styles = {
     root: {

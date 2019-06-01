@@ -12,7 +12,7 @@ import reducers from './reducers'
 import Router from  './Router'
 
 import './index.css'
-import App from './App'
+// import App from './App'
 import * as serviceWorker from './serviceWorker'
 
 import '../node_modules/materialize-css/dist/css/materialize.min.css'

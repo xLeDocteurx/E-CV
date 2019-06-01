@@ -1,5 +1,5 @@
 import * as api from '../api'
-import {sectionsReducer} from '../reducers'
+// import {sectionsReducer} from '../reducers'
 
 export const sectionsActions = {
     getAll,
