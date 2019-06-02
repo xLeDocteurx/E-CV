@@ -1,0 +1,55 @@
+<html>
+<head>
+	<meta charset=UTF-8">
+
+	<link rel="stylesheet" href="./css.css">
+	<script language="javascript" type="text/javascript" src="./jquery/jquery-3.3.1.js"></script>
+	<script language="javascript" type="text/javascript" src="./js/p5.js"></script>
+	<script language="javascript" type="text/javascript" src="./js/mapgen/mapgen.js"></script>
+  <!-- This line removes any default padding and style. /mapgen
+       You might only need one of these values set. -->
+</head>
+<body>
+
+
+	<div id="in">
+
+	</div>
+	
+<!--	<hr width="50%">	-->
+
+	<div id="out">
+
+	</div>
+	
+
+<div id="step0">
+	<p><h1>Set Up :</h1></p>
+	<p1><form>
+		<!--Seed : <input id="seed_input" type="text" value="5334" onkeypress="setup_seed(this);"/><br>-->
+		Grid Size : <input id="sqrsize_input" type="number" value="20" onchange="setup_sqrsize(this);"/>
+		<!--<br>
+		<input id="lightx" type="range" min="-100" max="100" value="0" oninput="setup_lightx(this);"/>
+		<input id="lighty" type="range" min="-100" max="100" value="0" oninput="setup_lighty(this);"/>
+		<input id="lightz" type="range" min="-100" max="100" value="0" oninput="setup_lightz(this);"/>-->
+  		<br><br>
+		Octave : <input id="waveoctave_input" type="number" value="1" onchange="setup_waveoctave(this);"/>
+		<br><br>
+  		<!--<button id="setup_butt" type="button" onclick="setup_button()">Redraw</button>-->
+  		<br>
+		Zoom : <input id="zoom_input" type="range" min="-1000" max="1000" value="-500" oninput="setup_zoom(this);"/>
+	</form></p1>
+	
+</div>
+
+<div id="step1">
+  <p><h1>Step 1 :</h1></p>
+  <p>
+  <button id="step1_button1" type="button" onclick="step1a()">Rotate</button>
+  <button id="step1_button2" type="button" onclick="step1b()">Wave</button>
+  <button id="step1_button3" type="button" onclick="step1c()">Drop</button>
+  </p>
+</div>
+
+</body>
+</html>

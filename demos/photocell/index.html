@@ -1,0 +1,59 @@
+
+<html>
+<head>
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" href="./css.css">
+	<script language="javascript" type="text/javascript" src="./jquery/jquery-3.3.1.js"></script>
+	<script language="javascript" type="text/javascript" src="./js/p5.js"></script>
+	<script language="javascript" type="text/javascript" src="./js/mapgen/mapgen.js"></script>
+  <!-- This line removes any default padding and style. /mapgen
+       You might only need one of these values set. -->
+</head>
+<body>
+	<header>
+		<div>
+		</div>
+	</header>
+
+	<div id="file">
+	<img id="file_img" src="#" alt=""></img>
+	</div>
+	<div id="in">
+	</div>
+	
+<!--	<hr width="50%">	-->
+
+<!--			<div id="out"> -->
+
+<!--			</div> -->
+	
+
+<div id="step0">
+	<p>
+		<h1>Choose a picture :</h1>
+		Souffre actuellement d'un disfonctionnement avec les photo ayant un format "landscape". Marche a la perfection avec les format carré strictes et les photos en mode portrait
+	</p>
+	<br>
+	<form>
+		<input id="file_input" type="file" value="C:\fakepath" onchange="step0(this);" accept="image/*"/>
+	</form>
+	
+</div>
+
+<!-- <div id="step1">
+  <p></p><h1>Step 1 :</h1><p></p>
+  <button id="step1_button1" type="button" onclick="step1a()">Step 1</button>
+  <button id="step1_button2" type="button" onclick="step1b()">Pass 1</button>
+  <button id="step1_button3" type="button" onclick="step1c()">Pass 2</button>
+  <button id="step1_button4" type="button" onclick="step1d()">Pass 3</button>
+  
+</div> -->
+
+<div id="step2">
+	<p></p><h1>Make it live :</h1><p></p>
+  <button id="step2_button3" type="button" onclick="step2c()">GO !</button>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+colors {
+    color: #E6D7CC;
+    color: #E1BA7B;
+
+    color: #EED093;
+    color: #F2DBA6;
+    color: #F5E8CA;
+
+    color: #F6F5E8;
+}
+
+.house-image {
+    width: 50px;
+}
+
+body {
+    margin: 0;
+    color: #777777;
+
+    background-color : #E6D7CC;
+
+    font-family: 'Open Sans', sans-serif;
+}
+
+@font-face {
+	font-family: "jenna";
+	src: url('JennaSue.ttf');
+}
+
+#creator {
+    float: left;
+    width: 25%;
+
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 20px;
+
+    background-color: #F2DBA6;
+    border-radius: 15px;
+}
+
+#creator textarea {
+
+    resize: none;
+    width: 100%;
+    height: 100px;
+
+    margin-top: 10px;
+    background-color: #F5E8CA;
+
+    border-right: 2px solid #F5E8CA;
+    border-bottom: 2px solid #F5E8CA;
+    border-left: 2px solid #EED093;
+    border-top: 2px solid #EED093;
+}
+
+#todolist {
+    float: right;
+    width: 60%;   
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.task {
+    padding: 20px;
+
+    margin-top: 20px;
+    background-color: #F6F5E8;
+    border-radius: 15px;
+
+    min-height: 60px;
+}
+
+.head {
+    display: inline-block;
+    float: left;
+}
+
+.content {
+
+    display: inline-block;
+    width: 85%;
+
+    font-family: "jenna";
+    font-size: 35px;
+    
+}
+
+.foot {
+    display: inline-block;
+    float: right;
+}
+
+p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 10px;
+}
+
+.change {
+    float: left;
+}
+
+.delete {
+    float: right;  
+}
+
+/* global *//* global *//* global *//* global */
+
+button {
+
+    margin-top: 10px;
+    padding: 5px 10px;
+
+    background-color: #E6D7CC;
+
+    border-radius: 15px;
+
+    border-right: 2px solid #EED093;
+    border-bottom: 2px solid #EED093;
+    border-left: 2px solid #F5E8CA;
+    border-top: 2px solid #F5E8CA;
+
+    color: #777777;
+}
+
+button:active {
+
+    border-right: 2px solid #F5E8CA;
+    border-bottom: 2px solid #F5E8CA;
+    border-left: 2px solid #EED093;
+    border-top: 2px solid #EED093;
+}
+
+/* global *//* global *//* global *//* global */
+/* nav *//* nav *//* nav *//* nav *//* nav *//* nav */
+nav {
+    background-color: #af6c57;
+    padding: 3;
+    margin: 0;
+    width: 100%;
+    margin-bottom: 1%;
+}
+
+nav h1 {
+    margin: 0;
+    padding: 2%;
+    color: #E6D7CC;
+}
+/* nav *//* nav *//* nav *//* nav *//* nav *//* nav */
