@@ -87,6 +87,7 @@ class Project extends Component {
         this.state = {
             pageTitle:'Project',
             animState: 'default',
+            // animDuration: 2000,
             animDuration: 300,
         }
 
@@ -103,7 +104,7 @@ class Project extends Component {
         this.setState({animState: 'entering'})
         // this.setState({animState: 'entered'})
 		// this.timer = setTimeout(() => {this.setState({animState: 'entered'})}, 4000)
-		setTimeout(() => {this.setState({animState: 'entered'})}, this.state.animDuration)
+		setTimeout(() => {this.setState({animState: 'entered'})}, this.state.animDuration - this.state.animDuration / 10 )
     }
 
     componentDidUpdate() {
@@ -133,6 +134,8 @@ class Project extends Component {
 
     getDefaultStyle(from) {
         return {
+            overflow: 'hidden',
+
             transition: `border ${this.state.animDuration}ms ease-in-out`,
 
             transitionProperty: `top, right, bottom, left, height, width`,
@@ -208,10 +211,9 @@ class Project extends Component {
 
         <div style={{...defaultStyle, ...transitionStyles[animState]}}>
             <Grid container direction="column" justify="center" alignItems="center">
-                <ProjectHeader pageTitle={this.props.selectedProject.project ? this.props.selectedProject.project.name : null} />
+                <ProjectHeader pageTitle={this.props.selectedProject.project ? this.props.selectedProject.project.name : null} animState={animState} />
                 {this.renderLoading()}
 
-                <div>_</div>
                 {this.props.selectedProject.project &&
                 // <Grid container direction="column" justify="center" alignItems="center">
                     <Card className={this.props.classes.card}>

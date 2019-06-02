@@ -52,10 +52,14 @@ class ProjectHeader extends Component {
         this.props.history.goBack()
     }
 
+    getVisibility() {
+        return this.props.animState == "entered" ? null : {visibility: 'hidden'}
+    }
+
     render() {
         const { classes } = this.props
         return (
-            <AppBar position="static" color="default">
+            <AppBar position="static" color="default" style={this.getVisibility()}>
                 <Toolbar>
                     <IconButton onClick={() => this.redirectTo('/portfolio')} className={classes.menuButton} color="inherit" aria-label="Menu" title="Menu">
                         <NavigateBefore />

@@ -227,20 +227,14 @@ class Portfolio extends Component {
     render() {
 
         return (
-            // <div>
-                <Grid container justify="center" alignItems="center">
-                    {this.renderLoading()}
-                    
-                    {/* <Fade in={this.state.fade} mountOnEnter unmountOnExit> */}
-                        {/* <div className={this.props.classes.root}> */}
-                        <Grid container>
-                            {/* {this.renderBandeau()} */}
-                            {this.renderProjects()}
-                        </Grid>
-                        {/* </div> */}
-                    {/* </Fade> */}
+            <Grid container justify="center" alignItems="center">
+                {this.renderLoading()}
+                
+                <Grid container>
+                    {/* {this.renderBandeau()} */}
+                    {this.renderProjects()}
                 </Grid>
-            // </div>
+            </Grid>
         )
     }
 }

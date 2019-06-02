@@ -144,15 +144,14 @@ class Home extends Component {
             <Grid container direction="column" /*justify="center"*/ /*alignItems="center"*/>
                 {this.renderLoading()}
 
-                {/* <Fade in={this.state.fade} mountOnEnter unmountOnExit> */}
-                        <h1>Bandeau :</h1>
-                        {this.renderBandeau()}
-                        <h1>Compétences :</h1>
-                        {this.renderSkills()}
-                        <h1>Technologies :</h1>
-                        <h1>Expérience :</h1>
+                <h1>Bandeau :</h1>
+                {this.renderBandeau()}
+                <h1>Compétences :</h1>
+                {this.renderSkills()}
+                <h1>Technologies :</h1>
+                
+                <h1>Expérience :</h1>
 
-                {/* </Fade> */}
             </Grid>
         )
     }
