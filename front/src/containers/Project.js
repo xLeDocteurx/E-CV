@@ -151,7 +151,7 @@ class Project extends Component {
             // border: '5px yellow solid',
             
             // /* add opacity to see if the other view is actually kept below */
-            // opacity: 0.75,
+            opacity: 0.75,
         }
     }
 
@@ -211,7 +211,7 @@ class Project extends Component {
 
         <div style={{...defaultStyle, ...transitionStyles[animState]}}>
             <Grid container direction="column" justify="center" alignItems="center">
-                <ProjectHeader pageTitle={this.props.selectedProject.project ? this.props.selectedProject.project.name : null} animState={animState} />
+                {/* <ProjectHeader pageTitle={this.props.selectedProject.project ? this.props.selectedProject.project.name : null} animState={animState} /> */}
                 {this.renderLoading()}
 
                 {this.props.selectedProject.project &&
@@ -228,20 +228,19 @@ class Project extends Component {
                                 <MoreVertIcon />
                             </IconButton>
                         }
-                        title="Shrimp and Chorizo Paella"
-                        subheader="September 14, 2016"
+                        title={this.props.selectedProject.project.name}
+                        subheader={this.props.selectedProject.project.createdAt}
                         />
                         <CardActionArea>
                                 <CardMedia
                                 className={this.props.classes.media}
-                                image={this.props.selectedProject.project.image || "https://picsum.photos/id/" + 0 + "/1200/800"}
+                                image={this.props.selectedProject.project.image || "https://picsum.photos/1200/800"}
                                 title={this.props.selectedProject.project.name + "'s image"}
                                 />
                         </CardActionArea>
                         <CardContent>
                             <Typography component="p">
-                                This impressive paella is a perfect party dish and a fun meal to cook together with your
-                                guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                                {this.props.selectedProject.project.description}
                             </Typography>
                         </CardContent>
                         <CardActions className={this.props.classes.actions} disableActionSpacing>

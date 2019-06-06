@@ -25,7 +25,7 @@ function getOne(id) {
         dispatch({type:'SKILLS_FETCH_ONE_STARTED'})
         api.skillsApi.getOne(id)
         .then(resp => {
-            dispatch({type:'SKILLS_FETCH_ONE_SUCCEEDED', payload:{skills: resp.data}})
+            dispatch({type:'SKILLS_FETCH_ONE_SUCCEEDED', payload:{skill: resp.data}})
         })
         .catch(err => {
             dispatch({type:'SKILLS_FETCH_ONE_FAILED', payload:{error: err}})

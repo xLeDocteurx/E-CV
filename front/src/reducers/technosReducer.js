@@ -1,74 +1,74 @@
-// import {skillsActions} from '../actions'
+// import {technosActions} from '../actions'
 
-export const skillsInitialState = {
+export const technosInitialState = {
     isLoading: null,
     error: null,
 
-    skills: null,
+    technos: null,
 }
 
-export const selectedSkillInitialState = {
+export const selectedTechnoInitialState = {
     isLoading: null,
     error: null,
 
-    skill: null,
+    techno: null,
 }
 
-export function skills(state = skillsInitialState, action) {
+export function technos(state = technosInitialState, action) {
     switch (action.type) {
-        case 'SKILLS_FETCH_ALL_STARTED':
+        case 'TECHNOS_FETCH_ALL_STARTED':
             return {
                 ...state,
                 isLoading: true,
             }
-        case 'SKILLS_FETCH_ALL_SUCCEEDED':
+        case 'TECHNOS_FETCH_ALL_SUCCEEDED':
             return {
                 ...state,
                 isLoading: false,
                 error: null,
 
-                skills: action.payload.skills,
+                technos: action.payload.technos,
             }
-        case 'SKILLS_FETCH_ALL_FAILED':
+        case 'TECHNOS_FETCH_ALL_FAILED':
             return {
                 ...state,
                 isLoading: false,
                 
                 error: action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message, 
             }
-        case 'SKILLS_INVALIDATE_ENTITIES':
-            return skillsInitialState
-        case 'SKILLS_INVALIDATE_FETCH':
+        case 'TECHNOS_INVALIDATE_ENTITIES':
+            return technosInitialState
+        case 'TECHNOS_INVALIDATE_FETCH':
         default:
             return state
     }
 }
 
-export function selectedSkill(state = selectedSkillInitialState, action) {
+export function selectedTechno(state = selectedTechnoInitialState, action) {
     switch (action.type) {
-        case 'SKILLS_FETCH_ONE_STARTED':
+        case 'TECHNOS_FETCH_ONE_STARTED':
             return {
                 ...state,
                 isLoading: true,
             }
-        case 'SKILLS_FETCH_ONE_SUCCEEDED':
+        case 'TECHNOS_FETCH_ONE_SUCCEEDED':
             return {
                 ...state,
                 isLoading: false,
                 error: null,
 
-                skill: action.payload.skill,
+                techno: action.payload.techno,
             }
-        case 'SKILLS_FETCH_ONE_FAILED':
+        case 'TECHNOS_FETCH_ONE_FAILED':
             return {
                 ...state,
                 isLoading: false,
                 
                 error: action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message, 
             }
-        case 'SKILLS_INVALIDATE_ENTITIES':
-            return skillsInitialState
-        case 'SKILLS_INVALIDATE_FETCH':
+        case 'TECHNOS_INVALIDATE_ENTITIES':
+            return technosInitialState
+        case 'TECHNOS_INVALIDATE_FETCH':
         default:
             return state
     }

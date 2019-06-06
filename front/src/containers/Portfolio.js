@@ -202,7 +202,7 @@ class Portfolio extends Component {
                              onClick={(e) => this.getProject(project._id, project.slug, e)} 
                             //  disabled={selected} selected={selected}
                             >
-                                <img src={project.image || "https://picsum.photos/id/" + (project_index + 0) + "/1200/800"} alt={project.name} title={project.name + '\'s image'} />
+                                <img src={project.image || "https://picsum.photos/1200/800"} alt={project.name} title={project.name + '\'s image'} />
                                 <GridListTileBar
                                 title={project.name}
                                 subtitle={<span>{project.description}</span>}

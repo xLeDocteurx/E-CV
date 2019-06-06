@@ -15,7 +15,7 @@ import Avatar from '@material-ui/core/Avatar'
 import MainHeader from '../components/MainHeaders/MainHeader'
 // import MainHeaderProminent from '../components/MainHeaders/MainHeaderProminent'
 
-import {sessionActions, sectionsActions, skillsActions} from '../actions'
+import {sessionActions, sectionsActions, skillsActions, experiencesActions, technosActions} from '../actions'
 
 // import {skillsApi} from '../api'
 
@@ -75,7 +75,8 @@ class Home extends Component {
         this.getSections()
         
         this.props.dispatch(skillsActions.getAll())
-
+        this.props.dispatch(technosActions.getAll())
+        this.props.dispatch(experiencesActions.getAll())
     }
     
     componentWillUnmount() {
@@ -100,7 +101,7 @@ class Home extends Component {
         if(this.props.sections.error) { return JSON.stringify(this.props.sections.error) }
 
         return (
-            <Grid container direction="column" justify="center" alignItems="center" className={this.props.classes.bandeau}>
+            <Grid item xs={12} /*direction="column" justify="center" alignItems="center"*/ className={this.props.classes.bandeau}>
                 <Avatar alt="Photo" src="./img/avatar.jpg" className={this.props.classes.bigAvatar} title="Ma photo" />
                 <div>
                     "Il ne faut jamais baisser les bras. sauf si c'est dans la chorégraphie!"<br/>
@@ -123,34 +124,110 @@ class Home extends Component {
             )
         } else */if(this.props.skills.skills) {
             return (
-                // JSON.stringify(this.props.skills.skills)
-                this.props.skills.skills.map((skill, skill_index) => (
-                    <div key={skill_index}>
-                        {skill.name}
-                        <p>
-                            {skill.description}
-                        </p>
-                    </div>
-                ))
+                <Grid item xs={12}>
+                    <h1>Compétences</h1>
+                    {/* JSON.stringify(this.props.skills.skills) */}
+                    {this.props.skills.skills.map((skill, skill_index) => (
+                        <div key={skill_index}>
+                            {skill.name}
+                            <p>
+                                {skill.description}
+                            </p>
+                        </div>
+                    ))}
+                </Grid>
             )
         } else {
             return 'WTF'
         }
     }
 
+    renderTechnos() {
+        if(this.props.technos.error) { return JSON.stringify(this.props.technos.error) }
+
+        /*if(this.props.technos.isLoading) {
+            return (
+                <Grid container direction="column" justify="center" alignItems="center" className={this.props.classes.bandeau}>
+                    <CircularProgress />
+                </Grid>
+            )
+        } else */if(this.props.technos.technos) {
+            return (
+                <Grid item xs={12}>
+                    <h1>Technologies</h1>
+                    {this.props.technos.technos.map((experience, experience_index) => (
+                        <div key={experience_index}>
+                            {experience.name}
+                            <p>
+                                {experience.description}
+                            </p>
+                        </div>
+                    ))}
+                </Grid>
+            )
+        } else {
+            return 'WTF'
+        }
+    }
+
+    renderExperiences() {
+        
+        if(this.props.experiences.error) { return JSON.stringify(this.props.experiences.error) }
+
+        /*if(this.props.experiences.isLoading) {
+            return (
+                <Grid container direction="column" justify="center" alignItems="center" className={this.props.classes.bandeau}>
+                    <CircularProgress />
+                </Grid>
+            )
+        } else */if(this.props.experiences.experiences) {
+            return (
+                <Grid item xs={12}>
+                    <h1>Expériences</h1>
+                    <div class="timeline">
+                        <ul>
+                            {this.props.experiences.experiences.map((experience, experience_index) => {
+                                const {name, title, description, firstYear, lastYear} = experience
+                                return (
+                                    <li key={experience_index}>
+                                        <div class="bullet pink"></div>
+                                        <div class="time">5pm</div>
+                                        {/* <div class="time">{lastYear ? `${firstYear} - ${lastYear}` : firstYear}</div> */}
+                                        <div class="desc">
+                                            <h3>{name}</h3>
+                                            <h4>{title}</h4>
+                                            <div class="people">
+                                                {description}
+                                                {/* Pour les badges de technos ? */}
+                                                {/* <img src="https://s3.amazonaws.com/uifaces/faces/twitter/ashleyford/128.jpg" alt="" />
+                                                <img src="https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/128.jpg" alt="" />
+                                                <img src="https://s3.amazonaws.com/uifaces/faces/twitter/mattsince87/128.jpg" alt="" /> */}
+                                            </div>
+                                        </div>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                </Grid>
+            )
+        } else {
+            return 'WTF'
+        }
+
+    }
+
     render() {
 
         return (
-            <Grid container direction="column" /*justify="center"*/ /*alignItems="center"*/>
+            <Grid container /*direction="column" justify="center" alignItems="center"*/>
                 {this.renderLoading()}
 
-                <h1>Bandeau :</h1>
                 {this.renderBandeau()}
-                <h1>Compétences :</h1>
+
                 {this.renderSkills()}
-                <h1>Technologies :</h1>
-                
-                <h1>Expérience :</h1>
+                {this.renderTechnos()}
+                {this.renderExperiences()}
 
             </Grid>
         )
@@ -162,6 +239,8 @@ function mapStateToProps(state) {
         sections: state.sections,
         skills: state.model.skills,
         selectedSkill: state.selectedSkill,
+        experiences: state.model.experiences,
+        technos: state.model.technos,
     }
 }
 

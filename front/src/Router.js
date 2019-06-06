@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom"
-import {AnimatedSwitch} from 'react-router-transition'
+import {spring, AnimatedSwitch} from 'react-router-transition'
 import {Transition} from 'react-transition-group';
 // import {connect} from 'react-redux'
 
@@ -19,6 +19,25 @@ import _404 from './containers/_404'
 
 import {createBrowserHistory} from 'history'
 const history = createBrowserHistory()
+
+
+
+// we need to map the `scale` prop we define below
+// to the transform style property
+function mapStyles(styles) {
+    return {
+        opacity: styles.opacity,
+        transform: `scale(${styles.scale})`,
+    };
+}
+
+// wrap the `spring` helper to use a bouncy config
+function bounce(val) {
+    return spring(val, {
+        stiffness: 330,
+        damping: 22,
+    });
+}
 
 class Router extends Component {
 
@@ -39,19 +58,29 @@ class Router extends Component {
             <BrowserRouter history={history}>
                 <MainHeader pageTitle={this.state.pageTitle}/>
                 <AnimatedSwitch
-                    atEnter={{ opacity: 0 }}
-                    atLeave={{ opacity: 0 }}
-                    atActive={{ opacity: 1 }}
-                    className="switch-wrapper"
+                    atEnter={{
+                        opacity: 0,
+                        scale: 1.2,
+                    }}
+                    atLeave={{
+                        opacity: bounce(0),
+                        scale: bounce(0.8),
+                    }}
+                    atActive={{
+                        opacity: bounce(1),
+                        scale: bounce(1),
+                    }}
+                    className="route-wrapper"
+                    mapStyles={mapStyles}
                 >
                 {/* <Switch> */}
                     {/* <Route exact path="/" component={Home} /> */}
                     {/* <Route exact path="/" render={({match}) => ( */}
                     <Route exact path="/" render={() => (
-                            <Home />
+                        <Home />
                     )} />
                     <Route path="/portfolio" render={() => (
-                            <Portfolio />
+                        <Portfolio />
                     )} />
                     {/* <Route exact path="/portfolio/:slug" render={() => (
                         <Project match={match}/>
@@ -72,15 +101,15 @@ class Router extends Component {
                     
                 {/* Switch for modals and/or routes taking a state as parameter */}
                 {/* <div style={{...position, border: '2px red solid'}}> */}
-                    <Switch>
-                        <Route exact path="/portfolio/:slug" render={({match, location}) => {
-                            // const modal = location.state && location.state.to === 'modal'
+                <Switch>
+                    <Route exact path="/portfolio/:slug" render={({match, location}) => {
+                        // const modal = location.state && location.state.to === 'modal'
 
-                            return (
-                                <Project match={match} location={location} />
-                            )
-                        }} />
-                    </Switch>
+                        return (
+                            <Project match={match} location={location} />
+                        )
+                    }} />
+                </Switch>
                 {/* </div> */}
             </BrowserRouter>
         )

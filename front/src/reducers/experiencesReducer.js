@@ -1,74 +1,74 @@
-// import {skillsActions} from '../actions'
+// import {experiencesActions} from '../actions'
 
-export const skillsInitialState = {
+export const experiencesInitialState = {
     isLoading: null,
     error: null,
 
-    skills: null,
+    experiences: null,
 }
 
-export const selectedSkillInitialState = {
+export const selectedExperienceInitialState = {
     isLoading: null,
     error: null,
 
-    skill: null,
+    experience: null,
 }
 
-export function skills(state = skillsInitialState, action) {
+export function experiences(state = experiencesInitialState, action) {
     switch (action.type) {
-        case 'SKILLS_FETCH_ALL_STARTED':
+        case 'EXPERIENCES_FETCH_ALL_STARTED':
             return {
                 ...state,
                 isLoading: true,
             }
-        case 'SKILLS_FETCH_ALL_SUCCEEDED':
+        case 'EXPERIENCES_FETCH_ALL_SUCCEEDED':
             return {
                 ...state,
                 isLoading: false,
                 error: null,
 
-                skills: action.payload.skills,
+                experiences: action.payload.experiences,
             }
-        case 'SKILLS_FETCH_ALL_FAILED':
+        case 'EXPERIENCES_FETCH_ALL_FAILED':
             return {
                 ...state,
                 isLoading: false,
                 
                 error: action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message, 
             }
-        case 'SKILLS_INVALIDATE_ENTITIES':
-            return skillsInitialState
-        case 'SKILLS_INVALIDATE_FETCH':
+        case 'EXPERIENCES_INVALIDATE_ENTITIES':
+            return experiencesInitialState
+        case 'EXPERIENCES_INVALIDATE_FETCH':
         default:
             return state
     }
 }
 
-export function selectedSkill(state = selectedSkillInitialState, action) {
+export function selectedExperience(state = selectedExperienceInitialState, action) {
     switch (action.type) {
-        case 'SKILLS_FETCH_ONE_STARTED':
+        case 'EXPERIENCES_FETCH_ONE_STARTED':
             return {
                 ...state,
                 isLoading: true,
             }
-        case 'SKILLS_FETCH_ONE_SUCCEEDED':
+        case 'EXPERIENCES_FETCH_ONE_SUCCEEDED':
             return {
                 ...state,
                 isLoading: false,
                 error: null,
 
-                skill: action.payload.skill,
+                experience: action.payload.experience,
             }
-        case 'SKILLS_FETCH_ONE_FAILED':
+        case 'EXPERIENCES_FETCH_ONE_FAILED':
             return {
                 ...state,
                 isLoading: false,
                 
                 error: action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message, 
             }
-        case 'SKILLS_INVALIDATE_ENTITIES':
-            return skillsInitialState
-        case 'SKILLS_INVALIDATE_FETCH':
+        case 'EXPERIENCES_INVALIDATE_ENTITIES':
+            return experiencesInitialState
+        case 'EXPERIENCES_INVALIDATE_FETCH':
         default:
             return state
     }
