@@ -12,17 +12,17 @@ import Fade from '@material-ui/core/Fade'
 import Zoom from '@material-ui/core/Zoom'
 import Grid from '@material-ui/core/Grid'
 import LinearProgress from '@material-ui/core/LinearProgress'
-import Typography from '@material-ui/core/Typography'
-import Avatar from '@material-ui/core/Avatar'
-import Card from '@material-ui/core/Card'
-import CardHeader from '@material-ui/core/Paper'
-import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
-import CardActions from '@material-ui/core/CardActions'
-import CardActionArea from '@material-ui/core/CardActionArea'
 
+import clsx from 'clsx'
+import Card from '@material-ui/core/Card'
+import CardHeader from '@material-ui/core/CardHeader'
+import CardMedia from '@material-ui/core/CardMedia'
+import CardContent from '@material-ui/core/CardContent'
+import CardActions from '@material-ui/core/CardActions'
 import Collapse from '@material-ui/core/Collapse'
+import Avatar from '@material-ui/core/Avatar'
 import IconButton from '@material-ui/core/IconButton'
+import Typography from '@material-ui/core/Typography'
 
 import red from '@material-ui/core/colors/red'
 
@@ -40,6 +40,7 @@ import ProjectHeader from '../components/SubHeaders/ProjectHeader'
 // import ProjectHeaderProminent from '../ProjectHeader/ProjectHeaderProminent'
 
 import {sectionsActions, projectsActions} from '../actions'
+import { relative } from 'path';
 
 // import {projectsApi} from '../api'
 
@@ -64,18 +65,29 @@ const styles = theme => ({
         // minHeight: 300,
         // height: '100%',
     },
-    paper: {
-        height: '100%',
-    },
+
     card: {
-        // maxWidth: 400,
-    },
-    avatar: {
-      backgroundColor: red[500],
+        // maxWidth: 345,
+        // width: '75%',
+        // marginLeft: 'auto',
+        // marginRight: 'auto',
     },
     media: {
         height: 0,
         paddingTop: '56.25%', // 16:9
+    },
+    expand: {
+        transform: 'rotate(0deg)',
+        marginLeft: 'auto',
+        transition: theme.transitions.create('transform', {
+        duration: theme.transitions.duration.shortest,
+        }),
+    },
+    expandOpen: {
+        transform: 'rotate(180deg)',
+    },
+    avatar: {
+        backgroundColor: red[500],
     },
 })
 
@@ -87,8 +99,10 @@ class Project extends Component {
         this.state = {
             pageTitle:'Project',
             animState: 'default',
-            // animDuration: 2000,
+            // animDuration: 1200,
             animDuration: 300,
+            expanded: true,
+            setExpended: false,
         }
 
         // this.timer = null
@@ -100,11 +114,12 @@ class Project extends Component {
         } else {
             this.props.dispatch(projectsActions.getOne(this.props.match.params.slug, () => this.getProjectCallback()))
         }
-        
+        console.log('dum...')
         this.setState({animState: 'entering'})
+		// setTimeout(() => {this.setState({animState: 'entering'})}, this.state.animDuration)
         // this.setState({animState: 'entered'})
-		// this.timer = setTimeout(() => {this.setState({animState: 'entered'})}, 4000)
-		setTimeout(() => {this.setState({animState: 'entered'})}, this.state.animDuration - this.state.animDuration / 10 )
+		setTimeout(() => {console.log('taddaaaaah')}, this.state.animDuration)
+		setTimeout(() => {this.setState({animState: 'entered'})}, this.state.animDuration)
     }
 
     componentDidUpdate() {
@@ -133,25 +148,28 @@ class Project extends Component {
     }
 
     getDefaultStyle(from) {
+        // console.log("from : ", from)
         return {
-            overflow: 'hidden',
+            overflow: 'auto',
 
-            transition: `border ${this.state.animDuration}ms ease-in-out`,
+            transition: `all ${this.state.animDuration}ms ease-in-out`,
 
-            transitionProperty: `top, right, bottom, left, height, width`,
-            transitionDuration: this.state.animDuration,
+            transitionProperty: `border, top, right, bottom, left, height, width`,
+            // transitionDuration: this.state.animDuration,
             // transitionDelay: 2s,
 
             ...from,
+            
             position: 'fixed',
             // position: 'absolute',
             
             zIndex: 1200,
             background: 'white',
-            // border: '5px yellow solid',
+
+            // border: '5px blue solid',
             
             // /* add opacity to see if the other view is actually kept below */
-            opacity: 0.75,
+            // opacity: 0.75,
         }
     }
 
@@ -169,6 +187,7 @@ class Project extends Component {
                 width: '100vw',
             },
             entered:  {
+                position: relative,
                 // border: '5px green solid',
 
                 top: 0,
@@ -179,23 +198,19 @@ class Project extends Component {
                 height: '100vh',
                 width: '100vw',
             },
-            // exiting:  {
-            //     border: '5px red solid',
-            //     // opacity: 0 
-            // },
+            exiting:  {
+                // border: '5px red solid',
+
+                opacity: 0,
+            },
             // exited:  {
             //     // opacity: 0 
             //     },
         }
     }
-
-    renderProject() {
-
-        return (
-            <div /*component="nav"*/>
-                {JSON.stringify(this.props)}
-            </div>
-        )
+    
+    handleExpandClick() {
+        this.setState({expanded: !this.state.expanded})
     }
 
     render() {
@@ -207,16 +222,27 @@ class Project extends Component {
         const transitionStyles = this.getTransitionStyles()
         const animState = this.state.animState
 
+        // console.log('{...defaultStyle, ...transitionStyles[' + animState + ']} : ', {...defaultStyle, ...transitionStyles[animState]})
+        
+        const {expanded, setExpended} = this.state
+
+        const project = this.props.selectedProject.project ? this.props.selectedProject.project : null
+
         return (
 
         <div style={{...defaultStyle, ...transitionStyles[animState]}}>
-            <Grid container direction="column" justify="center" alignItems="center">
-                {/* <ProjectHeader pageTitle={this.props.selectedProject.project ? this.props.selectedProject.project.name : null} animState={animState} /> */}
+            <Grid container>
+                <ProjectHeader pageTitle={project ? project.name : null} animState={animState} />
                 {this.renderLoading()}
 
-                {this.props.selectedProject.project &&
-                // <Grid container direction="column" justify="center" alignItems="center">
+                {project &&
+                                
                     <Card className={this.props.classes.card}>
+                        <CardMedia
+                        className={this.props.classes.media}
+                        image={project.image || "https://picsum.photos/1200/800"}
+                        title={project.name + "'s image"}
+                        />
                         <CardHeader
                         avatar={
                             <Avatar aria-label="Recipe" className={this.props.classes.avatar}>
@@ -224,26 +250,19 @@ class Project extends Component {
                             </Avatar>
                         }
                         action={
-                            <IconButton>
+                            <IconButton aria-label="Settings">
                                 <MoreVertIcon />
                             </IconButton>
                         }
-                        title={this.props.selectedProject.project.name}
-                        subheader={this.props.selectedProject.project.createdAt}
+                        title={project.name}
+                        subheader={project.createdAt}
                         />
-                        <CardActionArea>
-                                <CardMedia
-                                className={this.props.classes.media}
-                                image={this.props.selectedProject.project.image || "https://picsum.photos/1200/800"}
-                                title={this.props.selectedProject.project.name + "'s image"}
-                                />
-                        </CardActionArea>
                         <CardContent>
-                            <Typography component="p">
-                                {this.props.selectedProject.project.description}
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                {project.description}
                             </Typography>
                         </CardContent>
-                        <CardActions className={this.props.classes.actions} disableActionSpacing>
+                        <CardActions /*disableSpacing*/>
                             <IconButton aria-label="Add to favorites">
                                 <FavoriteIcon />
                             </IconButton>
@@ -251,45 +270,24 @@ class Project extends Component {
                                 <ShareIcon />
                             </IconButton>
                             <IconButton
-                                className={classnames(this.props.classes.expand, {
-                                [this.props.classes.expandOpen]: this.state.expanded,
+                                className={clsx(this.props.classes.expand, {
+                                [this.props.classes.expandOpen]: expanded,
                                 })}
-                                onClick={this.handleExpandClick}
-                                aria-expanded={this.state.expanded}
+                                onClick={() => this.handleExpandClick}
+                                aria-expanded={expanded}
                                 aria-label="Show more"
                             >
                                 <ExpandMoreIcon />
                             </IconButton>
                         </CardActions>
-                        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-                        <CardContent>
-                            <Typography paragraph>Method:</Typography>
-                            <Typography paragraph>
-                            Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-                            minutes.
-                            </Typography>
-                            <Typography paragraph>
-                            Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
-                            heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
-                            browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving
-                            chicken and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion,
-                            salt and pepper, and cook, stirring often until thickened and fragrant, about 10
-                            minutes. Add saffron broth and remaining 4 1/2 cups chicken broth bring to a boil.
-                            </Typography>
-                            <Typography paragraph>
-                            Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook
-                            without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat
-                            to medium-low, add reserved shrimp and mussels, tucking them down into the rice, and
-                            cook again without stirring, until mussels have opened and rice is just tender, 5 to 7
-                            minutes more. (Discard any mussels that don’t open.)
-                            </Typography>
-                            <Typography>
-                            Set aside off of the heat to let rest for 10 minutes, and then serve.
-                            </Typography>
-                        </CardContent>
+                        <Collapse in={expanded} timeout="auto" unmountOnExit>
+                            <CardContent>
+                                <Typography paragraph>
+                                    {project.extendedDesciption}
+                                </Typography>
+                            </CardContent>
                         </Collapse>
                     </Card>
-                // </Grid>
                 }
             </Grid>
         </div>
@@ -305,7 +303,7 @@ class Project extends Component {
     
             //     {/* {this.renderProject()} */}
                 
-            //         <Paper elevation={4} className={classes.paper}>
+            //         <Paper elevation={4} className={this.props.classes.paper}>
             //             ...LoL...
             //         </Paper>
             //     </Grid>

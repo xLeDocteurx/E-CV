@@ -9,8 +9,19 @@ import Fade from '@material-ui/core/Fade'
 import Grid from '@material-ui/core/Grid'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import CircularProgress from '@material-ui/core/CircularProgress'
-// import Paper from '@material-ui/core/Paper'
-// import Typography from '@material-ui/core/Typography'
+
+import clsx from 'clsx'
+import Card from '@material-ui/core/Card'
+import CardHeader from '@material-ui/core/CardHeader'
+import CardMedia from '@material-ui/core/CardMedia'
+import CardContent from '@material-ui/core/CardContent'
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions'
+import Collapse from '@material-ui/core/Collapse'
+import Typography from '@material-ui/core/Typography'
+
+import Button from '@material-ui/core/Button'
+import Paper from '@material-ui/core/Paper'
 import Avatar from '@material-ui/core/Avatar'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -52,6 +63,9 @@ const styles = theme => ({
     bandeau: {
         // minHeight: 300,
         // height: '100%',
+        marginTop: 10,
+        marginLeft: 10,
+        textAlign: 'center',
     },
     centeredCircularProgress: {
         // color: green[500],
@@ -65,10 +79,15 @@ const styles = theme => ({
         color: 'rgba(255, 255, 255, 0.54)',
     },
     gridList: {
-        // width: '100%',
+        // width: '100vw',
         // height: '90vh',
     },
-    // media: {
+    card: {
+    //   maxWidth: 345,
+        height: '100%',
+    },
+    media: {
+      height: 140,
     //     // margin: 10,
     //     [theme.breakpoints.down('sm')]: {
     //         height: 200,
@@ -79,7 +98,7 @@ const styles = theme => ({
     //     [theme.breakpoints.up('lg')]: {
     //         height: 300,
     //     },
-    // },
+    },
 })
 
 class Portfolio extends Component {
@@ -107,6 +126,7 @@ class Portfolio extends Component {
     componentWillUnmount() {
         this.setState({fade: false})
     }
+                                
 
     renderLoading() {
         if(
@@ -122,6 +142,15 @@ class Portfolio extends Component {
         this.props.dispatch(sectionsActions.getOne('avatar'))
     }
 
+    sortedProjects() {
+        return this.props.projects.projects.sort((a, b) => {
+            a = new Date(a.createdAt)
+            b = new Date(b.createdAt)
+            // return a>b ? -1 : a<b ? 1 : 0
+            return b - a
+        })
+    }
+
     getProject(id, slug, e) {
         this.setState({selectedProjectId: id})
 
@@ -132,22 +161,12 @@ class Portfolio extends Component {
         this.props.dispatch(projectsActions.getOne(slug, () => this.getProjectCallback(slug, from), from))
     }
 
-    sortedProjects() {
-        return this.props.projects.projects.sort((a, b) => {
-            a = new Date(a.createdAt)
-            b = new Date(b.createdAt)
-            // return a>b ? -1 : a<b ? 1 : 0
-            return b - a
-        })
-    }
-
     getAllCallback() {
 
     }
 
     getProjectCallback(slug, from) {
-
-        console.log('from : ', from)
+        // console.log('from : ', from)
         this.props.history.push({
             pathname: `/portfolio/${slug}`,
             state: {
@@ -160,7 +179,7 @@ class Portfolio extends Component {
     renderBandeau() {
 
             return (
-                <Grid container direction="column" justify="center" alignItems="center" className={this.props.classes.bandeau}>
+                <Grid item xs={12} className={this.props.classes.bandeau}>
                     Ceci est mon portfolio.<br/>
                     J'aime mon portfolio!
                 </Grid>
@@ -190,34 +209,66 @@ class Portfolio extends Component {
         } else if(this.props.projects.projects) {
 
             return (
-                <GridList cellHeight={240} className={this.props.classes.gridList} style={{margin: 0}} cols={3}>
+                // <GridList cellHeight={240} className={this.props.classes.gridList} style={{margin: 0}} cols={4}>
+                <Grid container /*spacing={3}*/ className={this.props.classes.gridList}>
                     {this.sortedProjects().map((project, project_index) => {
 
                         let selected = this.state.selectedProjectId == project._id && this.props.selectedProject.isLoading ? true : false
 
                         return (
-                            // <GridListTile ref={this.state.projectsRefs[project.slug]} key={project_index} cols={project.cols || 1}>
-                            <GridListTile key={project_index} cols={project.cols || 1} className={this.props.classes.gridList}
-                            //  button
-                             onClick={(e) => this.getProject(project._id, project.slug, e)} 
-                            //  disabled={selected} selected={selected}
-                            >
-                                <img src={project.image || "https://picsum.photos/1200/800"} alt={project.name} title={project.name + '\'s image'} />
-                                <GridListTileBar
-                                title={project.name}
-                                subtitle={<span>{project.description}</span>}
-                                actionIcon={
-                                    <IconButton className={this.props.classes.icon}>
-                                        <InfoIcon />
-                                    </IconButton>
-                                }
-                                />
+                            // // <GridListTile ref={this.state.projectsRefs[project.slug]} key={project_index} cols={project.cols || 1}>
+                            // <GridListTile key={project_index} className={this.props.classes.gridList}
+                            // //  button
+                            //  onClick={(e) => this.getProject(project._id, project.slug, e)} 
+                            // //  disabled={selected} selected={selected}
+                            // // cols={project.cols || 1}
+                            // // rows={project.cols || 1}
+                            // >
+                            //     <img src={project.image || "https://picsum.photos/1200/800"} alt={project.name} title={project.name + '\'s image'} />
+                            //     <GridListTileBar
+                            //     title={project.name}
+                            //     subtitle={<span>{project.description}</span>}
+                            //     actionIcon={
+                            //         <IconButton className={this.props.classes.icon}>
+                            //             <InfoIcon />
+                            //         </IconButton>
+                            //     }
+                            //     />
 
-                                {/* {selected ? <CircularProgress className={this.props.classes.centeredCircularProgress}/> : null} */}
-                            </GridListTile>
+                            //     {/* {selected ? <CircularProgress className={this.props.classes.centeredCircularProgress}/> : null} */}
+                            // </GridListTile>
+
+                            <Grid key={project_index} item xs={12} sm={6} md={4} lg={3}>
+                                <Card className={this.props.classes.card}>
+                                    <CardActionArea onClick={(e) => this.getProject(project._id, project.slug, e)}>
+                                        <CardMedia
+                                        className={this.props.classes.media}
+                                        image={project.image || "https://picsum.photos/1200/800"}
+                                        title={project.name}
+                                        />
+                                        <CardContent>
+                                            <Typography gutterBottom variant="h5" component="h2">
+                                                {project.name}
+                                            </Typography>
+                                            <Typography variant="body2" color="textSecondary" component="p">
+                                                {project.description}
+                                            </Typography>
+                                        </CardContent>
+                                    </CardActionArea>
+                                    {/* <CardActions>
+                                        <Button size="small" color="primary">
+                                            Share
+                                        </Button>
+                                        <Button size="small" color="primary">
+                                            Learn More
+                                        </Button>
+                                    </CardActions> */}
+                                </Card>
+                            </Grid>
                         )
                     })}
-                </GridList>
+                </Grid>
+                // </GridList>
             )
         } else {
             return 'WTF'
@@ -227,13 +278,11 @@ class Portfolio extends Component {
     render() {
 
         return (
-            <Grid container justify="center" alignItems="center">
+            <Grid container>
                 {this.renderLoading()}
                 
-                <Grid container>
-                    {/* {this.renderBandeau()} */}
-                    {this.renderProjects()}
-                </Grid>
+                {/* {this.renderBandeau()} */}
+                {this.renderProjects()}
             </Grid>
         )
     }

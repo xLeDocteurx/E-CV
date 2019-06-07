@@ -3,10 +3,10 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withStyles} from '@material-ui/core'
 
-import Slide from '@material-ui/core/Slide';
-import Fade from '@material-ui/core/Fade';
-// import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
+import Slide from '@material-ui/core/Slide'
+import Fade from '@material-ui/core/Fade'
+// import Paper from '@material-ui/core/Paper'
+import Grid from '@material-ui/core/Grid'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Avatar from '@material-ui/core/Avatar'
@@ -39,9 +39,14 @@ const styles = theme => ({
     bandeau: {
         // minHeight: 300,
         // height: '100%',
+        marginTop: 10,
+        marginLeft: 10,
+        textAlign: 'center',
     },
     bigAvatar: {
         // margin: 10,
+        marginLeft: 'auto',
+        marginRight: 'auto',
         [theme.breakpoints.down('sm')]: {
             width: 150,
             height: 150,
@@ -95,6 +100,24 @@ class Home extends Component {
 
     getSections() {
         // this.props.dispatch(sectionsActions.getOne('citation'))
+    }
+
+    sortByCreatedAt(array) {
+        return array.sort((a, b) => {
+            a = new Date(a.createdAt)
+            b = new Date(b.createdAt)
+            // return a>b ? -1 : a<b ? 1 : 0
+            return b - a
+        })
+    }
+
+    sortByFirstYear(array) {
+        return array.sort((a, b) => {
+            a = new Date(a.firstYear)
+            b = new Date(b.firstYear)
+            // return a>b ? -1 : a<b ? 1 : 0
+            return b - a
+        })
     }
 
     renderBandeau() {
@@ -155,13 +178,13 @@ class Home extends Component {
             return (
                 <Grid item xs={12}>
                     <h1>Technologies</h1>
-                    {this.props.technos.technos.map((experience, experience_index) => (
-                        <div key={experience_index}>
-                            {experience.name}
-                            <p>
-                                {experience.description}
-                            </p>
-                        </div>
+                    {this.props.technos.technos.map((techno, techno_index) => (
+                        <span key={techno_index}>
+                            {techno.name}
+                            {/* <p>
+                                {techno.description}
+                            </p> */}
+                        </span>
                     ))}
                 </Grid>
             )
@@ -184,19 +207,19 @@ class Home extends Component {
             return (
                 <Grid item xs={12}>
                     <h1>Expériences</h1>
-                    <div class="timeline">
+                    <div className="timeline">
                         <ul>
-                            {this.props.experiences.experiences.map((experience, experience_index) => {
-                                const {name, title, description, firstYear, lastYear} = experience
+                            {this.sortByFirstYear(this.props.experiences.experiences).map((experience, experience_index) => {
+                                const {color, name, title, description, firstYear, lastYear} = experience
                                 return (
                                     <li key={experience_index}>
-                                        <div class="bullet pink"></div>
-                                        <div class="time">5pm</div>
-                                        {/* <div class="time">{lastYear ? `${firstYear} - ${lastYear}` : firstYear}</div> */}
-                                        <div class="desc">
+                                        <div className={`bullet contour_${color}`}></div>
+                                        {/* <div className="time">5pm</div> */}
+                                        <div className="time">{lastYear ? `${firstYear} - ${lastYear}` : firstYear}</div>
+                                        <div className="desc">
                                             <h3>{name}</h3>
                                             <h4>{title}</h4>
-                                            <div class="people">
+                                            <div className="people">
                                                 {description}
                                                 {/* Pour les badges de technos ? */}
                                                 {/* <img src="https://s3.amazonaws.com/uifaces/faces/twitter/ashleyford/128.jpg" alt="" />
