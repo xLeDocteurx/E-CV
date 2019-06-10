@@ -7,7 +7,10 @@ import {withRouter} from 'react-router-dom'
 // import M from "materialize-css"
 // import {AccessAlarm, ThreeDRotation} from '@material-ui/icons'
 
-import Fade from '@material-ui/core/Fade';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger'
+
+import Fade from '@material-ui/core/Fade'
+import Slide from '@material-ui/core/Slide'
 
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -55,32 +58,41 @@ class ProjectHeader extends Component {
         this.props.history.goBack()
     }
 
-    getVisibility() {
-        return this.props.animState == "entered" ? null : {visibility: 'hidden'}
+    HideOnScroll(props) {
+        const { children, window } = props
+        const trigger = useScrollTrigger()
+      
+        return (
+          <Slide appear={false} direction="down" in={!trigger}>
+            {children}
+          </Slide>
+        )
     }
 
     render() {
         const { classes } = this.props
-        const visibility = this.getVisibility()
+        const visibility = this.props.animState == "entered" ? null : {visibility: 'hidden'}
 
         return (
             <Fade in={true} mountOnEnter unmountOnExit>
-                <AppBar position="fixed" color="default" /*style={{...classes.root, ...visibility}}*/>
-                    <Toolbar>
-                        <IconButton onClick={() => this.redirectTo('/portfolio')} className={classes.menuButton} color="inherit" aria-label="Menu" title="Menu">
-                            <NavigateBefore />
-                        </IconButton>
-                        {/* <AccessAlarm /> */}
-                        <Typography variant="h6" color="inherit" className={classes.grow}>
-                            {this.props.pageTitle ? this.props.pageTitle : ""}
-                        </Typography>
-                        {/* <Button color="inherit">Login</Button> */}
-    
-                        {/* <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/')} title="Home">Home</Button> */}
-                        {/* <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/portfolio')} title="Portfolio">Portfolio</Button> */}
-                        {/* <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/contact')} title="Contact">Contact</Button> */}
-                    </Toolbar>
-                </AppBar>
+                {/* <this.HideOnScroll {...this.props}> */}
+                    <AppBar position="fixed" color="default" /*style={{...classes.root, ...vizsibility}}*/>
+                        <Toolbar>
+                            <IconButton onClick={() => this.redirectTo('/portfolio')} className={classes.menuButton} color="inherit" aria-label="Menu" title="Menu">
+                                <NavigateBefore />
+                            </IconButton>
+                            {/* <AccessAlarm /> */}
+                            <Typography variant="h6" color="inherit" className={classes.grow}>
+                                {this.props.pageTitle ? this.props.pageTitle : ""}
+                            </Typography>
+                            {/* <Button color="inherit">Login</Button> */}
+        
+                            {/* <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/')} title="Home">Home</Button> */}
+                            {/* <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/portfolio')} title="Portfolio">Portfolio</Button> */}
+                            {/* <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/contact')} title="Contact">Contact</Button> */}
+                        </Toolbar>
+                    </AppBar>
+                {/* </this.HideOnScroll> */}
             </Fade>
         )
     }

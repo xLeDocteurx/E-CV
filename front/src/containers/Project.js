@@ -14,6 +14,8 @@ import Grid from '@material-ui/core/Grid'
 import LinearProgress from '@material-ui/core/LinearProgress'
 
 import clsx from 'clsx'
+
+import AppBar from '@material-ui/core/AppBar'
 import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
 import CardMedia from '@material-ui/core/CardMedia'
@@ -99,8 +101,8 @@ class Project extends Component {
         this.state = {
             pageTitle:'Project',
             animState: 'default',
-            // animDuration: 1200,
-            animDuration: 300,
+            animDuration: 3000,
+            // animDuration: 300,
             expanded: true,
             setExpended: false,
         }
@@ -114,11 +116,10 @@ class Project extends Component {
         } else {
             this.props.dispatch(projectsActions.getOne(this.props.match.params.slug, () => this.getProjectCallback()))
         }
-        console.log('dum...')
+
         this.setState({animState: 'entering'})
 		// setTimeout(() => {this.setState({animState: 'entering'})}, this.state.animDuration)
         // this.setState({animState: 'entered'})
-		setTimeout(() => {console.log('taddaaaaah')}, this.state.animDuration)
 		setTimeout(() => {this.setState({animState: 'entered'})}, this.state.animDuration)
     }
 
@@ -150,6 +151,8 @@ class Project extends Component {
     getDefaultStyle(from) {
         // console.log("from : ", from)
         return {
+            margin: 'auto',
+
             overflow: 'auto',
 
             transition: `all ${this.state.animDuration}ms ease-in-out`,
@@ -173,7 +176,7 @@ class Project extends Component {
         }
     }
 
-    getTransitionStyles() {
+    getTransitionStyles(from) {
         return {
             entering: {
                 // border: '5px yellow solid',
@@ -201,7 +204,8 @@ class Project extends Component {
             exiting:  {
                 // border: '5px red solid',
 
-                opacity: 0,
+                ...from,
+                // opacity: 0,
             },
             // exited:  {
             //     // opacity: 0 
@@ -219,7 +223,7 @@ class Project extends Component {
         // const from = this.props.location.state && this.props.location.state.from ? this.props.location.state.from : {display: 'block'}
         const from = /*this.props.selectedProject.from &&*/ this.props.selectedProject.from ? this.props.selectedProject.from : {}
         const defaultStyle = this.getDefaultStyle(from)
-        const transitionStyles = this.getTransitionStyles()
+        const transitionStyles = this.getTransitionStyles(from)
         const animState = this.state.animState
 
         // console.log('{...defaultStyle, ...transitionStyles[' + animState + ']} : ', {...defaultStyle, ...transitionStyles[animState]})
@@ -230,67 +234,69 @@ class Project extends Component {
 
         return (
 
-        <div style={{...defaultStyle, ...transitionStyles[animState]}}>
-            <Grid container>
+            <div style={{...defaultStyle, ...transitionStyles[animState]}}>
                 <ProjectHeader pageTitle={project ? project.name : null} animState={animState} />
-                {this.renderLoading()}
+                {/* <AppBar /> */}
 
-                {project &&
-                                
-                    <Card className={this.props.classes.card}>
-                        <CardMedia
-                        className={this.props.classes.media}
-                        image={project.image || "https://picsum.photos/1200/800"}
-                        title={project.name + "'s image"}
-                        />
-                        <CardHeader
-                        avatar={
-                            <Avatar aria-label="Recipe" className={this.props.classes.avatar}>
-                            R
-                            </Avatar>
-                        }
-                        action={
-                            <IconButton aria-label="Settings">
-                                <MoreVertIcon />
-                            </IconButton>
-                        }
-                        title={project.name}
-                        subheader={project.createdAt}
-                        />
-                        <CardContent>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                                {project.description}
-                            </Typography>
-                        </CardContent>
-                        <CardActions /*disableSpacing*/>
-                            <IconButton aria-label="Add to favorites">
-                                <FavoriteIcon />
-                            </IconButton>
-                            <IconButton aria-label="Share">
-                                <ShareIcon />
-                            </IconButton>
-                            <IconButton
-                                className={clsx(this.props.classes.expand, {
-                                [this.props.classes.expandOpen]: expanded,
-                                })}
-                                onClick={() => this.handleExpandClick}
-                                aria-expanded={expanded}
-                                aria-label="Show more"
-                            >
-                                <ExpandMoreIcon />
-                            </IconButton>
-                        </CardActions>
-                        <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <Grid container>
+                    {this.renderLoading()}
+
+                    {project &&
+                                    
+                        <Card className={this.props.classes.card}>
+                            <CardMedia
+                            className={this.props.classes.media}
+                            image={project.image || "https://picsum.photos/1200/800"}
+                            title={project.name + "'s image"}
+                            />
+                            <CardHeader
+                            avatar={
+                                <Avatar aria-label="Recipe" className={this.props.classes.avatar}>
+                                R
+                                </Avatar>
+                            }
+                            action={
+                                <IconButton aria-label="Settings">
+                                    <MoreVertIcon />
+                                </IconButton>
+                            }
+                            title={project.name}
+                            subheader={project.createdAt}
+                            />
                             <CardContent>
-                                <Typography paragraph>
-                                    {project.extendedDesciption}
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                    {project.description}
                                 </Typography>
                             </CardContent>
-                        </Collapse>
-                    </Card>
-                }
-            </Grid>
-        </div>
+                            <CardActions /*disableSpacing*/>
+                                <IconButton aria-label="Add to favorites">
+                                    <FavoriteIcon />
+                                </IconButton>
+                                <IconButton aria-label="Share">
+                                    <ShareIcon />
+                                </IconButton>
+                                <IconButton
+                                    className={clsx(this.props.classes.expand, {
+                                    [this.props.classes.expandOpen]: expanded,
+                                    })}
+                                    onClick={() => this.handleExpandClick}
+                                    aria-expanded={expanded}
+                                    aria-label="Show more"
+                                >
+                                    <ExpandMoreIcon />
+                                </IconButton>
+                            </CardActions>
+                            <Collapse in={expanded} timeout="auto" unmountOnExit>
+                                <CardContent>
+                                    <Typography paragraph>
+                                        {project.extendedDesciption}
+                                    </Typography>
+                                </CardContent>
+                            </Collapse>
+                        </Card>
+                    }
+                </Grid>
+            </div>
     
     //     </CSSTransition>
     // </TransitionGroup>

@@ -20,6 +20,8 @@ import CardActions from '@material-ui/core/CardActions'
 import Collapse from '@material-ui/core/Collapse'
 import Typography from '@material-ui/core/Typography'
 
+import red from '@material-ui/core/colors/red'
+
 import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 import Avatar from '@material-ui/core/Avatar'
@@ -99,6 +101,9 @@ const styles = theme => ({
     //         height: 300,
     //     },
     },
+    avatar: {
+        backgroundColor: red[500],
+    },
 })
 
 class Portfolio extends Component {
@@ -177,7 +182,6 @@ class Portfolio extends Component {
     }
 
     renderBandeau() {
-
             return (
                 <Grid item xs={12} className={this.props.classes.bandeau}>
                     Ceci est mon portfolio.<br/>
@@ -246,14 +250,28 @@ class Portfolio extends Component {
                                         image={project.image || "https://picsum.photos/1200/800"}
                                         title={project.name}
                                         />
-                                        <CardContent>
+                                        <CardHeader
+                                        avatar={
+                                            <Avatar aria-label="Recipe" className={this.props.classes.avatar}>
+                                            R
+                                            </Avatar>
+                                        }
+                                        // action={
+                                        //     <IconButton aria-label="Settings">
+                                        //         <MoreVertIcon />
+                                        //     </IconButton>
+                                        // }
+                                        title={project.name}
+                                        subheader={project.createdAt}
+                                        />
+                                        {/* <CardContent>
                                             <Typography gutterBottom variant="h5" component="h2">
                                                 {project.name}
                                             </Typography>
                                             <Typography variant="body2" color="textSecondary" component="p">
                                                 {project.description}
                                             </Typography>
-                                        </CardContent>
+                                        </CardContent> */}
                                     </CardActionArea>
                                     {/* <CardActions>
                                         <Button size="small" color="primary">
