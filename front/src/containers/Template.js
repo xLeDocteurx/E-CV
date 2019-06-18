@@ -28,7 +28,7 @@ const styles = theme => ({
     root: {
         width: '100%',
         maxWidth: 360,
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: grey[100],
         // flexGrow: 1,
         // height: '100%',
     },

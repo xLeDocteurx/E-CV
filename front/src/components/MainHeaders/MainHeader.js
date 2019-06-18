@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import {withStyles} from '@material-ui/core/styles'
 import {withRouter} from 'react-router-dom'
@@ -8,7 +8,7 @@ import {withRouter} from 'react-router-dom'
 // import M from "materialize-css"
 // import {AccessAlarm, ThreeDRotation} from '@material-ui/icons'
 
-import useScrollTrigger from '@material-ui/core/useScrollTrigger'
+import HideOnScroll from '../../utils/HideOnScroll'
 
 import Fade from '@material-ui/core/Fade'
 import Slide from '@material-ui/core/Slide'
@@ -28,6 +28,9 @@ const styles = {
     },
     grow: {
         flexGrow: 1,
+    },
+    invisible: {
+        visibility: 'hidden',
     },
     menuButton: {
         // marginLeft: -12,
@@ -54,38 +57,33 @@ class MainHeader extends Component {
         this.props.history.push(`${path}`)
     }
 
-    HideOnScroll(props) {
-        const { children, window } = props
-        const trigger = useScrollTrigger()
-      
-        return (
-          <Slide appear={false} direction="down" in={!trigger}>
-            {children}
-          </Slide>
-        )
-    }
-
     render() {
         const { classes } = this.props
         return (
-            // <this.HideOnScroll {...this.props}>
-                <AppBar /*position="sticky"*/ /*color="default"*/>
+            <Fragment>
+                <AppBar position="static" className={this.props.classes.invisible}>
                     <Toolbar>
-                        <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" title="Menu">
-                            <MenuIcon />
-                        </IconButton>
-                        {/* <AccessAlarm /> */}
-                        <Typography variant="h6" color="inherit" className={classes.grow}>
-                            {this.props.session.pageTitle ? this.props.session.pageTitle : ""}
-                        </Typography>
-                        {/* <Button color="inherit">Login</Button> */}
-
-                        <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/')} title="Home">Home</Button>
-                        <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/portfolio')} title="Portfolio">Portfolio</Button>
-                        {/* <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/contact')} title="Contact">Contact</Button> */}
                     </Toolbar>
                 </AppBar>
-            // </this.HideOnScroll>
+                <HideOnScroll {...this.props}>
+                    <AppBar /*position="sticky"*/ /*color="default"*/>
+                        <Toolbar>
+                            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" title="Menu">
+                                <MenuIcon />
+                            </IconButton>
+                            {/* <AccessAlarm /> */}
+                            <Typography variant="h6" color="inherit" className={classes.grow}>
+                                {this.props.session.pageTitle ? this.props.session.pageTitle : ""}
+                            </Typography>
+                            {/* <Button color="inherit">Login</Button> */}
+
+                            <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/')} title="Home">Home</Button>
+                            <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/portfolio')} title="Portfolio">Portfolio</Button>
+                            {/* <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/contact')} title="Contact">Contact</Button> */}
+                        </Toolbar>
+                    </AppBar>
+                </HideOnScroll>
+            </Fragment>
         )
     }
 }

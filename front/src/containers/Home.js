@@ -10,10 +10,19 @@ import Grid from '@material-ui/core/Grid'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Avatar from '@material-ui/core/Avatar'
+import Typography from '@material-ui/core/Typography'
+import Chip from '@material-ui/core/Chip'
+
+import grey from '@material-ui/core/colors/grey'
+
+import FaceIcon from '@material-ui/icons/Face'
 // import {withRouter} from 'react-router-dom'
 
 import MainHeader from '../components/MainHeaders/MainHeader'
 // import MainHeaderProminent from '../components/MainHeaders/MainHeaderProminent'
+import Formation from '../components/Formation/Formation';
+import Technos from '../components/Technos.js/Technos'
+import Timeline from '../components/Timeline/Timeline'
 
 import {sessionActions, sectionsActions, skillsActions, experiencesActions, technosActions} from '../actions'
 
@@ -23,7 +32,7 @@ const styles = theme => ({
     root: {
         width: '100%',
         // maxWidth: 360,
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: grey[100],
         // flexGrow: 1,
         // height: '100%',
     },
@@ -111,20 +120,14 @@ class Home extends Component {
         })
     }
 
-    sortByFirstYear(array) {
-        return array.sort((a, b) => {
-            a = new Date(a.firstYear)
-            b = new Date(b.firstYear)
-            // return a>b ? -1 : a<b ? 1 : 0
-            return b - a
-        })
-    }
-
     renderBandeau() {
         if(this.props.sections.error) { return JSON.stringify(this.props.sections.error) }
 
         return (
             <Grid item xs={12} /*direction="column" justify="center" alignItems="center"*/ className={this.props.classes.bandeau}>
+                <Typography variant="h3" component="h1" align="center">
+                    Bandeau
+                </Typography>
                 <Avatar alt="Photo" src="./img/avatar.jpg" className={this.props.classes.bigAvatar} title="Ma photo" />
                 <div>
                     "Il ne faut jamais baisser les bras. sauf si c'est dans la chorégraphie!"<br/>
@@ -148,7 +151,9 @@ class Home extends Component {
         } else */if(this.props.skills.skills) {
             return (
                 <Grid item xs={12}>
-                    <h1>Compétences</h1>
+                    <Typography variant="h3" component="h1" align="center">
+                        Compétences
+                    </Typography>
                     {/* JSON.stringify(this.props.skills.skills) */}
                     {this.props.skills.skills.map((skill, skill_index) => (
                         <div key={skill_index}>
@@ -165,81 +170,6 @@ class Home extends Component {
         }
     }
 
-    renderTechnos() {
-        if(this.props.technos.error) { return JSON.stringify(this.props.technos.error) }
-
-        /*if(this.props.technos.isLoading) {
-            return (
-                <Grid container direction="column" justify="center" alignItems="center" className={this.props.classes.bandeau}>
-                    <CircularProgress />
-                </Grid>
-            )
-        } else */if(this.props.technos.technos) {
-            return (
-                <Grid item xs={12}>
-                    <h1>Technologies</h1>
-                    {this.props.technos.technos.map((techno, techno_index) => (
-                        <span key={techno_index}>
-                            {techno.name}
-                            {/* <p>
-                                {techno.description}
-                            </p> */}
-                        </span>
-                    ))}
-                </Grid>
-            )
-        } else {
-            return 'WTF'
-        }
-    }
-
-    renderExperiences() {
-        
-        if(this.props.experiences.error) { return JSON.stringify(this.props.experiences.error) }
-
-        /*if(this.props.experiences.isLoading) {
-            return (
-                <Grid container direction="column" justify="center" alignItems="center" className={this.props.classes.bandeau}>
-                    <CircularProgress />
-                </Grid>
-            )
-        } else */if(this.props.experiences.experiences) {
-            return (
-                <Grid item xs={12}>
-                    <h1>Expériences</h1>
-                    <div className="timeline">
-                        <ul>
-                            {this.sortByFirstYear(this.props.experiences.experiences).map((experience, experience_index) => {
-                                const {color, name, title, description, firstYear, lastYear} = experience
-                                return (
-                                    <li key={experience_index}>
-                                        <div className={`bullet contour_${color}`}></div>
-                                        {/* <div className="time">5pm</div> */}
-                                        <div className="time">{lastYear ? `${firstYear} - ${lastYear}` : firstYear}</div>
-                                        <div className="desc">
-                                            <h3>{name}</h3>
-                                            <h4>{title}</h4>
-                                            <div className="people">
-                                                {description}
-                                                {/* Pour les badges de technos ? */}
-                                                {/* <img src="https://s3.amazonaws.com/uifaces/faces/twitter/ashleyford/128.jpg" alt="" />
-                                                <img src="https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/128.jpg" alt="" />
-                                                <img src="https://s3.amazonaws.com/uifaces/faces/twitter/mattsince87/128.jpg" alt="" /> */}
-                                            </div>
-                                        </div>
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    </div>
-                </Grid>
-            )
-        } else {
-            return 'WTF'
-        }
-
-    }
-
     render() {
 
         return (
@@ -248,9 +178,13 @@ class Home extends Component {
 
                 {this.renderBandeau()}
 
+                <Formation />
+
                 {this.renderSkills()}
-                {this.renderTechnos()}
-                {this.renderExperiences()}
+
+                <Technos technos={this.props.technos} />
+
+                <Timeline experiences={this.props.experiences} />
 
             </Grid>
         )

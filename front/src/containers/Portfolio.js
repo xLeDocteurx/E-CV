@@ -20,7 +20,10 @@ import CardActions from '@material-ui/core/CardActions'
 import Collapse from '@material-ui/core/Collapse'
 import Typography from '@material-ui/core/Typography'
 
+import grey from '@material-ui/core/colors/grey'
 import red from '@material-ui/core/colors/red'
+import green from '@material-ui/core/colors/green'
+import blue from '@material-ui/core/colors/blue'
 
 import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
@@ -34,6 +37,7 @@ import GridListTile from '@material-ui/core/GridListTile'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
 import IconButton from '@material-ui/core/IconButton'
 import InfoIcon from '@material-ui/icons/Info'
+import MoreVertIcon from '@material-ui/icons/MoreVert'
 // import Divider from '@material-ui/core/Divider'
 // import {withRouter} from 'react-router-dom'
 
@@ -49,7 +53,7 @@ const styles = theme => ({
     root: {
         width: '100%',
         // maxWidth: 360,
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: grey[100],
         // flexGrow: 1,
         // height: '100%',
     },
@@ -83,26 +87,27 @@ const styles = theme => ({
     gridList: {
         // width: '100vw',
         // height: '90vh',
+        margin: '1em',
     },
     card: {
     //   maxWidth: 345,
         height: '100%',
     },
     media: {
-      height: 140,
-    //     // margin: 10,
-    //     [theme.breakpoints.down('sm')]: {
-    //         height: 200,
-    //     },
-    //     [theme.breakpoints.up('md')]: {
-    //         height: 250,
-    //     },
-    //     [theme.breakpoints.up('lg')]: {
-    //         height: 300,
-    //     },
+        // height: 140,
+        // margin: 10,
+        [theme.breakpoints.down('sm')]: {
+            height: 140,
+        },
+        [theme.breakpoints.up('md')]: {
+            height: 210,
+        },
+        [theme.breakpoints.up('lg')]: {
+            height: 280,
+        },
     },
     avatar: {
-        backgroundColor: red[500],
+        backgroundColor: blue[500],
     },
 })
 
@@ -160,8 +165,8 @@ class Portfolio extends Component {
         this.setState({selectedProjectId: id})
 
         const target = e.target
-        const { top, right, bottom, left, width, height } = target.getBoundingClientRect()
-        const from = { top, right, bottom, left, width, height }
+        const {top, right, bottom, left, width, height} = target.getBoundingClientRect()
+        const from = {top, right, bottom, left, width, height}
 
         this.props.dispatch(projectsActions.getOne(slug, () => this.getProjectCallback(slug, from), from))
     }
@@ -214,55 +219,34 @@ class Portfolio extends Component {
 
             return (
                 // <GridList cellHeight={240} className={this.props.classes.gridList} style={{margin: 0}} cols={4}>
-                <Grid container /*spacing={3}*/ className={this.props.classes.gridList}>
+                <Grid container spacing={2} className={this.props.classes.gridList}>
                     {this.sortedProjects().map((project, project_index) => {
 
                         let selected = this.state.selectedProjectId == project._id && this.props.selectedProject.isLoading ? true : false
 
                         return (
-                            // // <GridListTile ref={this.state.projectsRefs[project.slug]} key={project_index} cols={project.cols || 1}>
-                            // <GridListTile key={project_index} className={this.props.classes.gridList}
-                            // //  button
-                            //  onClick={(e) => this.getProject(project._id, project.slug, e)} 
-                            // //  disabled={selected} selected={selected}
-                            // // cols={project.cols || 1}
-                            // // rows={project.cols || 1}
-                            // >
-                            //     <img src={project.image || "https://picsum.photos/1200/800"} alt={project.name} title={project.name + '\'s image'} />
-                            //     <GridListTileBar
-                            //     title={project.name}
-                            //     subtitle={<span>{project.description}</span>}
-                            //     actionIcon={
-                            //         <IconButton className={this.props.classes.icon}>
-                            //             <InfoIcon />
-                            //         </IconButton>
-                            //     }
-                            //     />
 
-                            //     {/* {selected ? <CircularProgress className={this.props.classes.centeredCircularProgress}/> : null} */}
-                            // </GridListTile>
-
-                            <Grid key={project_index} item xs={12} sm={6} md={4} lg={3}>
+                            <Grid key={project_index} item xs={12} sm={6} md={4} lg={3} onClick={(e) => this.getProject(project._id, project.slug, e)}>
                                 <Card className={this.props.classes.card}>
-                                    <CardActionArea onClick={(e) => this.getProject(project._id, project.slug, e)}>
+                                    <CardActionArea /*onClick={(e) => this.getProject(project._id, project.slug, e)}*/>
                                         <CardMedia
                                         className={this.props.classes.media}
                                         image={project.image || "https://picsum.photos/1200/800"}
                                         title={project.name}
                                         />
                                         <CardHeader
-                                        avatar={
-                                            <Avatar aria-label="Recipe" className={this.props.classes.avatar}>
-                                            R
-                                            </Avatar>
-                                        }
-                                        // action={
-                                        //     <IconButton aria-label="Settings">
-                                        //         <MoreVertIcon />
-                                        //     </IconButton>
+                                        // avatar={
+                                        //     <Avatar aria-label="Recipe" className={this.props.classes.avatar}>
+                                        //     L
+                                        //     </Avatar>
                                         // }
+                                        action={
+                                            <IconButton aria-label="Settings">
+                                                <MoreVertIcon />
+                                            </IconButton>
+                                        }
                                         title={project.name}
-                                        subheader={project.createdAt}
+                                        subheader={project.description}
                                         />
                                         {/* <CardContent>
                                             <Typography gutterBottom variant="h5" component="h2">

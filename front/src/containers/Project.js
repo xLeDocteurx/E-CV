@@ -1,7 +1,7 @@
 import runtimeEnv from '@mars/heroku-js-runtime-env'
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withStyles} from '@material-ui/core'
+import {withStyles, Hidden} from '@material-ui/core'
 import classnames from 'classnames'
 import {withRouter} from 'react-router-dom'
 
@@ -16,6 +16,7 @@ import LinearProgress from '@material-ui/core/LinearProgress'
 import clsx from 'clsx'
 
 import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
 import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
 import CardMedia from '@material-ui/core/CardMedia'
@@ -26,7 +27,10 @@ import Avatar from '@material-ui/core/Avatar'
 import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
 
+import grey from '@material-ui/core/colors/grey'
 import red from '@material-ui/core/colors/red'
+import green from '@material-ui/core/colors/green'
+import blue from '@material-ui/core/colors/blue'
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
@@ -50,7 +54,7 @@ const styles = theme => ({
     root: {
         width: '100%',
         // maxWidth: 360,
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: grey[100],
         // flexGrow: 1,
         // height: '100%',
     },
@@ -59,6 +63,9 @@ const styles = theme => ({
     },
     w100: {
         width: '100%',
+    },
+    invisible: {
+        visibility: 'hidden',
     },
     menuButton: {
         marginRight: 20,
@@ -89,7 +96,7 @@ const styles = theme => ({
         transform: 'rotate(180deg)',
     },
     avatar: {
-        backgroundColor: red[500],
+        backgroundColor: blue[500],
     },
 })
 
@@ -101,10 +108,10 @@ class Project extends Component {
         this.state = {
             pageTitle:'Project',
             animState: 'default',
-            animDuration: 3000,
-            // animDuration: 300,
+            // animDuration: 3000,
+            animDuration: 450,
             expanded: true,
-            setExpended: false,
+            setExpended: true,
         }
 
         // this.timer = null
@@ -120,15 +127,17 @@ class Project extends Component {
         this.setState({animState: 'entering'})
 		// setTimeout(() => {this.setState({animState: 'entering'})}, this.state.animDuration)
         // this.setState({animState: 'entered'})
-		setTimeout(() => {this.setState({animState: 'entered'})}, this.state.animDuration)
+		// setTimeout(() => {this.setState({animState: 'entered'})}, this.state.animDuration)
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps) {
         document.title = `${runtimeEnv().REACT_APP_APP_NAME} - ${this.state.pageTitle} - ${this.props.selectedProject.project ? this.props.selectedProject.project.name : 'Loading ...'}`
+
     }
 
     componentWillUnmount() {
-        this.setState({animState: 'exiting'})
+            // console.log('le component va être démonté')
+            this.setState({animState: 'exiting'})
     }
 
     // redirectTo(path) {
@@ -149,7 +158,9 @@ class Project extends Component {
     }
 
     getDefaultStyle(from) {
+        // console.log('this.getDefaultStyle()')
         // console.log("from : ", from)
+
         return {
             margin: 'auto',
 
@@ -177,6 +188,9 @@ class Project extends Component {
     }
 
     getTransitionStyles(from) {
+        // console.log('this.getTransitionStyles()')
+        // console.log('from : ', from)
+
         return {
             entering: {
                 // border: '5px yellow solid',
@@ -189,27 +203,24 @@ class Project extends Component {
                 height: '100vh',
                 width: '100vw',
             },
-            entered:  {
-                position: relative,
-                // border: '5px green solid',
+            // entered:  {
+            //     position: relative,
+            //     border: '5px green solid',
 
-                top: 0,
-                right: 0,
-                bottom: 0,
-                // bottom: -25,
-                left: 0,
-                height: '100vh',
-                width: '100vw',
-            },
+            //     top: 0,
+            //     right: 0,
+            //     bottom: 0,
+            //     // bottom: -25,
+            //     left: 0,
+            //     height: '100vh',
+            //     width: '100vw',
+            // },
             exiting:  {
                 // border: '5px red solid',
 
                 ...from,
                 // opacity: 0,
             },
-            // exited:  {
-            //     // opacity: 0 
-            //     },
         }
     }
     
@@ -218,6 +229,8 @@ class Project extends Component {
     }
 
     render() {
+
+        // console.log('le component render !!!')
         // const {classes} = this.props
 
         // const from = this.props.location.state && this.props.location.state.from ? this.props.location.state.from : {display: 'block'}
@@ -250,11 +263,11 @@ class Project extends Component {
                             title={project.name + "'s image"}
                             />
                             <CardHeader
-                            avatar={
-                                <Avatar aria-label="Recipe" className={this.props.classes.avatar}>
-                                R
-                                </Avatar>
-                            }
+                            // avatar={
+                            //     <Avatar aria-label="Recipe" className={this.props.classes.avatar}>
+                            //     L
+                            //     </Avatar>
+                            // }
                             action={
                                 <IconButton aria-label="Settings">
                                     <MoreVertIcon />
