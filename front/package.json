@@ -28,8 +28,8 @@
   "scripts": {
     "start": "PORT=80 react-scripts start",
     "build": "react-scripts build",
-    "start build": "node serv.js",
-    "start build forever": "node serv.js &",
+    "start_build": "node serv.js",
+    "start_build_forever": "node serv.js &",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
