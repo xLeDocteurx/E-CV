@@ -149,7 +149,7 @@ class Home extends Component {
                     <CircularProgress />
                 </Grid>
             )
-        } else */if(this.props.skills.skills.length > 0) {
+        } else */if(this.props.skills.skills) {
             return (
                 <Grid item xs={12}>
                     <Typography variant="h3" component="h1" align="center">

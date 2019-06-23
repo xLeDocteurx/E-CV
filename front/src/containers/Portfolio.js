@@ -215,7 +215,7 @@ class Portfolio extends Component {
                     <CircularProgress />
                 </Grid>
             )
-        } else if(this.props.projects.projects.length > 0) {
+        } else if(this.props.projects.projects) {
 
             return (
                 // <GridList cellHeight={240} className={this.props.classes.gridList} style={{margin: 0}} cols={4}>
