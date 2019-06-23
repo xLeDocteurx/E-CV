@@ -1,35 +1,35 @@
-// import {skillsActions} from '../actions'
+// import {educationActions} from '../actions'
 
-export const skillsInitialState = {
+export const educationInitialState = {
     isLoading: null,
     error: null,
 
-    skills: null,
+    education: null,
 }
 
-export const selectedSkillInitialState = {
+export const selectedEducationInitialState = {
     isLoading: null,
     error: null,
 
-    skill: null,
+    education: null,
 }
 
-export function skills(state = skillsInitialState, action) {
+export function education(state = educationInitialState, action) {
     switch (action.type) {
-        case 'SKILLS_FETCH_ALL_STARTED':
+        case 'EDUCATION_FETCH_ALL_STARTED':
             return {
                 ...state,
                 isLoading: true,
             }
-        case 'SKILLS_FETCH_ALL_SUCCEEDED':
+        case 'EDUCATION_FETCH_ALL_SUCCEEDED':
             return {
                 ...state,
                 isLoading: false,
                 error: null,
 
-                skills: action.payload.skills,
+                education: action.payload.education,
             }
-        case 'SKILLS_FETCH_ALL_FAILED':
+        case 'EDUCATION_FETCH_ALL_FAILED':
             let errorsMessage = null
             if(action.payload.error.response)
             errorsMessage = action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message
@@ -39,30 +39,30 @@ export function skills(state = skillsInitialState, action) {
                 
                 error: errorsMessage, 
             }
-        case 'SKILLS_INVALIDATE_ENTITIES':
-            return skillsInitialState
-        case 'SKILLS_INVALIDATE_FETCH':
+        case 'EDUCATION_INVALIDATE_ENTITIES':
+            return educationInitialState
+        case 'EDUCATION_INVALIDATE_FETCH':
         default:
             return state
     }
 }
 
-export function selectedSkill(state = selectedSkillInitialState, action) {
+export function selectedEducation(state = selectedEducationInitialState, action) {
     switch (action.type) {
-        case 'SKILLS_FETCH_ONE_STARTED':
+        case 'EDUCATION_FETCH_ONE_STARTED':
             return {
                 ...state,
                 isLoading: true,
             }
-        case 'SKILLS_FETCH_ONE_SUCCEEDED':
+        case 'EDUCATION_FETCH_ONE_SUCCEEDED':
             return {
                 ...state,
                 isLoading: false,
                 error: null,
 
-                skill: action.payload.skill,
+                education: action.payload.education,
             }
-        case 'SKILLS_FETCH_ONE_FAILED':
+        case 'EDUCATION_FETCH_ONE_FAILED':
             let errorMessage = null
             if(action.payload.error.response)
             errorMessage = action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message
@@ -72,9 +72,9 @@ export function selectedSkill(state = selectedSkillInitialState, action) {
                 
                 error: errorMessage, 
             }
-        case 'SKILLS_INVALIDATE_ENTITIES':
-            return skillsInitialState
-        case 'SKILLS_INVALIDATE_FETCH':
+        case 'EDUCATION_INVALIDATE_ENTITIES':
+            return educationInitialState
+        case 'EDUCATION_INVALIDATE_FETCH':
         default:
             return state
     }

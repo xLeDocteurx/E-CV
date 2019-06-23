@@ -24,7 +24,7 @@ import Formation from '../components/Formation/Formation';
 import Technos from '../components/Technos.js/Technos'
 import Timeline from '../components/Timeline/Timeline'
 
-import {sessionActions, sectionsActions, skillsActions, experiencesActions, technosActions} from '../actions'
+import {sessionActions, sectionsActions, skillsActions, educationActions, experiencesActions, technosActions} from '../actions'
 
 // import {skillsApi} from '../api'
 
@@ -90,6 +90,7 @@ class Home extends Component {
         
         this.props.dispatch(skillsActions.getAll())
         this.props.dispatch(technosActions.getAll())
+        this.props.dispatch(educationActions.getAll())
         this.props.dispatch(experiencesActions.getAll())
     }
     
@@ -178,7 +179,7 @@ class Home extends Component {
 
                 {this.renderBandeau()}
 
-                <Formation />
+                <Formation education={this.props.education} />
 
                 {this.renderSkills()}
 
@@ -196,6 +197,7 @@ function mapStateToProps(state) {
         sections: state.sections,
         skills: state.model.skills,
         selectedSkill: state.selectedSkill,
+        education: state.model.education,
         experiences: state.model.experiences,
         technos: state.model.technos,
     }

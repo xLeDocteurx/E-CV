@@ -59,52 +59,48 @@ class Formation extends Component {
         }
     }
 
-    formations = [
-        {
-            name: 'Titre pro - Développeur web et applications mobile - Niveau IV',
-            description: 'Formation'
-        },
-        {
-            name: 'Certification - Qualité en projets web',
-            description: 'OpQuast'
-        },
-        {
-            name: 'BTS - Métiers de l\'électrotechnique',
-            description: 'CFA de Toulouse'
-        },
-        {
-            name: 'BT - Monteur technicien en réseaux électriques',
-            description: 'Basse tension / Haute tension'
-        },
-        // {
-        //     name: 'xxx',
-        //     description: 'xxx'
-        // },
-    ]
+    sortByDate(array) {
+        return array.sort((a, b) => {
+            a = new Date(a.date)
+            b = new Date(b.date)
+            // return a>b ? -1 : a<b ? 1 : 0
+            return b - a
+        })
+    }
 
     render() {
+        if(this.props.education.error) { return JSON.stringify(this.props.education.error) }
 
-        return (
-            <Grid item xs={12}>
-                <List className={this.props.classes.root} subheader={<li />}>
-                <Typography variant="h3" component="h1" align="center">
-                    Formation
-                </Typography>
-                    {/* {[0, 1, 2, 3, 4].map(sectionId => (
-                        <li key={`section-${sectionId}`} className={this.props.classes.listSection}>
-                            <ul className={this.props.classes.ul}> */}
-                                {/* <ListSubheader>{`I'm sticky`}</ListSubheader> */}
-                                {this.formations.map((item, item_id) => (
-                                <ListItem key={`item-${item_id}`}>
-                                    <ListItemText primary={item.name} secondary={item.description} />
-                                </ListItem>
-                                ))}
-                            {/* </ul>
-                        </li>
-                    ))} */}
-                </List>
-            </Grid>
-        )
+        if(this.props.education.education) {
+
+            const sortedEducation = this.sortByDate(this.props.education.education)
+            
+            return (
+                // JSON.stringify(this.props.education.education)
+
+                <Grid item xs={12}>
+                    <Typography variant="h3" component="h1" align="center">
+                        Formation
+                    </Typography>
+                    <List className={this.props.classes.root} subheader={<li />}>
+                        {/* {[0, 1, 2, 3, 4].map(sectionId => (
+                            <li key={`section-${sectionId}`} className={this.props.classes.listSection}>
+                                <ul className={this.props.classes.ul}> */}
+                                    {/* <ListSubheader>{`I'm sticky`}</ListSubheader> */}
+                                    {sortedEducation.map((item, item_id) => (
+                                    <ListItem key={`item-${item_id}`}>
+                                        <ListItemText primary={item.name} secondary={item.description} />
+                                    </ListItem>
+                                    ))}
+                                {/* </ul>
+                            </li>
+                        ))} */}
+                    </List>
+                </Grid>
+            )
+        } else {
+            return 'WTF'
+        }
     }
 }
 

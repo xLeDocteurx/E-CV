@@ -30,11 +30,14 @@ export function technos(state = technosInitialState, action) {
                 technos: action.payload.technos,
             }
         case 'TECHNOS_FETCH_ALL_FAILED':
+            let errorsMessage = null
+            if(action.payload.error.response)
+            errorsMessage = action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message
             return {
                 ...state,
                 isLoading: false,
                 
-                error: action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message, 
+                error: errorsMessage, 
             }
         case 'TECHNOS_INVALIDATE_ENTITIES':
             return technosInitialState
@@ -60,11 +63,14 @@ export function selectedTechno(state = selectedTechnoInitialState, action) {
                 techno: action.payload.techno,
             }
         case 'TECHNOS_FETCH_ONE_FAILED':
+            let errorMessage = null
+            if(action.payload.error.response)
+            errorMessage = action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message
             return {
                 ...state,
                 isLoading: false,
                 
-                error: action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message, 
+                error: errorMessage, 
             }
         case 'TECHNOS_INVALIDATE_ENTITIES':
             return technosInitialState

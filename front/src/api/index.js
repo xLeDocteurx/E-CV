@@ -1,5 +1,6 @@
 export * from './sections'
 export * from './skills'
 export * from './projects'
+export * from './education'
 export * from './experiences'
 export * from './technos'

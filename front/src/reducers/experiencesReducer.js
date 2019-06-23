@@ -30,11 +30,14 @@ export function experiences(state = experiencesInitialState, action) {
                 experiences: action.payload.experiences,
             }
         case 'EXPERIENCES_FETCH_ALL_FAILED':
+            let errorsMessage = null
+            if(action.payload.error.response)
+            errorsMessage = action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message
             return {
                 ...state,
                 isLoading: false,
                 
-                error: action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message, 
+                error: errorsMessage, 
             }
         case 'EXPERIENCES_INVALIDATE_ENTITIES':
             return experiencesInitialState
@@ -60,11 +63,14 @@ export function selectedExperience(state = selectedExperienceInitialState, actio
                 experience: action.payload.experience,
             }
         case 'EXPERIENCES_FETCH_ONE_FAILED':
+            let errorMessage = null
+            if(action.payload.error.response)
+            errorMessage = action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message
             return {
                 ...state,
                 isLoading: false,
                 
-                error: action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message, 
+                error: errorMessage, 
             }
         case 'EXPERIENCES_INVALIDATE_ENTITIES':
             return experiencesInitialState

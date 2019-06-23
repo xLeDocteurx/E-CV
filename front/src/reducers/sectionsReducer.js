@@ -23,11 +23,14 @@ export function sections(state = initialState, action) {
                 sections: action.payload.sections,
             }
         case 'SECTIONS_FETCH_ALL_FAILED':
+            let errorsMessage = null
+            if(action.payload.error.response)
+                errorsMessage = action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message
             return {
                 ...state,
                 isLoading: false,
                 
-                error: action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message, 
+                error: errorsMessage, 
             }
         case 'SECTIONS_FETCH_ONE_STARTED':
             return {
@@ -45,11 +48,14 @@ export function sections(state = initialState, action) {
                 sections: sections,
             }
         case 'SECTIONS_FETCH_ONE_FAILED':
+            let errorMessage = null
+            if(action.payload.error.response)
+            errorMessage = action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message
             return {
                 ...state,
                 isLoading: false,
                 
-                error: action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message, 
+                error: errorMessage, 
                 // error: action.payload.error, 
             }
         case 'SECTIONS_INVALIDATE_ENTITIES':

@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom'
 import {createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import thunk from 'redux-thunk'
-// import {composeWithDevTools} from 'redux-devtools-extension/logOnlyInProduction';
-import {composeWithDevTools} from 'redux-devtools-extension';
+import {composeWithDevTools} from 'redux-devtools-extension'
+// import {composeWithDevTools} from 'redux-devtools-extension/logOnlyInProduction'
 
 import reducers from './reducers'
 
@@ -21,6 +21,7 @@ import './index.css'
 const store = createStore(
         reducers,
         // undefined,
+        // applyMiddleware(thunk)
         composeWithDevTools(applyMiddleware(thunk))
     )
 

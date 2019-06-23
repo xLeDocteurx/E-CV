@@ -31,11 +31,14 @@ export function projects(state = projectsInitialState, action) {
                 projects: action.payload.projects,
             }
         case 'PROJECTS_FETCH_ALL_FAILED':
+            let errorsMessage = null
+            if(action.payload.error.response)
+            errorsMessage = action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message
             return {
                 ...state,
                 isLoading: false,
                 
-                error: action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message, 
+                error: errorsMessage, 
             }
         case 'PROJECTS_INVALIDATE_ENTITIES':
             return projectsInitialState
@@ -62,11 +65,14 @@ export function selectedProject(state = selectedProjectInitialState, action) {
                 from: action.payload.from ? action.payload.from : null,
             }
         case 'PROJECTS_FETCH_ONE_FAILED':
+            let errorMessage = null
+            if(action.payload.error.response)            
+            errorMessage = action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message
             return {
                 ...state,
                 isLoading: false,
                 
-                error: action.payload.error.response.data.statusCode + " : " + action.payload.error.response.data.message, 
+                error: errorMessage, 
             }
         case 'PROJECTS_INVALIDATE_ENTITIES':
             return projectsInitialState

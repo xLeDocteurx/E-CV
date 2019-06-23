@@ -12,11 +12,11 @@
     "name": {
       "type": "string"
     },
-    "title": {
-      "type": "string"
-    },
     "description": {
       "type": "string"
+    },
+    "date": {
+      "type": "date"
     }
   }
 }
