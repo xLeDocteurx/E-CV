@@ -9,8 +9,6 @@ app.use(express.static(path.join(__dirname, 'build'), { dotfiles: 'allow' }))
 //     res.sendFile(path.join(__dirname, 'build', 'index.html'))
 // })
 
-app.listen(80)
-
 app.listen(80, () => {
   console.log('HTTP server running on port 80');
 });
