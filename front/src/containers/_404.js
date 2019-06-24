@@ -1,4 +1,4 @@
-import runtimeEnv from '@mars/heroku-js-runtime-env'
+// import runtimeEnv from '@mars/heroku-js-runtime-env'
 import React, {Component} from 'react'
 import {withStyles} from '@material-ui/core'
 import { jsenv } from '../env'

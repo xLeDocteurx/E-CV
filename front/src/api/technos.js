@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // import {sessionService} from 'redux-react-session'
-import runtimeEnv from '@mars/heroku-js-runtime-env'
+// import runtimeEnv from '@mars/heroku-js-runtime-env'
 import { jsenv } from '../env'
 
 const API_BASE_URL = jsenv.REACT_APP_API_BASE_URL
