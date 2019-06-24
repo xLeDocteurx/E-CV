@@ -17,16 +17,16 @@ const credentials = {
 	ca: ca
 }
 
-// app.use(express.static(path.join(__dirname, 'build'), { dotfiles: 'allow' }))
+app.use(express.static(path.join(__dirname, 'build'), { dotfiles: 'allow' }))
 
 // app.get('/', function(req, res) {
 //     console.log('touch on "/" path')
 //     res.sendFile(path.join(__dirname, 'build', 'index.html'))
 // })
 
-app.use((req, res) => {
-	res.send('Hello there !')
-})
+// app.use((req, res) => {
+// 	res.send('Hello there !')
+// })
 
 // Starting both http & https servers
 const httpServer = http.createServer(app)
