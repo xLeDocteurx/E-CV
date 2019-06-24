@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path')
 const app = express()
 
-app.use(express.static(path.join(__dirname, 'build')))
+app.use(express.static(path.join(__dirname, 'build'), { dotfiles: 'allow' }))
 
 // app.get('/', function(req, res) {
 //     console.log('touch on "/" path')
@@ -10,5 +10,7 @@ app.use(express.static(path.join(__dirname, 'build')))
 // })
 
 app.listen(80)
-console.log('server started')
-console.log('process.env', process.env)
+
+app.listen(80, () => {
+  console.log('HTTP server running on port 80');
+});
