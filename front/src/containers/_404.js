@@ -1,6 +1,7 @@
 import runtimeEnv from '@mars/heroku-js-runtime-env'
 import React, {Component} from 'react'
 import {withStyles} from '@material-ui/core'
+import { jsenv } from '../env'
 
 import MainHeader from '../components/MainHeaders/MainHeader'
 // import MainHeaderProminent from '../components/MainHeaders/MainHeaderProminent'
@@ -28,7 +29,7 @@ class _404 extends Component {
     }
     
 	componentDidMount() {
-        document.title = `${runtimeEnv().REACT_APP_APP_NAME} - ${this.state.pageTitle}`
+        document.title = `${jsenv.REACT_APP_APP_NAME} - ${this.state.pageTitle}`
 	}
 
     render() {

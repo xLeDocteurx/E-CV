@@ -2,6 +2,7 @@ import runtimeEnv from '@mars/heroku-js-runtime-env'
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withStyles} from '@material-ui/core'
+import {jsenv} from '../env'
 
 import Slide from '@material-ui/core/Slide'
 import Fade from '@material-ui/core/Fade'
@@ -72,7 +73,7 @@ class Template extends Component {
     }
 
     componentDidMount() {
-        document.title = `${runtimeEnv().REACT_APP_APP_NAME} - ${this.state.pageTitle}`
+        document.title = `${jsenv.REACT_APP_APP_NAME} - ${this.state.pageTitle}`
 
         this.getSections()
 

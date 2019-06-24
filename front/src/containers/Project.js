@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {withStyles, Hidden} from '@material-ui/core'
 import classnames from 'classnames'
 import {withRouter} from 'react-router-dom'
+import {jsenv} from '../env'
 
 // import {Transition, TransitionGroup, CSSTransition} from 'react-transition-group'
 
@@ -119,7 +120,7 @@ class Project extends Component {
 
     componentDidMount() {
         if(this.props.selectedProject.project) {
-            // document.title = `${runtimeEnv().REACT_APP_APP_NAME} - ${this.state.pageTitle} : ${this.props.match.params.name}`
+            // document.title = `${jsenv.REACT_APP_APP_NAME} - ${this.state.pageTitle} : ${this.props.match.params.name}`
         } else {
             this.props.dispatch(projectsActions.getOne(this.props.match.params.slug, () => this.getProjectCallback()))
         }
@@ -131,7 +132,7 @@ class Project extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        document.title = `${runtimeEnv().REACT_APP_APP_NAME} - ${this.state.pageTitle} - ${this.props.selectedProject.project ? this.props.selectedProject.project.name : 'Loading ...'}`
+        document.title = `${jsenv.REACT_APP_APP_NAME} - ${this.state.pageTitle} - ${this.props.selectedProject.project ? this.props.selectedProject.project.name : 'Loading ...'}`
 
     }
 

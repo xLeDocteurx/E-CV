@@ -26,7 +26,8 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "PORT=80 react-scripts start",
+    "start": "react-scripts start",
+    "start_80": "PORT=80 react-scripts start",
     "build": "react-scripts build",
     "start_build": "node serv.js",
     "start_build_forever": "node serv.js &",
@@ -45,6 +46,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "dotenv": "^8.0.0",
     "redux-devtools-extension": "^2.13.8"
   }
 }
