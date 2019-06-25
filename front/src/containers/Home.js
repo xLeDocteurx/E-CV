@@ -103,7 +103,10 @@ class Home extends Component {
         if(
             this.props.sections.isLoading ||
             this.props.skills.isLoading ||
-            this.props.selectedSkill.isLoading
+            this.props.selectedSkill.isLoading ||
+            this.props.education.isLoading ||
+            this.props.experiences.isLoading ||
+            this.props.technos.isLoading
         ) {
             return <LinearProgress className={this.props.classes.w100} />
         }

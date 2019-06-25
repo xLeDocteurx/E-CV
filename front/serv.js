@@ -1,8 +1,7 @@
 const express = require('express')
 const path = require('path')
-const app = express()
-
 const fs = require('fs')
+const app = express()
 const http = require('http')
 const https = require('https')
 
@@ -39,7 +38,3 @@ httpServer.listen(80, () => {
 httpsServer.listen(443, () => {
 	console.log('HTTPS Server running on port 443')
 })
-
-// app.listen(80, () => {
-//   console.log('HTTP server running on port 80')
-// })
