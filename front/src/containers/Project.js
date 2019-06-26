@@ -55,7 +55,7 @@ const styles = theme => ({
     root: {
         width: '100%',
         // maxWidth: 360,
-        backgroundColor: grey[100],
+        backgroundColor: grey[50],
         // flexGrow: 1,
         // height: '100%',
     },
@@ -252,7 +252,7 @@ class Project extends Component {
                 <ProjectHeader pageTitle={project ? project.name : null} animState={animState} />
                 {/* <AppBar /> */}
 
-                <Grid container>
+                <Grid container className={this.props.classes.root}>
                     {this.renderLoading()}
 
                     {project &&

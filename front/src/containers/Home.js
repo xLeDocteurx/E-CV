@@ -26,16 +26,31 @@ import Technos from '../components/Technos.js/Technos'
 import Timeline from '../components/Timeline/Timeline'
 
 import {sessionActions, sectionsActions, skillsActions, educationActions, experiencesActions, technosActions} from '../actions'
+import Bandeau from '../components/Bandeau/Bandeau';
 
 // import {skillsApi} from '../api'
 
 const styles = theme => ({
     root: {
-        width: '100%',
+        // width: '100%',
+        // paddingLeft: '5vw',
+        // paddingRight: '5vw',
         // maxWidth: 360,
-        backgroundColor: grey[100],
+        backgroundColor: grey[50],
         // flexGrow: 1,
         // height: '100%',
+        [theme.breakpoints.down('sm')]: {
+            paddingLeft: '5vw',
+            paddingRight: '5vw',
+        },
+        [theme.breakpoints.up('sm')]: {
+            paddingLeft: '10vw',
+            paddingRight: '10vw',
+        },
+        [theme.breakpoints.up('lg')]: {
+            paddingLeft: '15vw',
+            paddingRight: '15vw',
+        },
     },
     grow: {
         flexGrow: 1,
@@ -45,34 +60,6 @@ const styles = theme => ({
     },
     menuButton: {
         marginRight: 20,
-    },
-    bandeau: {
-        paddingTop: '5vw',
-        paddingBottom: '5vw',
-        // width: '100vw',
-        // textAlign: 'center',
-    },
-    bigAvatar: {
-        // marginTop: '10vw',
-        // marginBottom: '10vw',
-        
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        [theme.breakpoints.down('sm')]: {
-            width: '37vw',
-            height: '37vw',
-        },
-        [theme.breakpoints.up('sm')]: {
-            width: '20vw',
-            height: '20vw',
-        },
-        [theme.breakpoints.up('lg')]: {
-            width: '20vw',
-            height: '20vw',
-        },
-    },
-    citation: {
-        marginTop: '2.5vw',
     },
 })
 
@@ -93,8 +80,8 @@ class Home extends Component {
 
         this.getSections()
         
-        this.props.dispatch(skillsActions.getAll())
         this.props.dispatch(educationActions.getAll())
+        this.props.dispatch(skillsActions.getAll())
         this.props.dispatch(technosActions.getAll())
         this.props.dispatch(experiencesActions.getAll())
     }
@@ -116,24 +103,6 @@ class Home extends Component {
         })
     }
 
-    renderBandeau() {
-        if(this.props.sections.error) { return JSON.stringify(this.props.sections.error) }
-
-        return (
-            <Grid item xs={12} /*direction="column" justify="center" alignItems="center"*/ className={this.props.classes.bandeau}>
-                {/* <div> */}
-                    <Avatar alt="Photo" src="./img/avatar.jpg" className={this.props.classes.bigAvatar} title="Ma photo" />
-                    <Typography /*variant="h3" component="h1"*/ align="center" className={this.props.classes.citation}>
-                        " Il ne faut jamais baisser les bras. sauf si c'est dans la chorégraphie! "<br/>
-                        - Moi
-                    </Typography>
-                {/* </div> */}
-            </Grid>
-        )
-
-
-    }
-
     renderSkills() {
         if(this.props.skills.error) { return JSON.stringify(this.props.skills.error) }
 
@@ -146,7 +115,7 @@ class Home extends Component {
         } else */if(this.props.skills.skills) {
             return (
                 <Grid item xs={12}>
-                    <Typography variant="h3" component="h1" align="center">
+                    <Typography variant="h3" component="h1" /*align="center"*/>
                         Compétences
                     </Typography>
                     {/* JSON.stringify(this.props.skills.skills) */}
@@ -168,10 +137,10 @@ class Home extends Component {
     render() {
 
         return (
-            <Grid container /*direction="column" justify="center" alignItems="center"*/ /*className={this.props.classes.root}*/>
+            <Grid container /*direction="column" justify="center" alignItems="center"*/ className={this.props.classes.root}>
                 {/* {this.renderLoading()} */}
 
-                {this.renderBandeau()}
+                <Bandeau />
 
                 <Formation education={this.props.education} />
 

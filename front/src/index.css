@@ -46,7 +46,8 @@ div {
   height: 100%;
   width: 3px;
   /* width: 2px; */
-  background-color: #d9d9d9;
+  /* background-color: #d9d9d9; */
+  background-color: black;
   position: absolute;
   top: 0;
   left: 1.5em;

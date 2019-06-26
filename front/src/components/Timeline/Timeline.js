@@ -11,7 +11,8 @@ const styles = theme => ({
     root: {
         width: '100%',
         // maxWidth: 360,
-        backgroundColor: grey[100],
+        // backgroundColor: grey[50],
+        // backgroundColor: 'white',
         // flexGrow: 1,
         // height: '100%',
     },
@@ -44,11 +45,11 @@ function Timeline(props) {
         )
     } else */if(props.experiences.experiences) {
         return (
-            <Grid item xs={12}>
+            <Grid item xs={12} className={props.classes.root}>
                 {/* <h1>
                     Expériences
                 </h1> */}
-                <Typography variant="h3" component="h1" align="center">
+                <Typography variant="h3" component="h1" /*align="center"*/>
                     Expériences
                 </Typography>
                 <div className="timeline">
@@ -58,17 +59,13 @@ function Timeline(props) {
                             return (
                                 <li key={experience_index}>
                                     <div className={`bullet contour_${color}`}></div>
-                                    {/* <div className="time">5pm</div> */}
+                                    <div className="time">xxx</div>
                                     <div className="time">{lastYear ? `${firstYear} - ${lastYear}` : firstYear}</div>
                                     <div className="desc">
                                         <h3>{name}</h3>
                                         <h4>{title}</h4>
                                         <div className="people">
                                             {description}
-                                            {/* Pour les badges de technos ? */}
-                                            {/* <img src="https://s3.amazonaws.com/uifaces/faces/twitter/ashleyford/128.jpg" alt="" />
-                                            <img src="https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/128.jpg" alt="" />
-                                            <img src="https://s3.amazonaws.com/uifaces/faces/twitter/mattsince87/128.jpg" alt="" /> */}
                                         </div>
                                     </div>
                                 </li>
@@ -83,5 +80,5 @@ function Timeline(props) {
     }
 }
 
-export default Timeline
-// export default withStyles(styles)(connectedHome)
+// export default Timeline
+export default withStyles(styles)(Timeline)

@@ -24,13 +24,13 @@ const styles = theme => ({
     //     flexWrap: 'wrap',
     // },
     root: {
-        display: 'flex',
-        justifyContent: 'center',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
+        // display: 'flex',
+        // justifyContent: 'center',
+        // flexWrap: 'wrap',
+        // justifyContent: 'center',
         // width: '100%',
         // maxWidth: 360,
-        backgroundColor: grey[100],
+        // backgroundColor: grey[50],
         // position: 'relative',
         // overflow: 'auto',
         // maxHeight: 300,
@@ -41,6 +41,10 @@ const styles = theme => ({
     // w100: {
     //     width: '100%',
     // },
+    list: {
+        backgroundColor: 'white',
+        // padding: '5em',
+    },
     listSection: {
         backgroundColor: 'inherit',
     },
@@ -77,25 +81,22 @@ class Formation extends Component {
             const sortedEducation = this.sortByDate(this.props.education.education)
             
             return (
-                // JSON.stringify(this.props.education.education)
-
-                <Grid item xs={12}>
-                    <Typography variant="h3" component="h1" align="center">
+                <Grid item xs={12}
+                className={this.props.classes.root}
+                >
+                    <Typography variant="h3" component="h1" /*align="center"*/>
                         Formation
                     </Typography>
-                    <List className={this.props.classes.root} subheader={<li />}>
-                        {/* {[0, 1, 2, 3, 4].map(sectionId => (
-                            <li key={`section-${sectionId}`} className={this.props.classes.listSection}>
-                                <ul className={this.props.classes.ul}> */}
-                                    {/* <ListSubheader>{`I'm sticky`}</ListSubheader> */}
-                                    {sortedEducation.map((item, item_id) => (
-                                        <ListItem key={`item-${item_id}`} divider>
-                                            <ListItemText primary={item.name} secondary={item.description} />
-                                        </ListItem>
-                                    ))}
-                                {/* </ul>
-                            </li>
-                        ))} */}
+                    <List 
+                    className={this.props.classes.list}
+                    // subheader={<ListSubheader>Formation</ListSubheader>}
+                    >
+                        <ListItem divider style={{padding:0}} />
+                        {sortedEducation.map((item, item_id) => (
+                            <ListItem key={`item-${item_id}`} divider>
+                                <ListItemText primary={item.name} secondary={item.description} />
+                            </ListItem>
+                        ))}
                     </List>
                 </Grid>
             )
