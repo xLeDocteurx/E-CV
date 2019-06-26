@@ -89,13 +89,9 @@ class Formation extends Component {
                                 <ul className={this.props.classes.ul}> */}
                                     {/* <ListSubheader>{`I'm sticky`}</ListSubheader> */}
                                     {sortedEducation.map((item, item_id) => (
-                                        <Fragment>
-                                            <ListItem key={`item-${item_id}`}>
-                                                <ListItemText primary={item.name} secondary={item.description} />
-                                            </ListItem>
-        
-                                            <Divider />
-                                        </Fragment>
+                                        <ListItem key={`item-${item_id}`} divider>
+                                            <ListItemText primary={item.name} secondary={item.description} />
+                                        </ListItem>
                                     ))}
                                 {/* </ul>
                             </li>

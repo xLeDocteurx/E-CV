@@ -59,8 +59,8 @@ const styles = theme => ({
         marginLeft: 'auto',
         marginRight: 'auto',
         [theme.breakpoints.down('sm')]: {
-            width: '35vw',
-            height: '35vw',
+            width: '37vw',
+            height: '37vw',
         },
         [theme.breakpoints.up('sm')]: {
             width: '20vw',
