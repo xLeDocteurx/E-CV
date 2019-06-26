@@ -141,7 +141,7 @@ class Home extends Component {
                 {/* {this.renderLoading()} */}
 
                 <Bandeau />
-
+                
                 <Formation education={this.props.education} />
 
                 {this.renderSkills()}

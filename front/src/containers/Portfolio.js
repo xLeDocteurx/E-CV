@@ -57,18 +57,8 @@ const styles = theme => ({
         backgroundColor: grey[50],
         // flexGrow: 1,
         // height: '100%',
-        [theme.breakpoints.down('sm')]: {
-            paddingLeft: '0vw',
-            paddingRight: '0vw',
-        },
-        [theme.breakpoints.up('sm')]: {
-            paddingLeft: '10vw',
-            paddingRight: '10vw',
-        },
-        [theme.breakpoints.up('lg')]: {
-            paddingLeft: '15vw',
-            paddingRight: '15vw',
-        },
+        paddingLeft: 10,
+        paddingRight: 10,
     },
     grow: {
         flexGrow: 1,
@@ -112,7 +102,7 @@ const styles = theme => ({
         [theme.breakpoints.down('sm')]: {
             height: 140,
         },
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up('sm')]: {
             height: 210,
         },
         [theme.breakpoints.up('lg')]: {

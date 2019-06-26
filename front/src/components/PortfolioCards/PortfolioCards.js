@@ -43,7 +43,7 @@ const styles = theme => ({
     //     [theme.breakpoints.down('sm')]: {
     //         height: 200,
     //     },
-    //     [theme.breakpoints.up('md')]: {
+    //     [theme.breakpoints.up('sm')]: {
     //         height: 250,
     //     },
     //     [theme.breakpoints.up('lg')]: {

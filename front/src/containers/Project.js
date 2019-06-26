@@ -59,16 +59,22 @@ const styles = theme => ({
         // flexGrow: 1,
         // height: '100%',
         [theme.breakpoints.down('sm')]: {
-            paddingLeft: '0vw',
-            paddingRight: '0vw',
+            paddingTop: 0,
+            paddingBottom: 0,
+            paddingRight: 0,
+            paddingLeft: 0,
         },
         [theme.breakpoints.up('sm')]: {
-            paddingLeft: '10vw',
-            paddingRight: '10vw',
+            paddingTop: 20,
+            paddingBottom: 20,
+            paddingRight: '5vw',
+            paddingLeft: '5vw',
         },
         [theme.breakpoints.up('lg')]: {
-            paddingLeft: '15vw',
-            paddingRight: '15vw',
+            paddingTop: 30,
+            paddingBottom: 30,
+            paddingRight: '20vw',
+            paddingLeft: '20vw',
         },
     },
     grow: {
@@ -265,7 +271,7 @@ class Project extends Component {
                 {/* <AppBar /> */}
 
                 <Grid container className={this.props.classes.root}>
-                    {this.renderLoading()}
+                    {/* {this.renderLoading()} */}
 
                     {project &&
                                     

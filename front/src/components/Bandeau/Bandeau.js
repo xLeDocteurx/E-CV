@@ -9,7 +9,7 @@ const styles = theme => ({
     bandeau: {
         paddingTop: '5vw',
         paddingBottom: '5vw',
-        width: '70vw',
+        width: '60vw',
         // textAlign: 'center',
     },
     bigAvatar: {
