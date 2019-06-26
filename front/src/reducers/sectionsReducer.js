@@ -1,7 +1,7 @@
 // import {sectionsActions} from '../actions'
 
 export const initialState = {
-    isLoading: null,
+    isLoading: false,
     error: null,
 
     sections: {},

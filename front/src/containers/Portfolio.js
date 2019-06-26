@@ -119,7 +119,7 @@ class Portfolio extends Component {
 
         this.state = {
             pageTitle:"Portfolio",
-            fade: true,
+            // fade: true,
 
             selectedProjectId: null,
         }
@@ -130,28 +130,18 @@ class Portfolio extends Component {
         document.title = `${jsenv.REACT_APP_APP_NAME} - ${this.state.pageTitle}`
 
         // this.getSections()
-
-        this.props.dispatch(projectsActions.getAll(() => this.getAllCallback()))
-    }
-
-    componentWillUnmount() {
-        this.setState({fade: false})
-    }
-                                
-
-    renderLoading() {
-        if(
-            this.props.sections.isLoading ||
-            // this.props.selectedProject.isLoading ||
-            this.props.projects.isLoading
-        ) {
-            return <LinearProgress className={this.props.classes.w100} />
+        if(!this.props.projects.projects) {
+            this.props.dispatch(projectsActions.getAll(() => this.getAllCallback()))
         }
     }
 
-    getSections() {
-        this.props.dispatch(sectionsActions.getOne('avatar'))
+    componentWillUnmount() {
+        // this.setState({fade: false})
     }
+
+    // getSections() {
+    //     this.props.dispatch(sectionsActions.getOne('avatar'))
+    // }
 
     sortedProjects() {
         return this.props.projects.projects.sort((a, b) => {
@@ -282,7 +272,7 @@ class Portfolio extends Component {
 
         return (
             <Grid container>
-                {this.renderLoading()}
+                {/* {this.renderLoading()} */}
                 
                 {/* {this.renderBandeau()} */}
                 {this.renderProjects()}

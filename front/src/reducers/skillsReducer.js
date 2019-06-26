@@ -1,14 +1,14 @@
 // import {skillsActions} from '../actions'
 
 export const skillsInitialState = {
-    isLoading: null,
+    isLoading: false,
     error: null,
 
     skills: null,
 }
 
 export const selectedSkillInitialState = {
-    isLoading: null,
+    isLoading: false,
     error: null,
 
     skill: null,

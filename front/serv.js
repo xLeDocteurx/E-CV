@@ -6,14 +6,10 @@ const http = require('http')
 const https = require('https')
 
 // Certificate
-const privateKey = fs.readFileSync('/etc/letsencrypt/live/lenoir.dev/privkey.pem', 'utf8')
-const certificate = fs.readFileSync('/etc/letsencrypt/live/lenoir.dev/cert.pem', 'utf8')
-const ca = fs.readFileSync('/etc/letsencrypt/live/lenoir.dev/chain.pem', 'utf8')
-
 const credentials = {
-	key: privateKey,
-	cert: certificate,
-	ca: ca
+	key: fs.readFileSync('/etc/letsencrypt/live/lenoir.dev/privkey.pem', 'utf8'),
+	cert: fs.readFileSync('/etc/letsencrypt/live/lenoir.dev/cert.pem', 'utf8'),
+	ca: fs.readFileSync('/etc/letsencrypt/live/lenoir.dev/chain.pem', 'utf8')
 }
 
 app.use(express.static(path.join(__dirname, 'build'), { dotfiles: 'allow' }))

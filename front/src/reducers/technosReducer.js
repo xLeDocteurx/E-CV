@@ -1,14 +1,14 @@
 // import {technosActions} from '../actions'
 
 export const technosInitialState = {
-    isLoading: null,
+    isLoading: false,
     error: null,
 
     technos: null,
 }
 
 export const selectedTechnoInitialState = {
-    isLoading: null,
+    isLoading: false,
     error: null,
 
     techno: null,

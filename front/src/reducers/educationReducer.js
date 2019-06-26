@@ -1,14 +1,14 @@
 // import {educationActions} from '../actions'
 
 export const educationInitialState = {
-    isLoading: null,
+    isLoading: false,
     error: null,
 
     education: null,
 }
 
 export const selectedEducationInitialState = {
-    isLoading: null,
+    isLoading: false,
     error: null,
 
     education: null,

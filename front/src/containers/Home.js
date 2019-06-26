@@ -47,28 +47,32 @@ const styles = theme => ({
         marginRight: 20,
     },
     bandeau: {
-        // minHeight: 300,
-        // height: '100%',
-        marginTop: 10,
-        marginLeft: 10,
-        textAlign: 'center',
+        paddingTop: '5vw',
+        paddingBottom: '5vw',
+        // width: '100vw',
+        // textAlign: 'center',
     },
     bigAvatar: {
-        // margin: 10,
+        // marginTop: '10vw',
+        // marginBottom: '10vw',
+        
         marginLeft: 'auto',
         marginRight: 'auto',
         [theme.breakpoints.down('sm')]: {
-            width: 150,
-            height: 150,
+            width: '50vw',
+            height: '50vw',
         },
-        [theme.breakpoints.up('md')]: {
-            width: 175,
-            height: 175,
+        [theme.breakpoints.up('sm')]: {
+            width: '25vw',
+            height: '25vw',
         },
         [theme.breakpoints.up('lg')]: {
-            width: 200,
-            height: 200,
+            width: '25vw',
+            height: '25vw',
         },
+    },
+    citation: {
+        marginTop: '2.5vw',
     },
 })
 
@@ -90,26 +94,13 @@ class Home extends Component {
         this.getSections()
         
         this.props.dispatch(skillsActions.getAll())
-        this.props.dispatch(technosActions.getAll())
         this.props.dispatch(educationActions.getAll())
+        this.props.dispatch(technosActions.getAll())
         this.props.dispatch(experiencesActions.getAll())
     }
     
     componentWillUnmount() {
         this.setState({fade: false})
-    }
-
-    renderLoading() {
-        if(
-            this.props.sections.isLoading ||
-            this.props.skills.isLoading ||
-            this.props.selectedSkill.isLoading ||
-            this.props.education.isLoading ||
-            this.props.experiences.isLoading ||
-            this.props.technos.isLoading
-        ) {
-            return <LinearProgress className={this.props.classes.w100} />
-        }
     }
 
     getSections() {
@@ -130,14 +121,13 @@ class Home extends Component {
 
         return (
             <Grid item xs={12} /*direction="column" justify="center" alignItems="center"*/ className={this.props.classes.bandeau}>
-                <Typography variant="h3" component="h1" align="center">
-                    Bandeau
-                </Typography>
-                <Avatar alt="Photo" src="./img/avatar.jpg" className={this.props.classes.bigAvatar} title="Ma photo" />
-                <div>
-                    "Il ne faut jamais baisser les bras. sauf si c'est dans la chorégraphie!"<br/>
-                    - Moi
-                </div>
+                {/* <div> */}
+                    <Avatar alt="Photo" src="./img/avatar.jpg" className={this.props.classes.bigAvatar} title="Ma photo" />
+                    <Typography /*variant="h3" component="h1"*/ align="center" className={this.props.classes.citation}>
+                        "Il ne faut jamais baisser les bras. sauf si c'est dans la chorégraphie!"<br/>
+                        - Moi
+                    </Typography>
+                {/* </div> */}
             </Grid>
         )
 
@@ -178,8 +168,8 @@ class Home extends Component {
     render() {
 
         return (
-            <Grid container /*direction="column" justify="center" alignItems="center"*/>
-                {this.renderLoading()}
+            <Grid container /*direction="column" justify="center" alignItems="center"*/ /*className={this.props.classes.root}*/>
+                {/* {this.renderLoading()} */}
 
                 {this.renderBandeau()}
 

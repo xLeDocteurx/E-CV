@@ -62,7 +62,9 @@ class ProjectHeader extends Component {
         this.props.history.push(`${path}`)
     }
 
-    goBack() {
+    goBack(callabck) {
+        callabck()
+        // setTimeout(this.props.history.goBack(), this.state.animDuration)
         this.props.history.goBack()
     }
 

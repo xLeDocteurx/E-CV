@@ -13,6 +13,7 @@ import HideOnScroll from '../../utils/HideOnScroll'
 import Fade from '@material-ui/core/Fade'
 import Slide from '@material-ui/core/Slide'
 
+import LinearProgress from '@material-ui/core/LinearProgress'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 // import Paper from '@material-ui/core/Paper'
@@ -56,11 +57,28 @@ class MainHeader extends Component {
     redirectTo(path) {
         this.props.history.push(`${path}`)
     }
+                                
+    renderLoading() {
+        if(
+            this.props.sections.isLoading ||
+            this.props.projects.isLoading ||
+            this.props.selectedProject.isLoading ||
+            this.props.skills.isLoading ||
+            this.props.selectedSkill.isLoading ||
+            this.props.education.isLoading ||
+            this.props.technos.isLoading ||
+            this.props.experiences.isLoading
+        ) {
+            return <LinearProgress className={this.props.classes.w100} />
+        }
+        return null
+    }
 
     render() {
         const { classes } = this.props
         return (
             <Fragment>
+                {/* {this.renderLoading()} */}
                 <AppBar position="static" className={this.props.classes.invisible}>
                     <Toolbar>
                     </Toolbar>
@@ -91,6 +109,14 @@ class MainHeader extends Component {
 function mapStateToProps(state) {
     return {
         session: state.session,
+        sections: state.model.sections,
+        projects: state.model.projects,
+        selectedProject: state.selectedProject,
+        skills: state.model.skills,
+        selectedSkill: state.selectedSkill,
+        education: state.model.education,
+        technos: state.model.technos,
+        experiences: state.model.experiences
     }
 }
 

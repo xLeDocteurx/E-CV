@@ -1,14 +1,14 @@
 // import {projectsActions} from '../actions'
 
 export const projectsInitialState = {
-    isLoading: null,
+    isLoading: false,
     error: null,
 
     projects: null,
 }
 
 export const selectedProjectInitialState = {
-    isLoading: null,
+    isLoading: false,
     error: null,
 
     project: null,

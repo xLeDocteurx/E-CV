@@ -28,6 +28,8 @@ function mapStyles(styles) {
     return {
         opacity: styles.opacity,
         transform: `scale(${styles.scale})`,
+        // position: styles.position,
+        // position: 'relative',
     };
 }
 
@@ -56,19 +58,22 @@ class Router extends Component {
         
         return (
             <BrowserRouter history={history}>
-                <MainHeader pageTitle={this.state.pageTitle}/>
+                <MainHeader />
                 <AnimatedSwitch
                     atEnter={{
                         opacity: 0,
                         scale: 1.2,
+                        // position: 'absolute',
                     }}
                     atLeave={{
                         opacity: bounce(0),
                         scale: bounce(0.8),
+                        // position: 'absolute',
                     }}
                     atActive={{
                         opacity: bounce(1),
                         scale: bounce(1),
+                        // position: 'relative',
                     }}
                     className="route-wrapper"
                     mapStyles={mapStyles}

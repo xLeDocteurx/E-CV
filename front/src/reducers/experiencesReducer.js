@@ -1,14 +1,14 @@
 // import {experiencesActions} from '../actions'
 
 export const experiencesInitialState = {
-    isLoading: null,
+    isLoading: false,
     error: null,
 
     experiences: null,
 }
 
 export const selectedExperienceInitialState = {
-    isLoading: null,
+    isLoading: false,
     error: null,
 
     experience: null,
