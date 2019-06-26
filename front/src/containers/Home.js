@@ -124,7 +124,7 @@ class Home extends Component {
                 {/* <div> */}
                     <Avatar alt="Photo" src="./img/avatar.jpg" className={this.props.classes.bigAvatar} title="Ma photo" />
                     <Typography /*variant="h3" component="h1"*/ align="center" className={this.props.classes.citation}>
-                        "Il ne faut jamais baisser les bras. sauf si c'est dans la chorégraphie!"<br/>
+                        " Il ne faut jamais baisser les bras. sauf si c'est dans la chorégraphie! "<br/>
                         - Moi
                     </Typography>
                 {/* </div> */}
