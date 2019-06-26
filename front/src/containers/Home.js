@@ -59,16 +59,16 @@ const styles = theme => ({
         marginLeft: 'auto',
         marginRight: 'auto',
         [theme.breakpoints.down('sm')]: {
-            width: '50vw',
-            height: '50vw',
+            width: '35vw',
+            height: '35vw',
         },
         [theme.breakpoints.up('sm')]: {
-            width: '25vw',
-            height: '25vw',
+            width: '20vw',
+            height: '20vw',
         },
         [theme.breakpoints.up('lg')]: {
-            width: '25vw',
-            height: '25vw',
+            width: '20vw',
+            height: '20vw',
         },
     },
     citation: {
