@@ -67,14 +67,14 @@ const styles = theme => ({
         [theme.breakpoints.up('sm')]: {
             paddingTop: 20,
             paddingBottom: 20,
-            paddingRight: '5vw',
-            paddingLeft: '5vw',
+            paddingRight: '10vw',
+            paddingLeft: '10vw',
         },
         [theme.breakpoints.up('lg')]: {
             paddingTop: 30,
             paddingBottom: 30,
-            paddingRight: '20vw',
-            paddingLeft: '20vw',
+            paddingRight: '15vw',
+            paddingLeft: '15vw',
         },
     },
     grow: {
