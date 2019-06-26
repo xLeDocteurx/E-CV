@@ -58,6 +58,18 @@ const styles = theme => ({
         backgroundColor: grey[50],
         // flexGrow: 1,
         // height: '100%',
+        [theme.breakpoints.down('sm')]: {
+            paddingLeft: '5vw',
+            paddingRight: '5vw',
+        },
+        [theme.breakpoints.up('sm')]: {
+            paddingLeft: '10vw',
+            paddingRight: '10vw',
+        },
+        [theme.breakpoints.up('lg')]: {
+            paddingLeft: '15vw',
+            paddingRight: '15vw',
+        },
     },
     grow: {
         flexGrow: 1,
