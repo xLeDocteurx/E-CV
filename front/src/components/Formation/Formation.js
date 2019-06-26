@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {withStyles} from '@material-ui/core'
 
 import Grid from '@material-ui/core/Grid'
+import Divider from '@material-ui/core/Divider'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListSubheader from '@material-ui/core/ListSubheader'
@@ -88,9 +89,13 @@ class Formation extends Component {
                                 <ul className={this.props.classes.ul}> */}
                                     {/* <ListSubheader>{`I'm sticky`}</ListSubheader> */}
                                     {sortedEducation.map((item, item_id) => (
-                                    <ListItem key={`item-${item_id}`}>
-                                        <ListItemText primary={item.name} secondary={item.description} />
-                                    </ListItem>
+                                        <Fragment>
+                                            <ListItem key={`item-${item_id}`}>
+                                                <ListItemText primary={item.name} secondary={item.description} />
+                                            </ListItem>
+        
+                                            <Divider />
+                                        </Fragment>
                                     ))}
                                 {/* </ul>
                             </li>
