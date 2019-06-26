@@ -87,7 +87,7 @@ class MainHeader extends Component {
                     <AppBar /*position="sticky"*/ /*color="default"*/>
                         <Toolbar>
                             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" title="Menu">
-                                <MenuIcon />
+                                {/* <MenuIcon /> */}
                             </IconButton>
                             {/* <AccessAlarm /> */}
                             <Typography variant="h6" color="inherit" className={classes.grow}>
