@@ -54,10 +54,8 @@ import { relative } from 'path';
 const styles = theme => ({
     root: {
         width: '100%',
-        // maxWidth: 360,
-        backgroundColor: grey[50],
         // flexGrow: 1,
-        // height: '100%',
+        backgroundColor: grey[50],
         [theme.breakpoints.down('sm')]: {
             paddingTop: 0,
             paddingBottom: 0,

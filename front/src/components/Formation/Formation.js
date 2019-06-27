@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {withStyles} from '@material-ui/core'
 
 import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
 import Divider from '@material-ui/core/Divider'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -24,6 +25,7 @@ const styles = theme => ({
     //     flexWrap: 'wrap',
     // },
     root: {
+        // backgroundColor: 'white',
         // display: 'flex',
         // justifyContent: 'center',
         // flexWrap: 'wrap',
@@ -42,7 +44,7 @@ const styles = theme => ({
     //     width: '100%',
     // },
     list: {
-        backgroundColor: 'white',
+        // backgroundColor: 'white',
         // padding: '5em',
     },
     listSection: {
@@ -84,20 +86,22 @@ class Formation extends Component {
                 <Grid item xs={12}
                 className={this.props.classes.root}
                 >
-                    <Typography variant="h3" component="h1" /*align="center"*/>
-                        Formation
-                    </Typography>
-                    <List 
-                    className={this.props.classes.list}
-                    // subheader={<ListSubheader>Formation</ListSubheader>}
-                    >
-                        <ListItem divider style={{padding:0}} />
-                        {sortedEducation.map((item, item_id) => (
-                            <ListItem key={`item-${item_id}`} divider>
-                                <ListItemText primary={item.name} secondary={item.description} />
-                            </ListItem>
-                        ))}
-                    </List>
+                    <Paper>
+                        <Typography variant="h3" component="h1" /*align="center"*/>
+                            Formation
+                        </Typography>
+                        <List 
+                        className={this.props.classes.list}
+                        // subheader={<ListSubheader>Formation</ListSubheader>}
+                        >
+                            <ListItem divider style={{padding:0}} />
+                            {sortedEducation.map((item, item_id) => (
+                                <ListItem key={`item-${item_id}`} divider>
+                                    <ListItemText primary={item.name} secondary={item.description} />
+                                </ListItem>
+                            ))}
+                        </List>
+                    </Paper>
                 </Grid>
             )
         } else {

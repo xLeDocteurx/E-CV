@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {withStyles} from '@material-ui/core'
 
 import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 
 import grey from '@material-ui/core/colors/grey'
@@ -46,33 +47,35 @@ function Timeline(props) {
     } else */if(props.experiences.experiences) {
         return (
             <Grid item xs={12} className={props.classes.root}>
-                {/* <h1>
-                    Expériences
-                </h1> */}
-                <Typography variant="h3" component="h1" /*align="center"*/>
-                    Expériences
-                </Typography>
-                <div className="timeline">
-                    <ul>
-                        {sortByFirstYear(props.experiences.experiences).map((experience, experience_index) => {
-                            const {color, name, title, description, firstYear, lastYear} = experience
-                            return (
-                                <li key={experience_index}>
-                                    <div className={`bullet contour_${color}`}></div>
-                                    <div className="time">xxx</div>
-                                    <div className="time">{lastYear ? `${firstYear} - ${lastYear}` : firstYear}</div>
-                                    <div className="desc">
-                                        <h3>{name}</h3>
-                                        <h4>{title}</h4>
-                                        <div className="people">
-                                            {description}
+                <Paper>
+                    {/* <h1>
+                        Expériences
+                    </h1> */}
+                    <Typography variant="h3" component="h1" /*align="center"*/>
+                        Expériences
+                    </Typography>
+                    <div className="timeline">
+                        <ul>
+                            {sortByFirstYear(props.experiences.experiences).map((experience, experience_index) => {
+                                const {color, name, title, description, firstYear, lastYear} = experience
+                                return (
+                                    <li key={experience_index}>
+                                        <div className={`bullet contour_${color}`}></div>
+                                        <div className="time">xxx</div>
+                                        <div className="time">{lastYear ? `${firstYear} - ${lastYear}` : firstYear}</div>
+                                        <div className="desc">
+                                            <h3>{name}</h3>
+                                            <h4>{title}</h4>
+                                            <div className="people">
+                                                {description}
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                            )
-                        })}
-                    </ul>
-                </div>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                </Paper>
             </Grid>
         )
     } else {

@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {withStyles} from '@material-ui/core'
 
 import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import Avatar from '@material-ui/core/Avatar'
 import Chip from '@material-ui/core/Chip'
@@ -50,30 +51,32 @@ function Technos(props) {
     } else */if(props.technos.technos) {
         return (
             <Grid item xs={12}>
-                <Typography variant="h3" component="h1" /*align="center"*/>
-                    Technologies
-                </Typography>
-                <div className={props.classes.root}>
-                    {props.technos.technos.map((techno, techno_index) => (
-                        <Chip 
-                        key={techno_index}
-                        className={props.classes.chip}
-    
-                        // avatar={<Avatar alt="Natacha" src="/static/images/avatar/1.jpg" />}
-                        avatar={
-                            <Avatar>
-                                <FaceIcon />
-                            </Avatar>
-                        }
-                        label={techno.name}
-                        // onClick={handleClick}
-                        // onDelete={handleDelete}
-                        // className={classes.chip}
-                        // variant="outlined"
-                        // color="primary"
-                        />
-                    ))}
-                </div>
+                <Paper>
+                    <Typography variant="h3" component="h1" /*align="center"*/>
+                        Technologies
+                    </Typography>
+                    <div className={props.classes.root}>
+                        {props.technos.technos.map((techno, techno_index) => (
+                            <Chip 
+                            key={techno_index}
+                            className={props.classes.chip}
+        
+                            // avatar={<Avatar alt="Natacha" src="/static/images/avatar/1.jpg" />}
+                            avatar={
+                                <Avatar>
+                                    <FaceIcon />
+                                </Avatar>
+                            }
+                            label={techno.name}
+                            // onClick={handleClick}
+                            // onDelete={handleDelete}
+                            // className={classes.chip}
+                            // variant="outlined"
+                            // color="primary"
+                            />
+                        ))}
+                    </div>
+                </Paper>
             </Grid>
         )
     } else {

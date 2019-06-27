@@ -8,6 +8,7 @@ import Slide from '@material-ui/core/Slide'
 import Fade from '@material-ui/core/Fade'
 // import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Avatar from '@material-ui/core/Avatar'
@@ -115,18 +116,20 @@ class Home extends Component {
         } else */if(this.props.skills.skills) {
             return (
                 <Grid item xs={12}>
-                    <Typography variant="h3" component="h1" /*align="center"*/>
-                        Compétences
-                    </Typography>
-                    {/* JSON.stringify(this.props.skills.skills) */}
-                    {this.props.skills.skills.map((skill, skill_index) => (
-                        <div key={skill_index}>
-                            {skill.name}
-                            <p>
-                                {skill.description}
-                            </p>
-                        </div>
-                    ))}
+                    <Paper>
+                        <Typography variant="h3" component="h1" /*align="center"*/>
+                            Compétences
+                        </Typography>
+                        {/* JSON.stringify(this.props.skills.skills) */}
+                        {this.props.skills.skills.map((skill, skill_index) => (
+                            <div key={skill_index}>
+                                {skill.name}
+                                <p>
+                                    {skill.description}
+                                </p>
+                            </div>
+                        ))}
+                    </Paper>
                 </Grid>
             )
         } else {
@@ -141,7 +144,7 @@ class Home extends Component {
                 {/* {this.renderLoading()} */}
 
                 <Bandeau />
-                
+
                 <Formation education={this.props.education} />
 
                 {this.renderSkills()}
