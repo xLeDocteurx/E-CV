@@ -57,8 +57,8 @@ const styles = theme => ({
         // backgroundColor: grey[100],
         // flexGrow: 1,
         // height: '100%',
-        // paddingLeft: 10,
-        // paddingRight: 10,
+        // paddingLeft: 20,
+        // paddingRight: 20,
     },
     grow: {
         flexGrow: 1,
