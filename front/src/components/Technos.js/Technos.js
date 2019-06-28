@@ -52,7 +52,7 @@ function Technos(props) {
         )
     } else */if(props.technos.technos) {
         return (
-            <Grid item xs={12} className={this.props.classes.root}>
+            <Grid item xs={12} className={props.classes.root}>
                 <Paper>
                     <Typography variant="h4" component="h1" align="center">
                         Technologies
