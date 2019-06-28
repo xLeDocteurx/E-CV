@@ -42,8 +42,8 @@ const styles = theme => ({
         // flexGrow: 1,
         // height: '100%',
         [theme.breakpoints.down('sm')]: {
-            paddingLeft: '0vw',
-            paddingRight: '0vw',
+            paddingLeft: 10,
+            paddingRight: 10,
         },
         [theme.breakpoints.up('sm')]: {
             paddingLeft: '10vw',
