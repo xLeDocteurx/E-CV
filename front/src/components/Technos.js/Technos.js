@@ -17,7 +17,7 @@ const styles = theme => ({
     // root: {
     //     width: '100%',
     //     // maxWidth: 360,
-    //     backgroundColor: grey[50],
+    //     backgroundColor: grey[100],
     //     // flexGrow: 1,
     //     // height: '100%',
     // },
@@ -25,7 +25,9 @@ const styles = theme => ({
         display: 'flex',
         justifyContent: 'center',
         flexWrap: 'wrap',
-        // backgroundColor: grey[50],
+        // backgroundColor: grey[100],
+        marginTop: '2em',
+        marginBottom: '2em',
     },
     grow: {
         flexGrow: 1,
@@ -50,9 +52,9 @@ function Technos(props) {
         )
     } else */if(props.technos.technos) {
         return (
-            <Grid item xs={12}>
+            <Grid item xs={12} className={this.props.classes.root}>
                 <Paper>
-                    <Typography variant="h3" component="h1" /*align="center"*/>
+                    <Typography variant="h4" component="h1" align="center">
                         Technologies
                     </Typography>
                     <div className={props.classes.root}>

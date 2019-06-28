@@ -54,7 +54,7 @@ const styles = theme => ({
     root: {
         width: '100%',
         // maxWidth: 360,
-        backgroundColor: grey[50],
+        // backgroundColor: grey[100],
         // flexGrow: 1,
         // height: '100%',
         paddingLeft: 10,

@@ -9,6 +9,7 @@ import Fade from '@material-ui/core/Fade'
 // import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
+import Divider from '@material-ui/core/Divider'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Avatar from '@material-ui/core/Avatar'
@@ -37,7 +38,7 @@ const styles = theme => ({
         // paddingLeft: '5vw',
         // paddingRight: '5vw',
         // maxWidth: 360,
-        backgroundColor: grey[50],
+        // backgroundColor: grey[100],
         // flexGrow: 1,
         // height: '100%',
         [theme.breakpoints.down('sm')]: {
@@ -52,6 +53,10 @@ const styles = theme => ({
             paddingLeft: '15vw',
             paddingRight: '15vw',
         },
+    },
+    skills: {
+        marginTop: '2em',
+        marginBottom: '2em',
     },
     grow: {
         flexGrow: 1,
@@ -115,9 +120,9 @@ class Home extends Component {
             )
         } else */if(this.props.skills.skills) {
             return (
-                <Grid item xs={12}>
+                <Grid item xs={12} className={this.props.classes.skills}>
                     <Paper>
-                        <Typography variant="h3" component="h1" /*align="center"*/>
+                        <Typography variant="h4" component="h1" align="center">
                             Compétences
                         </Typography>
                         {/* JSON.stringify(this.props.skills.skills) */}
@@ -140,11 +145,11 @@ class Home extends Component {
     render() {
 
         return (
-            <Grid container /*direction="column" justify="center" alignItems="center"*/ className={this.props.classes.root}>
+            <Grid container /*direction="column"*/ className={this.props.classes.root}>
                 {/* {this.renderLoading()} */}
 
                 <Bandeau />
-
+                
                 <Formation education={this.props.education} />
 
                 {this.renderSkills()}

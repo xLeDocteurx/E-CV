@@ -25,17 +25,11 @@ const styles = theme => ({
     //     flexWrap: 'wrap',
     // },
     root: {
-        // backgroundColor: 'white',
-        // display: 'flex',
-        // justifyContent: 'center',
-        // flexWrap: 'wrap',
-        // justifyContent: 'center',
-        // width: '100%',
-        // maxWidth: 360,
-        // backgroundColor: grey[50],
-        // position: 'relative',
-        // overflow: 'auto',
-        // maxHeight: 300,
+        // marginTop: '10px',
+        // marginBottom: '10px',
+        marginTop: '2em',
+        marginBottom: '2em',
+
     },
     // grow: {
     //     flexGrow: 1,
@@ -87,16 +81,16 @@ class Formation extends Component {
                 className={this.props.classes.root}
                 >
                     <Paper>
-                        <Typography variant="h3" component="h1" /*align="center"*/>
+                        <Typography variant="h4" align="center">
                             Formation
                         </Typography>
                         <List 
                         className={this.props.classes.list}
                         // subheader={<ListSubheader>Formation</ListSubheader>}
                         >
-                            <ListItem divider style={{padding:0}} />
+                            {/* <ListItem divider style={{padding:0}} /> */}
                             {sortedEducation.map((item, item_id) => (
-                                <ListItem key={`item-${item_id}`} divider>
+                                <ListItem key={`item-${item_id}`} /*divider*/>
                                     <ListItemText primary={item.name} secondary={item.description} />
                                 </ListItem>
                             ))}

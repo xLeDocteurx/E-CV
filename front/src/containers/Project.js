@@ -55,7 +55,7 @@ const styles = theme => ({
     root: {
         width: '100%',
         // flexGrow: 1,
-        backgroundColor: grey[50],
+        // backgroundColor: grey[100],
         [theme.breakpoints.down('sm')]: {
             paddingTop: 0,
             paddingBottom: 0,

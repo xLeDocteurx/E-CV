@@ -12,7 +12,7 @@ const styles = theme => ({
     root: {
         width: '100%',
         // maxWidth: 360,
-        // backgroundColor: grey[50],
+        // backgroundColor: grey[100],
         // backgroundColor: 'white',
         // flexGrow: 1,
         // height: '100%',
@@ -51,7 +51,7 @@ function Timeline(props) {
                     {/* <h1>
                         Expériences
                     </h1> */}
-                    <Typography variant="h3" component="h1" /*align="center"*/>
+                    <Typography variant="h4" component="h1" align="center">
                         Expériences
                     </Typography>
                     <div className="timeline">

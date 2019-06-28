@@ -42,7 +42,7 @@ function Bandeau(props) {
             <Grid item xs={12} /*direction="column" justify="center" alignItems="center"*/ className={props.classes.bandeau}>
                 {/* <div> */}
                     <Avatar alt="Photo" src="./img/avatar.jpg" className={props.classes.bigAvatar} title="Ma photo" />
-                    <Typography /*variant="h3" component="h1"*/ align="center" className={props.classes.citation}>
+                    <Typography /*variant="h4" component="h1"*/ align="center" className={props.classes.citation}>
                         " Il ne faut jamais baisser les bras. sauf si c'est dans la chorégraphie! "<br/>
                         - Moi
                     </Typography>
