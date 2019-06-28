@@ -86,8 +86,8 @@ class MainHeader extends Component {
                 <HideOnScroll {...this.props}>
                     <AppBar /*position="sticky"*/ /*color="default"*/>
                         <Toolbar>
-                            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" title="Menu">
-                                {/* <MenuIcon /> */}
+                            <IconButton className={this.props.classes.invisible} color="inherit" aria-label="Menu" title="Menu">
+                                <MenuIcon />
                             </IconButton>
                             {/* <AccessAlarm /> */}
                             <Typography variant="h6" color="inherit" className={classes.grow}>
