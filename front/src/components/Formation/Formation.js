@@ -27,8 +27,8 @@ const styles = theme => ({
     root: {
         // marginTop: '10px',
         // marginBottom: '10px',
-        marginTop: '2em',
-        marginBottom: '2em',
+        marginTop: '1em',
+        marginBottom: '1em',
 
     },
     // grow: {

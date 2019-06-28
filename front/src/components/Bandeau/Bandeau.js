@@ -8,7 +8,7 @@ import Avatar from '@material-ui/core/Avatar'
 const styles = theme => ({
     bandeau: {
         paddingTop: '5vw',
-        paddingBottom: '5vw',
+        paddingBottom: '3vw',
         // width: '60vw',
         // textAlign: 'center',
     },

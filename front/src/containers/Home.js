@@ -55,8 +55,8 @@ const styles = theme => ({
         },
     },
     skills: {
-        marginTop: '2em',
-        marginBottom: '2em',
+        marginTop: '1em',
+        // marginBottom: '1em',
     },
     grow: {
         flexGrow: 1,

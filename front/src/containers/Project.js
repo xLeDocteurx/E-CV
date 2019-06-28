@@ -55,25 +55,26 @@ const styles = theme => ({
     root: {
         width: '100%',
         // flexGrow: 1,
-        // backgroundColor: grey[100],
-        [theme.breakpoints.down('sm')]: {
-            paddingTop: 0,
-            paddingBottom: 0,
-            paddingRight: 0,
-            paddingLeft: 0,
-        },
-        [theme.breakpoints.up('sm')]: {
-            paddingTop: 20,
-            paddingBottom: 20,
-            paddingRight: '10vw',
-            paddingLeft: '10vw',
-        },
-        [theme.breakpoints.up('lg')]: {
-            paddingTop: 30,
-            paddingBottom: 30,
-            paddingRight: '15vw',
-            paddingLeft: '15vw',
-        },
+        backgroundColor: grey[100],
+
+        // [theme.breakpoints.down('sm')]: {
+        //     paddingTop: 0,
+        //     paddingBottom: 0,
+        //     paddingRight: 0,
+        //     paddingLeft: 0,
+        // },
+        // [theme.breakpoints.up('sm')]: {
+        //     paddingTop: 20,
+        //     paddingBottom: 20,
+        //     paddingRight: '10vw',
+        //     paddingLeft: '10vw',
+        // },
+        // [theme.breakpoints.up('lg')]: {
+        //     paddingTop: 30,
+        //     paddingBottom: 30,
+        //     paddingRight: '15vw',
+        //     paddingLeft: '15vw',
+        // },
     },
     grow: {
         flexGrow: 1,
@@ -141,7 +142,7 @@ class Project extends Component {
             this.props.dispatch(projectsActions.getOne(this.props.match.params.slug, () => this.getProjectCallback()))
         }
 
-        this.setState({animState: 'entering'})
+        // this.setState({animState: 'entering'})
 		// setTimeout(() => {this.setState({animState: 'entering'})}, this.state.animDuration)
         // this.setState({animState: 'entered'})
 		// setTimeout(() => {this.setState({animState: 'entered'})}, this.state.animDuration)
@@ -197,7 +198,7 @@ class Project extends Component {
             zIndex: 1200,
             background: 'white',
 
-            // border: '5px blue solid',
+            border: '5px blue solid',
             
             // /* add opacity to see if the other view is actually kept below */
             // opacity: 0.75,

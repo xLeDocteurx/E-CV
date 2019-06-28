@@ -26,8 +26,8 @@ const styles = theme => ({
         justifyContent: 'center',
         flexWrap: 'wrap',
         // backgroundColor: grey[100],
-        marginTop: '2em',
-        marginBottom: '2em',
+        marginTop: '1em',
+        marginBottom: '1em',
     },
     grow: {
         flexGrow: 1,

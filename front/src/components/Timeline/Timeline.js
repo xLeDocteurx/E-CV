@@ -16,8 +16,8 @@ const styles = theme => ({
         // backgroundColor: 'white',
         // flexGrow: 1,
         // height: '100%',
-        marginTop: '2em',
-        marginBottom: '2em',
+        marginTop: '1em',
+        marginBottom: '1em',
     },
     grow: {
         flexGrow: 1,
@@ -66,8 +66,8 @@ function Timeline(props) {
                                         <div className="time">xxx</div>
                                         <div className="time">{lastYear ? `${firstYear} - ${lastYear}` : firstYear}</div>
                                         <div className="desc">
-                                            <h3>{name}</h3>
-                                            <h4>{title}</h4>
+                                            <h5>{name}</h5>
+                                            <h6 style={{color: grey[600]}}>{title}</h6>
                                             <div className="people">
                                                 {description}
                                             </div>

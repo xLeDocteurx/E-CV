@@ -94,10 +94,10 @@ class ProjectHeader extends Component {
                         </AppBar>
                     {/* </HideOnScroll> */}
                 </Fade>
-                <AppBar position="static" className={this.props.classes.invisible}>
+                {/* <AppBar position="static" className={this.props.classes.invisible}>
                     <Toolbar>
                     </Toolbar>
-                </AppBar>
+                </AppBar> */}
             </Fragment>
         )
     }
