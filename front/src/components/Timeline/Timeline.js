@@ -16,6 +16,8 @@ const styles = theme => ({
         // backgroundColor: 'white',
         // flexGrow: 1,
         // height: '100%',
+        marginTop: '2em',
+        marginBottom: '2em',
     },
     grow: {
         flexGrow: 1,
