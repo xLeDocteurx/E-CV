@@ -142,7 +142,7 @@ class Project extends Component {
             this.props.dispatch(projectsActions.getOne(this.props.match.params.slug, () => this.getProjectCallback()))
         }
 
-        // this.setState({animState: 'entering'})
+        this.setState({animState: 'entering'})
 		// setTimeout(() => {this.setState({animState: 'entering'})}, this.state.animDuration)
         // this.setState({animState: 'entered'})
 		// setTimeout(() => {this.setState({animState: 'entered'})}, this.state.animDuration)
@@ -198,10 +198,10 @@ class Project extends Component {
             zIndex: 1200,
             background: 'white',
 
-            border: '5px blue solid',
+            // border: '5px blue solid',
             
             // /* add opacity to see if the other view is actually kept below */
-            // opacity: 0.75,
+            opacity: 0.75,
         }
     }
 
