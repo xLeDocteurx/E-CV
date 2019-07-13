@@ -17,6 +17,7 @@ import LinearProgress from '@material-ui/core/LinearProgress'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 // import Paper from '@material-ui/core/Paper'
+import Avatar from '@material-ui/core/Avatar'
 import IconButton from '@material-ui/core/IconButton'
 import Button from '@material-ui/core/Button'
 import MenuIcon from '@material-ui/icons/Menu'
@@ -86,8 +87,8 @@ class MainHeader extends Component {
                 <HideOnScroll {...this.props}>
                     <AppBar /*position="sticky"*/ /*color="default"*/>
                         <Toolbar>
-                            <IconButton className={this.props.classes.invisible} color="inherit" aria-label="Menu" title="Menu">
-                                <MenuIcon />
+                            <IconButton disabled={true} color="inherit" aria-label="Menu" title="Menu">
+                                <Avatar alt="Logo" src="./favicon.png" />
                             </IconButton>
                             {/* <AccessAlarm /> */}
                             <Typography variant="h6" color="inherit" className={classes.grow}>
