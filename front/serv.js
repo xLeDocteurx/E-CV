@@ -15,7 +15,6 @@ const credentials = {
 app.use(express.static(path.join(__dirname, 'build'), { dotfiles: 'allow' }))
 
 app.get('/*', function(req, res) {
-    console.log('touch on "/" path')
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
 })
 

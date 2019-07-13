@@ -131,7 +131,6 @@ class Portfolio extends Component {
         this.props.dispatch(sessionActions.setPageTitle(this.state.pageTitle))
         document.title = `${jsenv.REACT_APP_APP_NAME} - ${this.state.pageTitle}`
 
-        // this.getSections()
         if(!this.props.projects.projects) {
             this.props.dispatch(projectsActions.getAll(() => this.getAllCallback()))
         }

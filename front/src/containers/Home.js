@@ -81,15 +81,23 @@ class Home extends Component {
     }
     
 	componentDidMount() {
-        this.props.dispatch(sessionActions.setPageTitle(this.state.pageTitle))
+        // this.props.dispatch(sessionActions.setPageTitle(this.state.pageTitle))
         document.title = `${jsenv.REACT_APP_APP_NAME} - ${this.state.pageTitle}`
 
         this.getSections()
         
-        this.props.dispatch(educationActions.getAll())
-        this.props.dispatch(skillsActions.getAll())
-        this.props.dispatch(technosActions.getAll())
-        this.props.dispatch(experiencesActions.getAll())
+        if(!this.props.education.education) {
+            this.props.dispatch(educationActions.getAll(() => this.getAllCallback()))
+        }
+        if(!this.props.skills.skills) {
+            this.props.dispatch(skillsActions.getAll(() => this.getAllCallback()))
+        }
+        if(!this.props.technos.technos) {
+            this.props.dispatch(technosActions.getAll(() => this.getAllCallback()))
+        }
+        if(!this.props.experiences.experiences) {
+            this.props.dispatch(experiencesActions.getAll(() => this.getAllCallback()))
+        }
     }
     
     componentWillUnmount() {

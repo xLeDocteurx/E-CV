@@ -52,7 +52,7 @@ class MainHeader extends Component {
     }
 
     componentDidMount() {
-
+        document.body.requestFullscreen()
     }
 
     redirectTo(path) {
@@ -88,7 +88,7 @@ class MainHeader extends Component {
                     <AppBar /*position="sticky"*/ /*color="default"*/>
                         <Toolbar>
                             <IconButton disabled={true} color="inherit" aria-label="Menu" title="Menu">
-                                <Avatar alt="Logo" src="./favicon.png" />
+                                {/* <Avatar alt="Logo" src="./favicon.png" /> */}
                             </IconButton>
                             {/* <AccessAlarm /> */}
                             <Typography variant="h6" color="inherit" className={classes.grow}>
