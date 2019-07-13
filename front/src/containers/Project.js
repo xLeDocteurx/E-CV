@@ -48,6 +48,7 @@ import ProjectHeader from '../components/SubHeaders/ProjectHeader'
 
 import {sectionsActions, projectsActions} from '../actions'
 import { relative } from 'path';
+import { FORMERR } from 'dns';
 
 // import {projectsApi} from '../api'
 
@@ -58,22 +59,16 @@ const styles = theme => ({
         backgroundColor: grey[100],
 
         // [theme.breakpoints.down('sm')]: {
-        //     paddingTop: 0,
-        //     paddingBottom: 0,
-        //     paddingRight: 0,
-        //     paddingLeft: 0,
+        //     // paddingLeft: 20,
+        //     // paddingRight: 20,
         // },
         // [theme.breakpoints.up('sm')]: {
-        //     paddingTop: 20,
-        //     paddingBottom: 20,
-        //     paddingRight: '10vw',
         //     paddingLeft: '10vw',
+        //     paddingRight: '10vw',
         // },
         // [theme.breakpoints.up('lg')]: {
-        //     paddingTop: 30,
-        //     paddingBottom: 30,
-        //     paddingRight: '15vw',
         //     paddingLeft: '15vw',
+        //     paddingRight: '15vw',
         // },
     },
     grow: {
@@ -180,7 +175,7 @@ class Project extends Component {
         // console.log("from : ", from)
 
         return {
-            margin: 'auto',
+            // margin: 'auto',
 
             overflow: 'auto',
 
@@ -191,6 +186,12 @@ class Project extends Component {
             // transitionDelay: 2s,
 
             ...from,
+            // top: from.top,
+            // left: from.left,
+            // bottom: from.bottom,
+            // right: from.right,
+            // width: from.width,
+            // height: from.height,
             
             position: 'fixed',
             // position: 'absolute',
@@ -198,10 +199,10 @@ class Project extends Component {
             zIndex: 1200,
             background: 'white',
 
-            // border: '5px blue solid',
+            border: '5px blue solid',
             
             // /* add opacity to see if the other view is actually kept below */
-            opacity: 0.75,
+            // opacity: 0.75,
         }
     }
 
@@ -211,7 +212,7 @@ class Project extends Component {
 
         return {
             entering: {
-                // border: '5px yellow solid',
+                border: '5px yellow solid',
 
                 top: 0,
                 right: 0,
@@ -221,20 +222,20 @@ class Project extends Component {
                 height: '100vh',
                 width: '100vw',
             },
-            // entered:  {
-            //     position: relative,
-            //     border: '5px green solid',
+            entered:  {
+                position: relative,
+                border: '5px green solid',
 
-            //     top: 0,
-            //     right: 0,
-            //     bottom: 0,
-            //     // bottom: -25,
-            //     left: 0,
-            //     height: '100vh',
-            //     width: '100vw',
-            // },
+                top: 0,
+                right: 0,
+                bottom: 0,
+                // bottom: -25,
+                left: 0,
+                height: '100vh',
+                width: '100vw',
+            },
             exiting:  {
-                // border: '5px red solid',
+                border: '5px red solid',
 
                 ...from,
                 // opacity: 0,
@@ -267,7 +268,10 @@ class Project extends Component {
 
             <div style={{...defaultStyle, ...transitionStyles[animState]}}>
                 <ProjectHeader pageTitle={project ? project.name : null} animState={animState} />
-                {/* <AppBar /> */}
+                {/* <AppBar position="static" className={this.props.classes.invisible}>
+                    <Toolbar>
+                    </Toolbar>
+                </AppBar> */}
 
                 <Grid container className={this.props.classes.root}>
                     {/* {this.renderLoading()} */}
@@ -326,6 +330,7 @@ class Project extends Component {
                             </Collapse>
                         </Card>
                     }
+
                 </Grid>
             </div>
     

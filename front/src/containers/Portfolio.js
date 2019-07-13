@@ -160,6 +160,8 @@ class Portfolio extends Component {
         const target = e.target
         const {top, right, bottom, left, width, height} = target.getBoundingClientRect()
         const from = {top, right, bottom, left, width, height}
+        console.log('target.getBoundingClientRect() : ', target.getBoundingClientRect())
+        console.log('from : ', from)
 
         this.props.dispatch(projectsActions.getOne(slug, () => this.getProjectCallback(slug, from), from))
     }
@@ -169,7 +171,6 @@ class Portfolio extends Component {
     }
 
     getProjectCallback(slug, from) {
-        // console.log('from : ', from)
         this.props.history.push({
             pathname: `/portfolio/${slug}`,
             state: {
@@ -233,11 +234,11 @@ class Portfolio extends Component {
                                         //     L
                                         //     </Avatar>
                                         // }
-                                        action={
-                                            <IconButton aria-label="Settings">
-                                                <MoreVertIcon />
-                                            </IconButton>
-                                        }
+                                        // action={
+                                        //     <IconButton aria-label="Settings">
+                                        //         <MoreVertIcon />
+                                        //     </IconButton>
+                                        // }
                                         title={project.name}
                                         subheader={project.description}
                                         />

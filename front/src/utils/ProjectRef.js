@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react'
 
-function DelayUnmount(props) {
+function ProjectRef(props) {
     const {children} = props
     
     return (
@@ -10,4 +10,4 @@ function DelayUnmount(props) {
     )
 }
 
-export default DelayUnmount
+export default ProjectRef
