@@ -52,7 +52,7 @@ class MainHeader extends Component {
     }
 
     componentDidMount() {
-        document.body.requestFullscreen()
+        
     }
 
     redirectTo(path) {

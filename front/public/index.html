@@ -24,9 +24,25 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!--
+      Pour la possibilité d'installé un raccourci sur mobile
+    -->
     <title>Lenoir Christopher</title>
   </head>
   <body>
+    <script>
+    function isMobileDevice() {
+      return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1)
+    }
+    if(isMobileDevice()) {
+      document.body.requestFullscreen()
+    }
+    </script>
+    <!--
+      Plein écran sur mobile
+    -->
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
