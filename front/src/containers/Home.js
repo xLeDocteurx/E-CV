@@ -81,6 +81,7 @@ class Home extends Component {
     }
     
 	componentDidMount() {
+        this.props.dispatch(sessionActions.setPageTitle(this.state.pageTitle))
         // this.props.dispatch(sessionActions.setPageTitle(this.state.pageTitle))
         document.title = `${jsenv.REACT_APP_APP_NAME} - ${this.state.pageTitle}`
 

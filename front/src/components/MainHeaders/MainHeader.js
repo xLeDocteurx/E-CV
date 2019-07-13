@@ -36,7 +36,8 @@ const styles = {
     },
     menuButton: {
         // marginLeft: -12,
-        marginRight: 20,
+        // marginRight: 20,
+        marginRight: 10,
     },
 }
 
@@ -85,10 +86,12 @@ class MainHeader extends Component {
                     </Toolbar>
                 </AppBar>
                 <HideOnScroll {...this.props}>
-                    <AppBar /*position="sticky"*/ /*color="default"*/>
+                {/* #2EA2D6 */}
+                {/* #21759B */}
+                    <AppBar style={{backgroundColor: "#2EA2D6"}} /*position="sticky"*/ /*color="default"*/>
                         <Toolbar>
                             <IconButton disabled={true} color="inherit" aria-label="Menu" title="Menu">
-                                {/* <Avatar alt="Logo" src="./favicon.png" /> */}
+                                <Avatar alt="Logo" src="./favicon.png" />
                             </IconButton>
                             {/* <AccessAlarm /> */}
                             <Typography variant="h6" color="inherit" className={classes.grow}>
