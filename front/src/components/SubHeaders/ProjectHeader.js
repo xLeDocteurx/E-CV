@@ -15,6 +15,7 @@ import Slide from '@material-ui/core/Slide'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 // import Paper from '@material-ui/core/Paper'
+import Avatar from '@material-ui/core/Avatar'
 import IconButton from '@material-ui/core/IconButton'
 import Button from '@material-ui/core/Button'
 import NavigateBefore from '@material-ui/icons/NavigateBefore'
@@ -65,24 +66,26 @@ class ProjectHeader extends Component {
         return (
             <Fragment>
                 <Fade in={this.state.fadeIn} timeout={this.state.animDuration} mountOnEnter unmountOnExit>
-                    {/* <HideOnScroll {...this.props}> */}
-                        <AppBar position="fixed" color="default" /*style={{...classes.root, ...vizsibility}}*/>
-                            <Toolbar>
-                                <IconButton onClick={() => this.isExiting()} className={classes.menuButton} color="inherit" aria-label="Menu" title="Menu">
-                                    <NavigateBefore />
-                                </IconButton>
-                                {/* <AccessAlarm /> */}
-                                <Typography variant="h6" color="inherit" className={classes.grow}>
-                                    {this.props.pageTitle ? this.props.pageTitle : ""}
-                                </Typography>
-                                {/* <Button color="inherit">Login</Button> */}
-            
-                                {/* <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/')} title="Home">Home</Button> */}
-                                {/* <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/portfolio')} title="Portfolio">Portfolio</Button> */}
-                                {/* <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/contact')} title="Contact">Contact</Button> */}
-                            </Toolbar>
-                        </AppBar>
-                    {/* </HideOnScroll> */}
+                    <AppBar position="sticky" color="default" /*style={{...classes.root, ...vizsibility}}*/>
+                        <Toolbar>
+                            <IconButton onClick={() => this.isExiting()} className={classes.menuButton} color="inherit" aria-label="Menu" title="Menu">
+                                <NavigateBefore />
+                            </IconButton>
+                            {/* <AccessAlarm /> */}
+                            <Typography variant="h6" color="inherit" className={classes.grow}>
+                                {this.props.pageTitle ? this.props.pageTitle : ""}
+                            </Typography>
+
+                            <IconButton disabled={true} className={classes.invisible} color="inherit" aria-label="Menu" title="Menu">
+                                <Avatar alt="Logo" src="./favicon.png" />
+                            </IconButton>
+                            {/* <Button color="inherit">Login</Button> */}
+        
+                            {/* <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/')} title="Home">Home</Button> */}
+                            {/* <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/portfolio')} title="Portfolio">Portfolio</Button> */}
+                            {/* <Button className={classes.menuButton} color="inherit" onClick={() => this.redirectTo('/contact')} title="Contact">Contact</Button> */}
+                        </Toolbar>
+                    </AppBar>
                 </Fade>
                 {/* <AppBar position="static" className={this.props.classes.invisible}>
                     <Toolbar>

@@ -225,12 +225,12 @@ class Project extends Component {
                 height: '100vh',
                 width: '100vw',
             },
-            exiting:  {
-                // border: '5px red solid',
+            // exiting:  {
+            //     // border: '5px red solid',
 
-                ...from,
-                // opacity: 0,
-            },
+            //     ...from,
+            //     // opacity: 0,
+            // },
         }
     }
     
@@ -239,7 +239,7 @@ class Project extends Component {
     }
 
     isExiting() {
-        this.setState({animState: 'exiting'})
+        // this.setState({animState: 'exiting'})
         document.title = `${jsenv.REACT_APP_APP_NAME} - Portfolio`
 		setTimeout(() => {this.props.history.push(`/portfolio`)}, this.state.animDuration)
     }
