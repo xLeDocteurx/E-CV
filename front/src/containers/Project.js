@@ -199,7 +199,7 @@ class Project extends Component {
             zIndex: 1200,
             background: 'white',
 
-            border: '5px blue solid',
+            // border: '5px blue solid',
             
             // /* add opacity to see if the other view is actually kept below */
             // opacity: 0.75,
@@ -212,7 +212,7 @@ class Project extends Component {
 
         return {
             entering: {
-                border: '5px yellow solid',
+                // border: '5px yellow solid',
 
                 top: 0,
                 right: 0,
