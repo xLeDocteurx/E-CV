@@ -149,8 +149,7 @@ class Project extends Component {
     }
 
     componentWillUnmount() {
-            // console.log('le component va être démonté')
-            this.setState({animState: 'exiting'})
+            // this.setState({animState: 'exiting'})
     }
 
     // redirectTo(path) {
@@ -171,8 +170,6 @@ class Project extends Component {
     }
 
     getDefaultStyle(from) {
-        // console.log('this.getDefaultStyle()')
-        // console.log("from : ", from)
 
         return {
             // margin: 'auto',
@@ -200,15 +197,10 @@ class Project extends Component {
             background: 'white',
 
             // border: '5px blue solid',
-            
-            // /* add opacity to see if the other view is actually kept below */
-            // opacity: 0.75,
         }
     }
 
     getTransitionStyles(from) {
-        // console.log('this.getTransitionStyles()')
-        // console.log('from : ', from)
 
         return {
             entering: {
@@ -224,18 +216,17 @@ class Project extends Component {
             },
             entered:  {
                 position: relative,
-                border: '5px green solid',
+                // border: '5px green solid',
 
                 top: 0,
                 right: 0,
                 bottom: 0,
-                // bottom: -25,
                 left: 0,
                 height: '100vh',
                 width: '100vw',
             },
             exiting:  {
-                border: '5px red solid',
+                // border: '5px red solid',
 
                 ...from,
                 // opacity: 0,
@@ -247,9 +238,14 @@ class Project extends Component {
         this.setState({expanded: !this.state.expanded})
     }
 
+    isExiting() {
+        this.setState({animState: 'exiting'})
+		setTimeout(() => {this.props.history.push(`/portfolio`)}, this.state.animDuration)
+        // this.props.history.goBack()
+    }
+
     render() {
 
-        // console.log('le component render !!!')
         // const {classes} = this.props
 
         // const from = this.props.location.state && this.props.location.state.from ? this.props.location.state.from : {display: 'block'}
@@ -258,8 +254,6 @@ class Project extends Component {
         const transitionStyles = this.getTransitionStyles(from)
         const animState = this.state.animState
 
-        // console.log('{...defaultStyle, ...transitionStyles[' + animState + ']} : ', {...defaultStyle, ...transitionStyles[animState]})
-        
         const {expanded, setExpended} = this.state
 
         const project = this.props.selectedProject.project ? this.props.selectedProject.project : null
@@ -267,7 +261,7 @@ class Project extends Component {
         return (
 
             <div style={{...defaultStyle, ...transitionStyles[animState]}}>
-                <ProjectHeader pageTitle={project ? project.name : null} animState={animState} />
+                <ProjectHeader pageTitle={project ? project.name : null} isExiting={() => this.isExiting()} />
                 {/* <AppBar position="static" className={this.props.classes.invisible}>
                     <Toolbar>
                     </Toolbar>

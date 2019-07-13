@@ -47,30 +47,20 @@ class ProjectHeader extends Component {
             animDuration: 450,
             fadeIn: true,
         }
-
-        this.redirectTo = this.redirectTo.bind(this)
     }
 
     componentDidMount() {
 
     }
 
-    redirectTo(path) {
-
+    isExiting() {
         this.setState({fadeIn: false})
-        // setTimeout(() => this.props.history.push(`${path}`) , this.state.animDuration)
-        this.props.history.push(`${path}`)
-    }
-
-    goBack(callabck) {
-        callabck()
-        // setTimeout(this.props.history.goBack(), this.state.animDuration)
-        this.props.history.goBack()
+        this.props.isExiting()
     }
 
     render() {
         const { classes } = this.props
-        const visibility = this.props.animState == "entered" ? null : {visibility: 'hidden'}
+        // const visibility = this.props.animState == "entered" ? null : {visibility: 'hidden'}
 
         return (
             <Fragment>
@@ -78,7 +68,7 @@ class ProjectHeader extends Component {
                     {/* <HideOnScroll {...this.props}> */}
                         <AppBar position="fixed" color="default" /*style={{...classes.root, ...vizsibility}}*/>
                             <Toolbar>
-                                <IconButton onClick={() => this.redirectTo('/portfolio')} className={classes.menuButton} color="inherit" aria-label="Menu" title="Menu">
+                                <IconButton onClick={() => this.isExiting()} className={classes.menuButton} color="inherit" aria-label="Menu" title="Menu">
                                     <NavigateBefore />
                                 </IconButton>
                                 {/* <AccessAlarm /> */}

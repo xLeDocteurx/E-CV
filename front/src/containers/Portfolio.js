@@ -160,8 +160,6 @@ class Portfolio extends Component {
         const target = e.target
         const {top, right, bottom, left, width, height} = target.getBoundingClientRect()
         const from = {top, right, bottom, left, width, height}
-        console.log('target.getBoundingClientRect() : ', target.getBoundingClientRect())
-        console.log('from : ', from)
 
         this.props.dispatch(projectsActions.getOne(slug, () => this.getProjectCallback(slug, from), from))
     }
