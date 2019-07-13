@@ -240,8 +240,8 @@ class Project extends Component {
 
     isExiting() {
         this.setState({animState: 'exiting'})
+        document.title = `${jsenv.REACT_APP_APP_NAME} - Portfolio`
 		setTimeout(() => {this.props.history.push(`/portfolio`)}, this.state.animDuration)
-        // this.props.history.goBack()
     }
 
     render() {
