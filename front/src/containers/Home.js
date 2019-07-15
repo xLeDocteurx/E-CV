@@ -34,13 +34,16 @@ import Bandeau from '../components/Bandeau/Bandeau';
 
 const styles = theme => ({
     root: {
+        flexGrow: 1,
         // width: '100%',
+        // width: '100vw',
         // paddingLeft: '5vw',
         // paddingRight: '5vw',
         // maxWidth: 360,
         // backgroundColor: grey[100],
-        // flexGrow: 1,
         // height: '100%',
+
+
         [theme.breakpoints.down('sm')]: {
             paddingLeft: 20,
             paddingRight: 20,
@@ -134,6 +137,7 @@ class Home extends Component {
                         <Typography variant="h4" component="h1" align="center">
                             Compétences
                         </Typography>
+                        <Divider variant="middle" />
                         {/* JSON.stringify(this.props.skills.skills) */}
                         {this.props.skills.skills.map((skill, skill_index) => (
                             <div key={skill_index}>
@@ -154,10 +158,23 @@ class Home extends Component {
     render() {
 
         return (
-            <Grid container /*direction="column"*/ className={this.props.classes.root}>
+            <Grid container
+            // spacing={3}
+
+            direction="column"
+            justify="center"
+            alignItems="stretch"
+            // direction="column"
+            // justify="center"
+            // alignItems="center"
+            
+            // alignItems="stretch"
+
+            className={this.props.classes.root}
+            >
                 {/* {this.renderLoading()} */}
 
-                <Bandeau />
+                {/* <Bandeau /> */}
                 
                 <Formation education={this.props.education} />
 

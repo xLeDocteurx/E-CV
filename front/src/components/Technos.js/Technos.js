@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {withStyles} from '@material-ui/core'
 
 import Grid from '@material-ui/core/Grid'
+import Divider from '@material-ui/core/Divider'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import Avatar from '@material-ui/core/Avatar'
@@ -57,6 +58,7 @@ function Technos(props) {
                     <Typography variant="h4" component="h1" align="center">
                         Technologies
                     </Typography>
+                    <Divider variant="middle" />
                     <div className={props.classes.root}>
                         {props.technos.technos.map((techno, techno_index) => (
                             <Chip 

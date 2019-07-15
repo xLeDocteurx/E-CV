@@ -66,7 +66,7 @@ class ProjectHeader extends Component {
         return (
             <Fragment>
                 <Fade in={this.state.fadeIn} timeout={this.state.animDuration} mountOnEnter unmountOnExit>
-                    <AppBar position="sticky" color="default" /*style={{...classes.root, ...vizsibility}}*/>
+                    <AppBar position="fixed" color="default" /*style={{...classes.root, ...vizsibility}}*/>
                         <Toolbar>
                             <IconButton onClick={() => this.isExiting()} className={classes.menuButton} color="inherit" aria-label="Menu" title="Menu">
                                 <NavigateBefore />
@@ -87,10 +87,10 @@ class ProjectHeader extends Component {
                         </Toolbar>
                     </AppBar>
                 </Fade>
-                {/* <AppBar position="static" className={this.props.classes.invisible}>
+                <AppBar position="static" className={this.props.classes.invisible}>
                     <Toolbar>
                     </Toolbar>
-                </AppBar> */}
+                </AppBar>
             </Fragment>
         )
     }

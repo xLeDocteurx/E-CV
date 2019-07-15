@@ -25,12 +25,11 @@ function requireHTTPS(req, res, next) {
 }
 
 app.get('/*', function(req, res) {
-	!req.secure && req.get('x-forwarded-proto') !== 'https'
-	? (
+	if(!req.secure && req.get('x-forwarded-proto') !== 'https') {
 		res.redirect('https://' + req.get('host') + req.url)
-	) : (
+	} else {
 		res.sendFile(path.join(__dirname, 'build', 'index.html'))
-	)
+	}
 })
 
 // Starting both http & https servers

@@ -84,6 +84,7 @@ class Formation extends Component {
                         <Typography variant="h4" align="center">
                             Formation
                         </Typography>
+                        <Divider variant="middle" />
                         <List 
                         className={this.props.classes.list}
                         // subheader={<ListSubheader>Formation</ListSubheader>}

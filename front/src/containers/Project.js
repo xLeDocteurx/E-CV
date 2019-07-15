@@ -194,7 +194,7 @@ class Project extends Component {
             // position: 'absolute',
             
             zIndex: 1200,
-            background: 'white',
+            // background: 'white',
 
             // border: '5px blue solid',
         }
@@ -225,12 +225,20 @@ class Project extends Component {
                 height: '100vh',
                 width: '100vw',
             },
-            // exiting:  {
-            //     // border: '5px red solid',
+            exiting:  {
+                // border: '5px red solid',
 
-            //     ...from,
-            //     // opacity: 0,
-            // },
+                // ...from,
+
+                position: 'fixed',
+
+                top: 0,
+                right: window.innerWidth,
+                bottom: 0,
+                left: -window.innerWidth,
+                height: '100vh',
+                width: '100vw',
+            },
         }
     }
     
@@ -239,17 +247,15 @@ class Project extends Component {
     }
 
     isExiting() {
-        // this.setState({animState: 'exiting'})
+        this.setState({animState: 'exiting'})
         document.title = `${jsenv.REACT_APP_APP_NAME} - Portfolio`
 		setTimeout(() => {this.props.history.push(`/portfolio`)}, this.state.animDuration)
     }
 
     render() {
-
         // const {classes} = this.props
 
-        // const from = this.props.location.state && this.props.location.state.from ? this.props.location.state.from : {display: 'block'}
-        const from = /*this.props.selectedProject.from &&*/ this.props.selectedProject.from ? this.props.selectedProject.from : {}
+        const from = this.props.selectedProject.from ? this.props.selectedProject.from : {}
         const defaultStyle = this.getDefaultStyle(from)
         const transitionStyles = this.getTransitionStyles(from)
         const animState = this.state.animState
