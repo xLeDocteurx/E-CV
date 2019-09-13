@@ -23,7 +23,8 @@ import FaceIcon from '@material-ui/icons/Face'
 
 import MainHeader from '../components/MainHeaders/MainHeader'
 // import MainHeaderProminent from '../components/MainHeaders/MainHeaderProminent'
-import Formation from '../components/Formation/Formation';
+import Skills from '../components/Skills/Skills'
+import Formation from '../components/Formation/Formation'
 import Technos from '../components/Technos.js/Technos'
 import Timeline from '../components/Timeline/Timeline'
 
@@ -56,10 +57,6 @@ const styles = theme => ({
             paddingLeft: '15vw',
             paddingRight: '15vw',
         },
-    },
-    skills: {
-        marginTop: '1em',
-        // marginBottom: '1em',
     },
     grow: {
         flexGrow: 1,
@@ -121,40 +118,6 @@ class Home extends Component {
         })
     }
 
-    renderSkills() {
-        if(this.props.skills.error) { return JSON.stringify(this.props.skills.error) }
-
-        /*if(this.props.skills.isLoading) {
-            return (
-                <Grid container direction="column" justify="center" alignItems="center" className={this.props.classes.bandeau}>
-                    <CircularProgress />
-                </Grid>
-            )
-        } else */if(this.props.skills.skills) {
-            return (
-                <Grid item xs={12} className={this.props.classes.skills}>
-                    <Paper>
-                        <Typography variant="h4" component="h1" align="center">
-                            Compétences
-                        </Typography>
-                        <Divider variant="middle" />
-                        {/* JSON.stringify(this.props.skills.skills) */}
-                        {this.props.skills.skills.map((skill, skill_index) => (
-                            <div key={skill_index}>
-                                {skill.name}
-                                <p>
-                                    {skill.description}
-                                </p>
-                            </div>
-                        ))}
-                    </Paper>
-                </Grid>
-            )
-        } else {
-            return 'WTF'
-        }
-    }
-
     render() {
 
         return (
@@ -176,9 +139,9 @@ class Home extends Component {
 
                 {/* <Bandeau /> */}
                 
-                <Formation education={this.props.education} />
+                {/* <Formation education={this.props.education} /> */}
 
-                {this.renderSkills()}
+                {/* <Skills skills={this.props.skills} /> */}
 
                 <Technos technos={this.props.technos} />
 

@@ -90,6 +90,7 @@ const styles = theme => ({
 
     card: {
         // maxWidth: 345,
+        // minHeight: '100vh',
         // width: '75%',
         // marginLeft: 'auto',
         // marginRight: 'auto',
@@ -209,14 +210,13 @@ class Project extends Component {
                 top: 0,
                 right: 0,
                 bottom: 0,
-                // bottom: -25,
                 left: 0,
                 height: '100vh',
                 width: '100vw',
             },
             entered:  {
-                position: relative,
                 // border: '5px green solid',
+                position: relative,
 
                 top: 0,
                 right: 0,
@@ -227,10 +227,9 @@ class Project extends Component {
             },
             exiting:  {
                 // border: '5px red solid',
+                position: 'fixed',
 
                 // ...from,
-
-                position: 'fixed',
 
                 top: 0,
                 right: window.innerWidth,
@@ -267,7 +266,7 @@ class Project extends Component {
         return (
 
             <div style={{...defaultStyle, ...transitionStyles[animState]}}>
-                <ProjectHeader pageTitle={project ? project.name : null} isExiting={() => this.isExiting()} />
+                <ProjectHeader pageTitle={project ? project.name : null} isExiting={() => this.isExiting()} animDuration={this.state.animDuration} />
                 {/* <AppBar position="static" className={this.props.classes.invisible}>
                     <Toolbar>
                     </Toolbar>
@@ -333,23 +332,7 @@ class Project extends Component {
 
                 </Grid>
             </div>
-    
-    //     </CSSTransition>
-    // </TransitionGroup>
 
-
-            // // <Zoom in={this.state.zoom} style={{ transitionDelay: this.state.zoom ? '500ms' : '0ms' }}>
-            //     <Grid container direction="column" justify="center" alignItems="center">
-            //     {/* <ProjectHeader pageTitle={this.state.pageTitle}/> */}
-            //     {/* {this.renderLoading()} */}
-    
-            //     {/* {this.renderProject()} */}
-                
-            //         <Paper elevation={4} className={this.props.classes.paper}>
-            //             ...LoL...
-            //         </Paper>
-            //     </Grid>
-            // // </Zoom>
         )
     }
 }

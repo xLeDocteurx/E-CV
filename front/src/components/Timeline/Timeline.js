@@ -58,28 +58,34 @@ function Timeline(props) {
                         Expériences
                     </Typography>
                     <Divider variant="middle" />
-                    <div className="timeline">
-                        <ul>
-                            {sortByFirstYear(props.experiences.experiences).map((experience, experience_index) => {
-                                const {color, name, title, description, firstYear, lastYear} = experience
-                                return (
-                                    <li key={experience_index}>
-                                        <div className={`bullet contour_${color}`}></div>
-                                        <div className="time">xxx</div>
-                                        <div className="time">{lastYear ? `${firstYear} - ${lastYear}` : firstYear}</div>
-                                        <div className="desc">
-                                            <h5>{name}</h5>
-                                            <h6 style={{color: grey[600]}}>{title}</h6>
-                                            <div className="people">
-                                                {description}
-                                            </div>
-                                        </div>
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    </div>
+
                 </Paper>
+
+                    <section id="cd-timeline" className="cd-container">
+                        {sortByFirstYear(props.experiences.experiences).map((experience, experience_index) => {
+                            const {color, name, title, description, firstYear, lastYear} = experience
+                            return (
+                                // <div ></div>
+                                <div className="cd-timeline-block" key={experience_index}>
+                                    <div className={`cd-timeline-img bullet contour_${color}`}>
+                                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-icon-location.svg" alt="timeline icon" />
+                                    </div>
+                        
+                                    <div className="cd-timeline-content">
+                                        <h5>{name}</h5>
+                                        <h6 style={{color: grey[600]}}>{title}</h6>
+                                        <p>{description}</p>
+
+                                        {/* <a href="#0" class="cd-read-more">Read more</a> */}
+
+                                        <span className="cd-date">{lastYear ? `${firstYear} - ${lastYear}` : firstYear}</span>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </section>
+
+                {/* </Paper> */}
             </Grid>
         )
     } else {

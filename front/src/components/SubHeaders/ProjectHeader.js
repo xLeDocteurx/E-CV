@@ -30,6 +30,9 @@ const styles = {
     grow: {
         flexGrow: 1,
     },
+    intangible: {
+        visibility: 'none',
+    },
     invisible: {
         visibility: 'hidden',
     },
@@ -44,9 +47,8 @@ class ProjectHeader extends Component {
     constructor(props){
         super(props)
         this.state = {
-            // animDuration: 3000,
-            animDuration: 450,
             fadeIn: true,
+            clickedOnExitButton: false,
         }
     }
 
@@ -55,6 +57,7 @@ class ProjectHeader extends Component {
     }
 
     isExiting() {
+        setTimeout(this.setState({clickedOnExitButton: true}), this.props.animDuration / 2)
         this.setState({fadeIn: false})
         this.props.isExiting()
     }
@@ -65,7 +68,7 @@ class ProjectHeader extends Component {
 
         return (
             <Fragment>
-                <Fade in={this.state.fadeIn} timeout={this.state.animDuration} mountOnEnter unmountOnExit>
+                <Fade in={this.state.fadeIn} timeout={this.props.animDuration} mountOnEnter unmountOnExit>
                     <AppBar position="fixed" color="default" /*style={{...classes.root, ...vizsibility}}*/>
                         <Toolbar>
                             <IconButton onClick={() => this.isExiting()} className={classes.menuButton} color="inherit" aria-label="Menu" title="Menu">
@@ -87,7 +90,8 @@ class ProjectHeader extends Component {
                         </Toolbar>
                     </AppBar>
                 </Fade>
-                <AppBar position="static" className={this.props.classes.invisible}>
+                {/* <AppBar position="static" className={this.props.classes.invisible}> */}
+                <AppBar position="static" className={this.state.clickedOnExitButton ? this.props.classes.intangible : this.props.classes.invisible}>
                     <Toolbar>
                     </Toolbar>
                 </AppBar>

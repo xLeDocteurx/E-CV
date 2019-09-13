@@ -34,6 +34,11 @@ const styles = {
     invisible: {
         visibility: 'hidden',
     },
+    // #2EA2D6
+    // #21759B
+    appBar: {
+        backgroundColor: '#2EA2D6',
+    },
     menuButton: {
         // marginLeft: -12,
         // marginRight: 20,
@@ -86,9 +91,7 @@ class MainHeader extends Component {
                     </Toolbar>
                 </AppBar>
                 <HideOnScroll {...this.props}>
-                {/* #2EA2D6 */}
-                {/* #21759B */}
-                    <AppBar style={{backgroundColor: "#2EA2D6"}} /*position="sticky"*/ /*color="default"*/>
+                    <AppBar className={classes.appBar} /*position="sticky"*/ /*color="default"*/>
                         <Toolbar>
                             <IconButton disabled={true} color="inherit" aria-label="Menu" title="Menu">
                                 <Avatar alt="Logo" src="./favicon.png" />

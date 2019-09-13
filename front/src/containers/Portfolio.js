@@ -157,6 +157,9 @@ class Portfolio extends Component {
         this.setState({selectedProjectId: id})
 
         const target = e.target
+        // console.log("Ca clique !!!")
+        // console.log(target)
+        // console.log("Et puis ca repart ...")
         const {top, right, bottom, left, width, height} = target.getBoundingClientRect()
         const from = {top, right, bottom, left, width, height}
 
@@ -217,8 +220,8 @@ class Portfolio extends Component {
 
                         return (
 
-                            <Grid key={project_index} item xs={12} sm={6} md={4} lg={3} onClick={(e) => this.getProject(project._id, project.slug, e)}>
-                                <Card className={this.props.classes.card}>
+                            <Grid key={project_index} item xs={12} sm={6} md={4} lg={3}>
+                                <Card className={this.props.classes.card} onClick={(e) => this.getProject(project._id, project.slug, e)}>
                                     <CardActionArea /*onClick={(e) => this.getProject(project._id, project.slug, e)}*/>
                                         <CardMedia
                                         className={this.props.classes.media}
