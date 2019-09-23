@@ -5,14 +5,17 @@
       "connector": "strapi-hook-mongoose",
       "settings": {
         "client": "mongo",
-        "host": "${process.env.DATABASE_HOST || '127.0.0.1'}",
-        "port": "${process.env.DATABASE_PORT || 27017}",
-        "database": "${process.env.DATABASE_NAME || 'ecv'}",
-        "username": "${process.env.DATABASE_USERNAME || ''}",
-        "password": "${process.env.DATABASE_PASSWORD || ''}"
+        "host": "cluster0-0unpv.mongodb.net",
+        "port": "27017",
+        "database": "test",
+        "username": "ledocteur",
+        "password": "TatcherIs100$Sexy",
+        "srv": "true"
       },
-      "options": {}
+      "options": {
+        "ssl": "true",
+        "authenticationDatabase": "admin"
+      }
     }
   }
 }
-
