@@ -1,5 +1,3 @@
-Visiter l'app : https://xledocteurx.github.io/E-CV/
-
 # E-CV
 CV numérique
 
